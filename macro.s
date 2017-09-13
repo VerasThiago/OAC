@@ -37,5 +37,6 @@ MAIN:
 	read($t0)
 	prints("numero eh ")
 	printi($t0)
+	
 	return0
 
