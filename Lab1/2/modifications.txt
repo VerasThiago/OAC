@@ -2,6 +2,7 @@ OAC - Lab1 - Part 1
 
 2.2 Modifications
 
-> Comando que estao em sortc.s porém nao estao no guia de referencias do MIPS
+> Comando que estao em sortc.s porém nao estao no guia de referencias do MIPS:
     -nop
     -b
+> Alteracoes necessarias:
