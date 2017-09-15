@@ -1,3 +1,4 @@
+/* Bubble sort in C */
 #include <stdio.h>
 
 #define N 10
@@ -33,6 +34,4 @@ void main()
    show(v,N);
    sort(v,N);
    show(v,N);
-}	
-
-
+}
