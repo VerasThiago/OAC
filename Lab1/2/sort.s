@@ -1,14 +1,14 @@
 ## Bubble sort in Assembly MIPS ##
-.eqv N 10
-	.data
-vetor:  .word 5,8,3,4,7,6,8,0,1,9,
 
+.eqv N 10
+
+.data
+vetor:  .word 5,8,3,4,7,6,8,0,1,9
 newl:	.asciiz "\n"
 tab:	.asciiz "\t"
 
 
-	.text
-
+.text
 MAIN:	la $a0,vetor
 	li $a1,N
 	jal show
@@ -20,7 +20,6 @@ MAIN:	la $a0,vetor
 	la $a0,vetor
 	li $a1,N
 	jal show
-
 
 	li $v0,10
 	syscall
