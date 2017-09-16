@@ -1,0 +1,109 @@
+Link com diretivas (clicar na diretiva específica para mais explicações) :
+https://sourceware.org/binutils/docs/as/Pseudo-Ops.html#Pseudo-Ops
+
+Manual que parece bastante promissor (merece ser mais bem investigado) :
+https://sourceware.org/binutils/docs/as/
+
+Significado das diretivas pedidas:
+    1) .file
+        This version of the .file directive tells as that we are about to start a new logical file.
+        The syntax is: .file string
+        string is the new file name. In general, the filename is recognized whether or not it is surrounded by quotes ‘"’;
+        but if you wish to specify an empty file name, you must give the quotes–"".
+        This statement may go away in future: it is only recognized to be compatible with old as programs.
+        
+    2) .section
+        Use the .section directive to assemble the following code into a section named name.
+        The syntax is: .section name
+        This directive is only supported for targets that actually support arbitrarily named sections;
+        on a.out targets, for example, it is not accepted, even with a standard a.out section name.
+        
+    3) .mdebug 
+        ???
+        
+    4) .previous
+        This directive swaps the current section (and subsection) with most recently referenced section/subsection pair prior to this one.
+        Multiple .previous directives in a row will flip between two sections (and their subsections).
+        In terms of the section stack, this directive swaps the current section with the top section on the section stack.
+        
+    5) .nan
+        ???
+        
+    6) .gnu_attribute
+        Record a GNU object attribute for this file. Used for compatibility between object files.
+        The syntax is: .gnu_attribute tag,value
+        
+    7) .globl
+        .global makes the symbol visible to ld.
+        The syntax is: .globl symbol
+        If you define symbol in your partial program, its value is made available to other partial programs that are linked with it.
+        Otherwise, symbol takes its attributes from a symbol of the same name from another file linked into the same program.
+        
+    8) .data
+        .data tells as to assemble the following statements onto the end of the data subsection numbered subsection (which is an absolute expression).
+        If subsection is omitted, it defaults to zero.
+        The syntax is: .data subsection
+        
+    9) .align
+        The syntax is: .align abs-expr, abs-expr, abs-expr
+        Pad the location counter (in the current subsection) to a particular storage boundary.
+        The first expression (which must be absolute) is the alignment required, as described below.
+        The second expression (also absolute) gives the fill value to be stored in the padding bytes. It (and the comma) may be omitted.
+        If it is omitted, the padding bytes are normally zero. However, on some systems, if the section is marked as containing code and the fill value is omitted, the space is filled with no-op instructions.
+        The third expression is also absolute, and is also optional. If it is present, it is the maximum number of bytes that should be skipped by this alignment directive.
+        If doing the alignment would require skipping more bytes than the specified maximum, then the alignment is not done at all.
+        You can omit the fill value (the second argument) entirely by simply using two commas after the required alignment;
+        this can be useful if you want the alignment to be filled with no-op instructions when appropriate.
+        
+   10) .type
+        This directive is used to set the type of a symbol.
+        For ELF targets, the .type directive is used like this:
+                .type name , type description
+        This sets the type of symbol name to be either a function symbol or an object symbol.
+        There are five different syntaxes supported for the type description field, in order to provide compatibility with various other assemblers.
+        
+   11) .size
+        This directive is used to set the size associated with a symbol.
+        For ELF targets, the .size directive is used like this: .size name , expression
+        This directive sets the size associated with a symbol name.
+        The size in bytes is computed from expression which can make use of label arithmetic.
+        This directive is typically used to set the size of function symbols.
+        
+   12) .word
+        This directive expects zero or more expressions, of any section, separated by commas.
+        The syntax is: .word expr, expr
+        The expr are stored as words
+        
+   13) .rdata
+        ???
+        
+   14) .ascii
+        .ascii expects zero or more string literals separated by commas.
+        It assembles each string (with no automatic trailing zero byte) into consecutive addresses.
+        There is also the .asciz directive
+        .asciz is just like .ascii, but each string is followed by a zero byte. The “z” in ‘.asciz’ stands for “zero”.
+        
+   15) .text
+        Tells as to assemble the following statements onto the end of the text subsection numbered subsection, which is an absolute expression.
+        If subsection is omitted, subsection number zero is used.
+        The syntax is: .text subsection
+        The executable code of the subsection follows this directive.
+        
+   16) .ent
+        ??? (maybe it was supposed to be .end)
+        
+   17) .frame
+        ???
+        
+   18) .mask
+        ???
+        
+   19) .fmask
+        ???
+        
+   20) .set
+   The syntax is: .set aymbol, expression
+   Set the value of symbol to expression.
+   This changes symbol’s value and type to conform to expression.
+   If symbol was flagged as external, it remains flagged 
+   
