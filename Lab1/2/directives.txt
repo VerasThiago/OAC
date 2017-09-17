@@ -28,7 +28,7 @@ Significado das diretivas pedidas:
         
     5) .nan
         This directive is used for designating the type "not a number", for IEEE 754 floating-point operations.
-        Especificaly '.nan legacy' says that the file uses the original MIPS encoding.
+        Specifically '.nan legacy' says that the file uses the original MIPS encoding.
         
     6) .gnu_attribute
         Record a GNU object attribute for this file. Used for compatibility between object files.
