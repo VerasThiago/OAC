@@ -27,7 +27,8 @@ Significado das diretivas pedidas:
         In terms of the section stack, this directive swaps the current section with the top section on the section stack.
         
     5) .nan
-        ???
+        This directive is used for designating the type "not a number", for IEEE 754 floating-point operations.
+        Especificaly '.nan legacy' says that the file uses the original MIPS encoding.
         
     6) .gnu_attribute
         Record a GNU object attribute for this file. Used for compatibility between object files.
@@ -84,7 +85,7 @@ Significado das diretivas pedidas:
         .asciz is just like .ascii, but each string is followed by a zero byte. The “z” in ‘.asciz’ stands for “zero”.
         
    15) .text
-        Tells as to assemble the following statements onto the end of the text subsection numbered subsection, which is an absolute expression.
+        Tells as to assemble the following statements onto the end of the text subsection numbered subsection, which is an absolute      expression.
         If subsection is omitted, subsection number zero is used.
         The syntax is: .text subsection
         The executable code of the subsection follows this directive.
@@ -93,17 +94,19 @@ Significado das diretivas pedidas:
         ??? (maybe it was supposed to be .end)
         
    17) .frame
-        ???
+        This directive is used to show the frame pointer for the stack;
+        Basically set where the stack will start in the memory.
         
    18) .mask
-        ???
+        This directive is used for bitwised operations, particularly in a bit field.
+        i.e: NOT, AND, OR, etc.
         
    19) .fmask
         ???
         
    20) .set
-   The syntax is: .set aymbol, expression
-   Set the value of symbol to expression.
-   This changes symbol’s value and type to conform to expression.
-   If symbol was flagged as external, it remains flagged 
+        The syntax is: .set aymbol, expression
+        Set the value of symbol to expression.
+        This changes symbol’s value and type to conform to expression.
+        If symbol was flagged as external, it remains flagged 
    
