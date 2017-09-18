@@ -4,7 +4,7 @@
 # SpriteInfo: width, heigth, curr frame, max frame
 # Hitbox info: width, heigth, type, adress index
 ryuidle: .byte 48, 91, 0, 4
-frameSequence: .byte 0, 1, 2, 3, 0
+frameSequence: .byte 0, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 3 0 
 hitboxInfo: .space 4
 hitboxAddress: .space 4
 .align 2
@@ -36,10 +36,16 @@ str: .asciiz %file
     li $v0,10
     syscall
 .end_macro
-   
+
+.macro sleep(%d)
+    li $a0, %d
+    li $v0, 32
+    syscall
+.end_macro
+
 .text
  
-    openFile ("ryu_idle.bin", 0)
+    openFile ("ryu_idleB.bin", 0)
     move $a0, $v0
     readToBuff
     closeFile
@@ -106,6 +112,7 @@ nextLine:   addi $t0, $t0, 320  # same column, a line below in VGA
         j printWhile
        
 fin:    # updating hitboxes
+    sleep(200)
     beq $t3, 0, passive # decides which action the sprite is taking
     beq $t3, 1, active  # so that appropriate hitboxes can be created
     beq $t3, 2, special
