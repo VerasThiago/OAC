@@ -7,5 +7,5 @@
 
 ### Convensões e Observações
 
-Imagens precisam ser múltiplas de 4 tanto na altura como na largura.
+Imagens precisam ser múltiplas de 4 tanto na altura como na largura.\
 0xC7 = Transparente [R 255 G 0 B 255]
