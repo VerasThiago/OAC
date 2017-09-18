@@ -3,3 +3,7 @@
 ### Materiais de Apoio
 
 [Link](https://www.spriters-resource.com/snes/supersf2) com todas as sprite sheets do Street Fighter II;
+
+### Convensões e Observações
+
+Imagens precisam ser múltiplas de 4 tanto na altura como na largura.
