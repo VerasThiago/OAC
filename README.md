@@ -1,5 +1,5 @@
 # OAC
-Repository dedicated to the laboratory exercises of the discipline Organization and Architecture of Computers (OAC).
+Repository dedicated to the laboratory exercises and final project of the discipline Organization and Architecture of Computers (OAC).
 #### Members
 - Vitor Dullens
 - Giovanni Guidini
