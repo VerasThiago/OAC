@@ -1,4 +1,4 @@
-# Trabalho Final - OAC - Street Fighter II in Assembly MIPS
+# Trabalho Final - Street Fighter II in Assembly MIPS
 
 ### Materiais de Apoio
 
