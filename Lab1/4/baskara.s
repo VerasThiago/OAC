@@ -58,20 +58,35 @@ baskaraR: # delta em $f5 # $f1 = a, $f2 = b, $f3 = c
     	mtc1 $t0, $f7
     	mul.s $f2, $f2, $f7 # b = b*(-1)
     	sqrt.s $f5, $f5     # delta = sqrt(delta)
-   	li $t0, 2
+   	    li $t0, 2
     	mtc1 $t0, $f7
     	mul.s $f1, $f1, $f7     # a = 2 * a
     	add.s $f9, $f2, $f5     # blah = -b + srqt(delta)
-    	sub.s $f10, $f2, $f5    #blah2 = -b - sqrt(delta)
-    	div.s $f9, $f9, $f7     # $f9  = raiz1
-    	div.s $f10, $f10, $f7   # $f10 = raiz2
-    	j end
+    	sub.s $f10, $f2, $f5    # blah2 = -b - sqrt(delta)
+    	div.s $f9, $f9, $f1     # $f9  = raiz1
+    	div.s $f10, $f10, $f1   # $f10 = raiz2
+    	j stack
     
     
-baskaraC:
+baskaraC: # delta em $f5 # $f1 = a, $f2 = b, $f3 = c
+        li $t0, -1
+    	mtc1 $t0, $f7
+    	mul.s $f2, $f2, $f7 # b = b*(-1)
+    	mul.s $f5, $f5, $f7 # transformando a raiz complexa em real - mult por -1 - delta = delta * (-1)
+    	sqrt.s $f5, $f5     # delta = sqrt(delta)
+   	    li $t0, 2
+    	mtc1 $t0, $f7
+    	mul.s $f1, $f1, $f7     # a = 2 * a
+    	div.s $f2, $f2, $f1     # $f2  = -b/2a
+    	div.s $f5, $f5, $f1     # $f5 = delta/2a
+    	j stack
+
+stack:
+
+	
 
 end:
-	done
+        done
 	
 	
 	
