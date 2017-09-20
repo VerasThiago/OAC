@@ -36,43 +36,52 @@ myLabel: .asciiz %str
 	move %x, $v0
 .end_macro
 MAIN:
-	addi $a0, $zero, 4
-	addi $a1, $zero, 2
-	prints("OI")
-	jal GCD
-	prints("GCD = ")
-	printi($v1)	
+	prints("Digite sua operaÁ„o:\n")
+	prints("0 - Criar um Vetor\n")
+	prints("1 - Fazer GCD\n")
+	read($t4)
+	beqz $t4,INSERIRVETOR
+	j GCD
+FIM:	
+	prints("FIM")
+	
 	return0
 
 GCD:
-	WHILE: beq $a0,$a1, RETURN				
-		sle  $t1,$a1,$a2
+
+	prints("Insira os 2 numeros para o gcd\n")
+	read($a3)
+	read($a1)	
+	WHILE: beq $a3,$a1, RETURN
+		sle  $t1,$a3,$a1
 		beq $t1,$zero,IJ
-		sub $a2,$a2,$a1
-		jal WHILE
+		sub $a1,$a1,$a3
+		j WHILE
 		IJ: 
-			sub $a1,$a1,$a2
-		jal WHILE	
+			sub $a3,$a3,$a1
+			j WHILE	
 	RETURN:
 		addi $v1,$a1,0
-		jr $ra	 						
+		prints("GCD = ")
+		printi($v1)
+		prints("\n")
+		j FIM				
 																
 INSERIRVETOR:
 	prints("Digite o tamanho do vetor\n")
 	read($t1)#Tamanho do vetor
-	addi $t0,$zero,0 #Endere√ßo
-	addi $t2,$zero,0 #√çndice do while
+	addi $t0,$zero,0 #Endereco
+	addi $t2,$zero,0 #Indice do while
 	
-WHILE2: beq $t1,$t2,OUT
-	prints("Digite o numero para ser inserido no vetor\n")
-	read($t3)
-	sw $t3, myArray($t0)
-	addi $t0, $t0,4
-	addi $t2, $t2,1
-	jal WHILE2		   
+	WHILE2: beq $t1,$t2,OUT
+		prints("Digite o numero para ser inserido no vetor\n")
+		read($t3)
+		sw $t3, myArray($t0)
+		addi $t0, $t0,4
+		addi $t2, $t2,1
+		j WHILE2		   
 
-OUT:
-	prints("Acabou\n")	
+	OUT:
+		j FIM
 	
-	return0
 
