@@ -1,6 +1,6 @@
 .data
 	myArray: .space 2000
-.text 
+.text
 .eqv N 3
 
 .data
@@ -36,52 +36,50 @@ myLabel: .asciiz %str
 	move %x, $v0
 .end_macro
 MAIN:
-	prints("Digite sua operação:\n")
+	prints("Digite sua operacao:\n")
 	prints("0 - Criar um Vetor\n")
 	prints("1 - Fazer GCD\n")
 	read($t4)
 	beqz $t4,INSERIRVETOR
 	j GCD
-FIM:	
+FIM:
 	prints("FIM")
-	
+
 	return0
 
 GCD:
 
 	prints("Insira os 2 numeros para o gcd\n")
 	read($a3)
-	read($a1)	
+	read($a1)
 	WHILE: beq $a3,$a1, RETURN
 		sle  $t1,$a3,$a1
 		beq $t1,$zero,IJ
 		sub $a1,$a1,$a3
 		j WHILE
-		IJ: 
+		IJ:
 			sub $a3,$a3,$a1
-			j WHILE	
+			j WHILE
 	RETURN:
 		addi $v1,$a1,0
 		prints("GCD = ")
 		printi($v1)
 		prints("\n")
-		j FIM				
-																
+		j FIM
+
 INSERIRVETOR:
 	prints("Digite o tamanho do vetor\n")
 	read($t1)#Tamanho do vetor
 	addi $t0,$zero,0 #Endereco
 	addi $t2,$zero,0 #Indice do while
-	
+
 	WHILE2: beq $t1,$t2,OUT
 		prints("Digite o numero para ser inserido no vetor\n")
 		read($t3)
 		sw $t3, myArray($t0)
 		addi $t0, $t0,4
 		addi $t2, $t2,1
-		j WHILE2		   
+		j WHILE2
 
 	OUT:
 		j FIM
-	
-
