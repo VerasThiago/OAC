@@ -38,24 +38,6 @@ myLabel: .asciiz %str
 	move %x, $v0
 .end_macro
 MAIN:
-	prints("TESTE:")
-	la $t1, TESTE
-	lw $t0,0($t1)
-	prints("$t0 vale = ")
-	printi($t0)
-	prints("\n")
-	prints("$t1 = ")
-	printi($t1)
-	prints("\n")
-	la $t0, 0x12345678
-	prints("agora $t0 vale = ")
-	printi($t0)
-	prints("\n")
-	la $t1,TESTE
-	prints("$t1 = ")
-	printi($t1)
-	prints("\n")
-	
 	prints("Digite sua operacao:\n")
 	prints("0 - Criar um Vetor\n")
 	prints("1 - Fazer GCD\n")
