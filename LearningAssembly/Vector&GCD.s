@@ -1,11 +1,12 @@
 .data
 	myArray: .space 2000
+	TESTE: .word 0x12345678
 .text
 .eqv N 3
 
 .data
 vetor:  .word 5,6,-4
-newl:	.asciiz "\n"
+endl:	.asciiz "\n"
 tab:	.asciiz "\t"
 
 
@@ -24,10 +25,11 @@ myLabel: .asciiz %str
 	syscall
 .end_macro
 
-.macro printi (%x) #Pode ser numero direto ou variÃ¡vel
+.macro printi (%x) #Pode ser numero direto ou variável
 	li $v0, 1
 	add $a0, $zero, %x
 	syscall
+	prints("\n")
 .end_macro
 
 .macro read (%x)
@@ -36,6 +38,24 @@ myLabel: .asciiz %str
 	move %x, $v0
 .end_macro
 MAIN:
+	prints("TESTE:")
+	la $t1, TESTE
+	lw $t0,0($t1)
+	prints("$t0 vale = ")
+	printi($t0)
+	prints("\n")
+	prints("$t1 = ")
+	printi($t1)
+	prints("\n")
+	la $t0, 0x12345678
+	prints("agora $t0 vale = ")
+	printi($t0)
+	prints("\n")
+	la $t1,TESTE
+	prints("$t1 = ")
+	printi($t1)
+	prints("\n")
+	
 	prints("Digite sua operacao:\n")
 	prints("0 - Criar um Vetor\n")
 	prints("1 - Fazer GCD\n")
@@ -80,6 +100,16 @@ INSERIRVETOR:
 		addi $t0, $t0,4
 		addi $t2, $t2,1
 		j WHILE2
-
 	OUT:
+		prints("Printando o vetor")
+		prints("\n")
+		la $t0,myArray #Endereco
+		addi $t2,$zero,0 #Indice do while
+	FOR: beq $t1,$t2,OUT2
+		lw $t3,0($t0)
+		printi($t3)
+		addi $t0,$t0,4
+		addi $t2, $t2,1
+		j FOR
+	OUT2:
 		j FIM
