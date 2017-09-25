@@ -7,4 +7,11 @@ OAC - Lab1 - Part 1
     - b
 > Alteracoes necessarias:
     - Inverter sequência de qualquer instrução que venha após uma instrução de jump incondicional para que
-    seja realizada antes dele. (Acontece porque o cross-compiler espera que o processador seja pipeline e o Mars não)
+    seja realizada antes dele. (Acontece porque o cross-compiler espera que o processador seja pipeline e o Mars não);
+    - MARS não entende @object ou @function;
+    - Alterar instrções de la (cross compiler realiza de maneira diferente)
+    - Alterar j $31 para jr $31
+    - Sets macros with .set directive, which MARS ignores
+
+- MARS ignora inúmeras diretivas não reconhecidas.
+- MARS doesn't consider .align as global

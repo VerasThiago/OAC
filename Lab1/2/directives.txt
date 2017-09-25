@@ -19,7 +19,7 @@ Significado das diretivas pedidas:
         on a.out targets, for example, it is not accepted, even with a standard a.out section name.
         
     3) .mdebug 
-        ???
+        Força a saída de depuração 
         
     4) .previous
         This directive swaps the current section (and subsection) with most recently referenced section/subsection pair prior to this one.
@@ -76,7 +76,7 @@ Significado das diretivas pedidas:
         The expr are stored as words
         
    13) .rdata
-        ???
+        Read Data. Adiciona dados apenas de leitura
         
    14) .ascii
         .ascii expects zero or more string literals separated by commas.

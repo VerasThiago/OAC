@@ -1,4 +1,6 @@
+.macro seno
 	.data
+	
 	PI: .float 3.141592653589
 	const: .float 180.0
 	alter: .float -1.0
@@ -8,9 +10,8 @@
 	fat7: .float 5040.0
 	fat9: .float 362880
 	.text 
-	li $v0,6
-	syscall 
-	mov.s $f1,$f0#variavel X
+	l.s $f1, var
+	#mov.s $f1,$f0#variavel X
 	jal RAD 
 	mul.s $f2,$f1,$f1#y==x^2
 	l.s $f4,alter
@@ -18,8 +19,7 @@
 	li $v0,2
 	mov.s $f12,$f5
 	syscall
-	li $v0,10
-	syscall
+	j Done
 	
  RAD:   l.s $f2,PI
  	l.s $f3,const
@@ -62,10 +62,15 @@ Soma:	l.s $f5,0($sp)
  	add.s $f5,$f5,$f8
  	jr $ra
  	
- 
- 
- 
- 
+ Done:
+ .end_macro
+ .data
+ .globl var
+ var: .float 1.0
+ .text
+ 	seno
+ 	li $v0, 10
+ 	syscall
  
  
  
