@@ -68,12 +68,12 @@ FUNC:
 	FOR: beq $t0, $t1, FIM		
 		mtc1 $t0,$f2  		# Carregando o X para c1
 		cvt.s.w $f2,$f2 	# Convertendo o X para precisão simples
-		div.s $f4,$f2,$f20 	# f2 = X/vx
+		div.s $f4,$f2,$f20 	# $f2 = X/vx
 		mul.s $f3, $f1,$f4 	# Y = VY * (X/Vx)
 		mul.s $f6,$f4,$f4 	# $f4²
 		lwc1 $f5, g 		# Carregando gravidade
 		mul.s $f6, $f6, $f5 	# Multiplicando a gravidade
-		add.s $f3, $f3,$f6 	# Somando pois a gradivade é negativa
+		add.s $f3, $f3,$f6 	# Somando, pois a gravidade é negativa
 		addi $t0,$t0, 1		# Prox coordenada do X
 					# coordenada (X,Y) = ($f2,$f3)
 		round.w.s $f2,$f2  	#
@@ -85,7 +85,7 @@ FUNC:
 		
 		slti $s0, $t9, 0   	#
 		li $s2, 240		# Verificando se as coordenadas
-		slt  $s1, $s2, $t9	# estão corretas destro do display
+		slt  $s1, $s2, $t9	# estão corretas dentro do display
 		or $s0, $s0, $s1	# (Se o Y não passa pra cima ou pra baixo)
 		beqz $s0, PRINT		#
 
