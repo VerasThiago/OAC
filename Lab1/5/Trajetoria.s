@@ -1,3 +1,8 @@
+.macro sleep(%d)	# stop program execution for %d milisseconds
+    li $a0, %d
+    li $v0, 32
+    syscall
+.end_macro
 .macro done
 	li $v0,10
 	syscall
@@ -49,7 +54,6 @@ myLabel: .asciiz %str
 	fat7: .float 5040.0
 	fat8: .float 40320.0
 	fat9: .float 362880.0
-	
 	.text 
 	printStr("Digite o angulo: ")
 	readS($f1)
@@ -60,7 +64,7 @@ myLabel: .asciiz %str
 	jal Trans
 	mov.s $f30,$f5
 	jal Cosseno
-	mov.s $f31,$f5  #O registrador 30 tá o seno e o 31 o cosseno
+	mov.s $f31,$f5  #O registrador 30 tï¿½ o seno e o 31 o cosseno
 	printStr("Seno = ")
 	li $v0,2
 	mov.s $f12,$f30
@@ -74,11 +78,11 @@ myLabel: .asciiz %str
  RAD:   l.s $f2,PI
  	l.s $f3,const
  	mul.s $f4,$f1,$f2
- 	div.s $f5,$f4,$f3 #angulo está em radianos
+ 	div.s $f5,$f4,$f3 #angulo estï¿½ em radianos
  	mov.s $f1,$f5#volta para variavel X
  	jr $ra
  	
- Trans: addi $sp,$sp,-20 #faz a serie até o 5 termo
+ Trans: addi $sp,$sp,-20 #faz a serie atï¿½ o 5 termo
  	s.s   $f1,16($sp)
  	mul.s $f1,$f2,$f1
  	mul.s $f1,$f4,$f1
@@ -145,9 +149,68 @@ Cosseno: addi $sp,$sp,-20
  .globl var
  var: .float 30
  
-
- .text
+.data
+g:    .float -49
+dez: .float 10
+.text
  MAIN:
- 	senoEcos
+ 	printStr("Digite o Vx: ")
+ 	readS($f20)
+ 	printStr("Digite o Vy: ")
+ 	readS($f1)
+ 	lwc1 $f30, dez
+ 	mul.s $f1, $f1, $f30
+ 	mul.s $f20, $f20, $f30
+	jal FUNC
+	printStr("ACABOU")
+	
  	li $v0, 10
  	syscall
+
+FUNC:
+	## $f20 = Vx
+	## $f1 = Vy
+	## $f2 = X  $f3 = Y
+	## Y = Vy(X/vx) - 4,9(X/vx)Â²
+	## $f4 = $f2/$f20    = X/vx
+	## $f5 = -4.9
+	## Y = $f1 * $f4  - $f5 * $f4 * $f4
+	## Y = $f1(Vy) * $f4($f2/$f20)  - $f5 * $f4($f2/$f20) * $f4($f2/$f20)
+	## $f6 = f4Â²
+	
+	li $t0, 0 ## idx
+	li $t1, 320 ## limite X
+	FOR: beq $t0, $t1, FIM
+		
+		mtc1 $t0,$f2
+		cvt.s.w $f2,$f2
+		div.s $f4,$f2,$f20 ## f2 = X/vx
+		mul.s $f3, $f1,$f4 ## Y = VY * (X/Vx)
+		mul.s $f6,$f4,$f4
+		lwc1 $f5, g
+		mul.s $f6, $f6, $f5
+		add.s $f3, $f3,$f6
+		addi $t0,$t0, 1
+		## coordenada (X,Y) = ($f2,$f3)
+		round.w.s $f2,$f2
+		mfc1 $t8,$f2 
+		round.w.s $f3,$f3
+		mfc1 $t9,$f3
+		## (X,Y) = ($t8,$t9)
+		printStr("X = ")
+		printi($t8)
+		printStr("Y = ")
+		printi($t9)
+		la $t4, 0xff000000
+		addi $t4, $t4, 76800
+		add $t4, $t4, $t8
+		mul $t6, $t9, -320
+		add $t4, $t4 $t6 
+		la $t7, 0x00
+		sb $t7,0($t4)
+		sleep(10)
+		j FOR
+	
+	FIM: jr $ra
+				
+	
