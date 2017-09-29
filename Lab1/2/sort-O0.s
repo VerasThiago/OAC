@@ -23,6 +23,8 @@ v:
 	.set	nomips16
 	.set	nomicromips
 
+
+	j main 	# forcing program to main
 show:
 	.set	noreorder
 	.set	nomacro
