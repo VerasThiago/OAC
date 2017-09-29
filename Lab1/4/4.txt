@@ -1,15 +1,50 @@
 1)
   R1 = 4.791542E-21
   R2 = 4-.791542E-21
+  R: 42
+  I: 32
+  J: 2
+  FR/FI:
+  Ciclos =
+  Frequencia = 1GHz -> T = 1*10^-9
+  Texec =
 2)
   R1 = 0.0
   R2 = -0.0
+  R: 42
+  I: 32
+  J: 2
+  FR/FI:
+  Ciclos =
+  Frequencia = 1GHz -> T = 1*10^-9
+  Texec =
 3)
   R1 = -49.5 + (-49.5) i
   R2 = -49.5 - (-49.5) i
+  R: 49
+  I: 43
+  J: 1
+  FR/FI:
+  Ciclos =
+  Frequencia = 1GHz -> T = 1*10^-9
+  Texec =
 4)
   R1 = 1234.0 + (1234.0) i
   R2 = 1234.0 - (1234.0) i
+  R: 49
+  I: 43
+  J: 1
+  FR/FI:
+  Ciclos =
+  Frequencia = 1GHz -> T = 1*10^-9
+  Texec =
 5)
   R1 = Infinity
   R2 = Infinity
+  R: 43
+  I: 33
+  J: 2
+  FR/FI:
+  Ciclos =
+  Frequencia = 1GHz -> T = 1*10^-9
+  Texec =

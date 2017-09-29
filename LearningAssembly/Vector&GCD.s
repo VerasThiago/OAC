@@ -88,7 +88,7 @@ INSERIRVETOR:
 		la $t0,myArray #Endereco
 		addi $t2,$zero,0 #Indice do while
 	FOR: beq $t1,$t2,OUT2
-		lw $t3,0($t0)
+		lw $t3, ($t0)
 		printi($t3)
 		addi $t0,$t0,4
 		addi $t2, $t2,1

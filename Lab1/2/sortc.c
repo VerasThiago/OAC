@@ -34,5 +34,5 @@ void main()
 {
    show(v,N);
    sort(v,N);
-   show(v,N);
+   show(v,N); 
 }
