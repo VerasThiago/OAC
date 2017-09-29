@@ -4,7 +4,7 @@
 ![](Ryu_idle.bmp)\
 **Width: 192\
 Height: 91\
-48 px / frame\**
+48 px / frame**
 
 
 
