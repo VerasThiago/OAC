@@ -1,10 +1,46 @@
-.macro seno
+.macro done
+	li $v0,10
+	syscall
+.end_macro
+
+.macro printStr (%str)
+	.data
+myLabel: .asciiz %str
+	.text
+	li $v0, 4
+	la $a0, myLabel
+	syscall
+.end_macro
+
+.macro printi(%x) #Pode ser numero direto ou vari√°vel
+	li $v0, 1
+	add $a0, $zero, %x
+	syscall
+	printStr("\n")
+.end_macro
+
+.macro readS (%x)
+	li $v0, 6
+	syscall
+	mov.s %x, $f0
+.end_macro
+
+
+
+.macro read (%x)
+	li $v0, 5
+	syscall
+	move %x, $v0
+.end_macro
+
+.macro senoEcos
 	.data
 	quebra: .asciiz "\n"
-	PI: .float 3.141592653589
-	const: .float 180.0
-	alter: .float -1.0
-	um: .float 1.0
+	PI:   .float 3.141592653589
+	const:.float 180.0
+	alter:.float -1.0
+	um:   .float 1.0
+	zero: .float 0.0
 	fat2: .float 2.0
 	fat3: .float 6.0
 	fat4: .float 24.0
@@ -15,7 +51,8 @@
 	fat9: .float 362880.0
 	
 	.text 
-	l.s $f1, var
+	printStr("Digite o angulo: ")
+	readS($f1)
 	#mov.s $f1,$f0#variavel X
 	jal RAD 
 	mul.s $f2,$f1,$f1#y==x^2
@@ -24,12 +61,11 @@
 	mov.s $f30,$f5
 	jal Cosseno
 	mov.s $f31,$f5  #O registrador 30 t· o seno e o 31 o cosseno
+	printStr("Seno = ")
 	li $v0,2
 	mov.s $f12,$f30
-	syscall
-	li $v0,4
-	la $a0,quebra
-	syscall
+	syscall	
+	printStr("\nCosseno = ")
 	li $v0,2
 	mov.s $f12,$f31
 	syscall
@@ -108,7 +144,10 @@ Cosseno: addi $sp,$sp,-20
  .data
  .globl var
  var: .float 30
+ 
+
  .text
- 	seno
+ MAIN:
+ 	senoEcos
  	li $v0, 10
  	syscall
