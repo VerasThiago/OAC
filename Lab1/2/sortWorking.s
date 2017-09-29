@@ -263,4 +263,4 @@ nop
 .end	sort
 .size	sort, .-sort
 #.align	2
-.ident	"GCC: (Sourcery CodeBench Lite 2016.05-7) 5.3.0"  # insere no arquivo objeto a tag: "GCC: (Sourcery CodeBench Lite 2016.05-7) 5.3.0".
+.ident	"GCC: (Sourcery CodeBench Lite 2016.05-7) 5.3.0"  
