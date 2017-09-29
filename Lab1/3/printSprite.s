@@ -4,8 +4,10 @@
 # SpriteInfo: width, height, curr frame, max frame
 # Hitbox info: type, width, height, y-position, x-position. Ends with value -1.
 # Hitbox types: passive = 0, active = 1, block = 2, ...
-
+hitMsg: .asciiz "hit detected!!!"
 ryuidle: .byte 48, 91, 0, 4
+honda:	.byte 48, 91, 0, 4
+ryupunch: .byte 60, 91, 0, 3
 frameSequence: .byte 0, 1, 2, 3, 2, 1, 0
 hitboxInfoP1: .space 20 # 5 bytes per hitbox
 hitboxInfoP2: .space 20
@@ -47,30 +49,80 @@ str: .asciiz %file
 
 .text
  
-    openFile ("ryu_idleB.bin", 0)
+    openFile ("SpriteHonda.bin", 0)
     move $a0, $v0
     readToBuff
     closeFile
    
    li $s0, 0
 spriteWhile:	# prints all frames of a movement.
-    li $a0, 0
+    li $a0, -2
     move $s1, $a0 	# saves intent
     li $a1, 100
     li $a2, 100
-    la $a3, ryuidle
+    la $a3, honda
     jal printSprite
     addi $s0, $s0, 1
     bne $v0, -1, hit  # a hit has occured
     bne $a0, $zero, spriteWhile # still frames to go
-    
+   
+   openFile ("ryu_idleB.bin", 0)
+    move $a0, $v0
+    readToBuff
+    closeFile
+   
+   li $s0, 0
+spriteWhile0:	# prints all frames of a movement.
+    li $a0, 2
+    move $s1, $a0 	# saves intent
+    li $a1, 100
+    li $a2, 180
+    la $a3, ryuidle
+    jal printSprite
+    addi $s0, $s0, 1
+    bne $v0, -1, hit  # a hit has occured
+    bne $a0, $zero, spriteWhile0 # still frames to go
+   
+   openFile ("RyuLPunch.bin", 0)
+    move $a0, $v0
+    readToBuff
+    closeFile
+   
+   la $t0, frameSequence
+   li $a0, 0
+   sb $a0, 0($t0)
+   li $a0, 1
+   sb $a0, 1($t0)
+   li $a0, 2
+   sb $a0, 2($t0)
+   sb $a0, 3($t0)
+   li $a0, 1
+   sb $a0, 4($t0)
+   li $a0, 0
+   sb $a0, 5($t0)
+   
+   
+   li $s0, 0
+spriteWhile1:	# prints all frames of a movement.
+    li $a0, 1
+    move $s1, $a0 	# saves intent
+    li $a1, 100
+    li $a2, 60
+    la $a3, ryupunch
+    jal printSprite
+    addi $s0, $s0, 1
+    bne $v0, -1, hit  # a hit has occured
+    bne $a0, $zero, spriteWhile1 # still frames to go
+    done
 hit:    # take action regarding hit.
 	# $v0 has hitbox type of hit maker.
 	# $v1 has hitbox type of hit taker.
 	# $s1 has intent. So it can figure who hit who.
+	la $a0, hitMsg
+	li $v0, 4
+	syscall
     done
-   
-   
+    
    
 printSprite:    # prints sprites. $a0 = sprite intent && player, $a1 = y-position, $a2 = x-position, $a3 = sprite info
     addi $sp, $sp, -4  
@@ -130,15 +182,15 @@ fin:    # updating hitboxes
     # function now calls colisionTest if necessary.
     # if it is necessary, then there will be only one active hitbox
     # in the 1st position of array.
-    li $v0, -1
+    # li $v0, -1
     beq $a0, -1, skip
     move $a0, $v0	# vector of player calling it
     move $a1, $v1	# vector for check
     jal colisionTest 
-    
-skip:    
+    j end
+skip:    li $v0, -1
     # returns any colision and updates frames. Returns if movement is finished
-    lb $t5, 2($a3)  # current frame
+end:lb $t5, 2($a3)  # current frame
     addi $t5, $t5, 1  # next frame      
    
     sb $t5, 2($a3)  # next idx in frameSequence
@@ -163,11 +215,11 @@ createHitBox:
 
 P2:	la $t2, hitboxInfoP2
 	la $v1, hitboxInfoP1
-	not $t3, $t3	
+	neg $t3, $t3	
 	
 box:	#creates hitboxes from intent
 	# $t2 has correct vector address
-	beq $t3, 0, passive # decides which action the sprite is taking
+	beq $t3, 2, passive # decides which action the sprite is taking
     	beq $t3, 1, punchM  # so that appropriate hitboxes can be created
     	beq $t3, 2, punchH
     	beq $t3, 3, kickM
@@ -206,14 +258,16 @@ punchM:  li $at, 1
 	 sb $at, 0($t2) 	# active type - 3 hitboxes (superior, punch, inferior)
 	 addi $at, $zero, 4
 	 div $t9, $at		# width/4
-	 lb $at, 2($a3)
-	 lb $at, frameSequence($at)	 # current frame
+	 lb $t7, 2($a3)
+	 lb $t7, frameSequence($t7)	 # current frame
+	 addi $t7, $t7, 1  #for the case that the frame is zero
 	 mflo $v0
-	 mul $at, $at, $v0	# hand width
+	 mul $at, $t7, $v0	# hand width
 	 sb $at, 1($t2)		# box width
 	 addi $at, $zero, 3
 	 mul $at, $v0, $at	# x-position ?
-	 sb $at, 4($t2)		# x-position ?
+	 add $at, $at, $t5	# x-position
+	 sb $at, 4($t2)		# x-position 
 	 addi $at, $zero, 2
 	 div $at, $t8, $at	# height/2
 	 sb $at, 2($t2)
@@ -276,10 +330,10 @@ colisionTest:
 whileThereAreBoxesToCheck:
 	lb $t9, 0($a1) # type or end of array
 	beq $t9, -1, noMoreBox
-	lb $t1, 1($a0) # width
-	lb $t2, 2($a0) # height
-	lb $t3, 3($a0) # y-position2 l2y
-	lb $t4, 4($a0) # x-position2 l2x
+	lb $t1, 1($a1) # width
+	lb $t2, 2($a1) # height
+	lb $t3, 3($a1) # y-position2 l2y
+	lb $t4, 4($a1) # x-position2 l2x
 	add $v0, $t1, $t4  # Rbx
 	add $v1, $t2, $t3  # Rby
 	
