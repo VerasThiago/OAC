@@ -1,5 +1,5 @@
 # Trabalho Final - Street Fighter II in Assembly MIPS
-![](printSprite.gif)
+![](Ryuu.gif)
 
 
 ### Materiais de Apoio
