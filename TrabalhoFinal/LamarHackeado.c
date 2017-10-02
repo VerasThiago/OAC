@@ -10,8 +10,6 @@ converte imagem .bmp em arquivo .mif para carregar na mem?ria da FPGA e .bin par
 #include <math.h>
 #include <float.h>
 
-#define uint8_t unsigned char
-
 static unsigned char *texels;
 static int width, height;
 
@@ -126,28 +124,28 @@ int main(int argc, char** argv)
     int cont=0;
     // changes begin
     unsigned char hex,rq,bq,gq;
-    uint8_t tile_width, tile_height, tiles, curr_tile;
+    uint16_t tile_width, tile_height, tiles, curr_tile;
 
     printf("Tile width, height, and number of tiles.\n");
-    scanf("%u %u %u", &tile_width, &tile_height, &tiles);
+    scanf("%hu %hu %hu", &tile_width, &tile_height, &tiles);
 
     int n;
     printf("how many frames to be executed?\n");
-    scanf("%d", &n);
+    scanf("%u", &n);
 
     printf("inform frames sequence.\n");
-    uint8_t frames[n+1];
+    uint16_t frames[n+1];
     for(int i = 0; i < n; i++){
-    	scanf("%u", &frames[i]);
+    	scanf("%hu", &frames[i]);
     }
     frames[i] = 0;
 
-    fwrite(&tile_width, 1, sizeof(uint8_t), aoutbin);
-    fwrite(&tile_height, 1, sizeof(uint8_t), aoutbin);
-    fwrite(&curr_tile, 1, sizeof(uint8_t), aoutbin);
-    fwrite(&tiles, 1, sizeof(uint8_t), aoutbin);
+    fwrite(&tile_width, 1, sizeof(uint16_t), aoutbin);
+    fwrite(&tile_height, 1, sizeof(uint16_t), aoutbin);
+    fwrite(&curr_tile, 1, sizeof(uint16_t), aoutbin);
+    fwrite(&tiles, 1, sizeof(uint16_t), aoutbin);
 
-    fwrite(frames, n, sizeof(uint8_t), aoutbin);
+    fwrite(frames, n, sizeof(uint16_t), aoutbin);
     
     // changes end
     for(i=0;i<height;i++)
