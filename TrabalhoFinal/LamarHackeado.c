@@ -122,31 +122,41 @@ int main(int argc, char** argv)
     fprintf(aout,"DEPTH = %d;\nWIDTH = 8;\nADDRESS_RADIX = HEX;\nDATA_RADIX = HEX;\nCONTENT\nBEGIN\n",width*height);
 
     int cont=0;
-    // changes begin
     unsigned char hex,rq,bq,gq;
-    uint16_t tile_width, tile_height, tiles, curr_tile;
+
+    // changes begin
+    unsigned char in[100];
+    int idx = 0, aux;
 
     printf("Tile width, height, and number of tiles.\n");
-    scanf("%hu %hu %hu", &tile_width, &tile_height, &tiles);
+    scanf("%u %u %u", (int*) &in[0],(int*) &in[1],(int*) &in[3]);
+    in[2] = 0;
 
-    int n;
     printf("how many frames to be executed?\n");
-    scanf("%u", &n);
+    scanf("%u", (int*) &in[4]);
+    idx = 5;
 
-    printf("inform frames sequence.\n");
-    uint16_t frames[n+1];
-    for(int i = 0; i < n; i++){
-    	scanf("%hu", &frames[i]);
+    printf("inform %d frames sequence.\n", in[4]);
+    aux = idx + in[4];
+    while(idx < aux){
+        scanf("%u", (int*) &in[idx++]);
     }
-    frames[i] = 0;
+    in[idx++] = 0;
 
-    fwrite(&tile_width, 1, sizeof(uint16_t), aoutbin);
-    fwrite(&tile_height, 1, sizeof(uint16_t), aoutbin);
-    fwrite(&curr_tile, 1, sizeof(uint16_t), aoutbin);
-    fwrite(&tiles, 1, sizeof(uint16_t), aoutbin);
+    printf("how many hitboxes?\n");
+    scanf("%u", (int*) &in[idx++]);
+    aux = idx + in[idx-1]*5;
 
-    fwrite(frames, n, sizeof(uint16_t), aoutbin);
-    
+    printf("inform hitbox sequence. Format: <type> <width> <height> <y-position> <x-position> [ENTER]\n");
+    while(idx < aux){
+        scanf("%u %u %u %u %u", (int*) &in[idx], (int*) &in[idx+1], (int*) &in[idx+2], (int*) &in[idx+3], (int*) &in[idx+4]);
+        idx += 5;
+    }
+
+    // debug
+    printf("%s\n", "writing to file...");
+
+    fwrite(in, sizeof(unsigned char), idx, aoutbin);
     // changes end
     for(i=0;i<height;i++)
     {
