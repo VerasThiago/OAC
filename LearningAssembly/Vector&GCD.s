@@ -1,6 +1,9 @@
 .data
 	myArray: .space 2000
 	TESTE: .word 0x12345678
+	floatArray: .space 2000
+	x: .space 2000
+	h: .space 2000
 .text
 .eqv N 3
 
@@ -32,18 +35,37 @@ myLabel: .asciiz %str
 	prints("\n")
 .end_macro
 
+
+
+
 .macro read (%x)
 	li $v0, 5
 	syscall
 	move %x, $v0
 .end_macro
+
+
+.macro reads (%x)
+	li $v0, 6
+	syscall
+	mov.s %x, $f0
+.end_macro
+
 MAIN:
+	
+
 	prints("Digite sua operacao:\n")
 	prints("0 - Criar um Vetor\n")
 	prints("1 - Fazer GCD\n")
+	prints("2 - Vetor de float\n")
+	prints("3 - Questao 1\n")
 	read($t4)
 	beqz $t4,INSERIRVETOR
-	j GCD
+	li $t1, 1
+	beq $t4, $t1, GCD
+	li $t1, 2
+	beq $t4, $t1, VETORFLOAT
+	j QUESTAO1
 FIM:
 	prints("FIM")
 
@@ -87,11 +109,124 @@ INSERIRVETOR:
 		prints("\n")
 		la $t0,myArray #Endereco
 		addi $t2,$zero,0 #Indice do while
-	FOR: beq $t1,$t2,OUT2
+	FOR: beq $t1,$t2,FIM
 		lw $t3, ($t0)
 		printi($t3)
 		addi $t0,$t0,4
 		addi $t2, $t2,1
 		j FOR
+	
+
+		
+F1:
+		
+		
+	sub.s $f0, $f0, $f0  # Y =0.0
+	li $t0, 0 # K = 0
+	li $t5, 4  # vale 4 pra pode multiplicar por 4
+
+	FORK: beq $t0, $a3, ENDK
+		la $t6, x
+		la $t7, h
+		add $t1 , $a1, $t0  # pos + k
+		div $t1,$a3 #dividir pra pegar o Hi
+		mfhi $t2 # t2 = (pos+k)%N
+		mult  $t0, $t5
+		mflo $t3 # deslocamento de k
+		mult $t2, $t5
+		mflo $t4 # deslocamento de (pos+k)%N
+		add $t7, $t7, $t3
+		lwc1 $f2, ($t7) # $f2 = h[k]
+		add $t6, $t6, $t4
+		lwc1 $f4, ($t6) # $f4 = x[(pos+k)%N]		
+		mul.s $f6, $f2, $f4
+		add.s $f0, $f0, $f6
+		addi $t0, $t0 ,1 #i++
+		j FORK 
+	ENDK:
+		prints("y = ")
+		mov.s $f12, $f0
+		li $v0, 2
+		syscall
+		prints("\n")
+	j FIMQ1		
+				
+		
+
+VETORFLOAT:
+	prints("Digite o tamanho do vetor de float\n")
+	read($t1)
+	addi $t0,$zero,0 #Endereco
+	addi $t2,$zero,0 #Indice do while
+	WHILE3: beq $t1,$t2,OUT2
+		prints("Digite o numero float para ser inserido no vetor\n")
+		reads($f2)
+		swc1 $f2, floatArray($t0)
+		addi $t0, $t0,4
+		addi $t2, $t2,1
+		j WHILE3
 	OUT2:
-		j FIM
+		prints("Printando o vetor de float\n")
+		la $t0,floatArray #Endereco
+		addi $t2,$zero,0 #Indice do for
+	FOR2: beq $t2, $t1, FIM
+		lwc1 $f12, ($t0)
+		li $v0, 2
+		syscall
+		prints("\n")	
+		addi $t2, $t2, 1
+		addi $t0, $t0,4
+		j FOR2
+
+
+QUESTAO1: 
+	prints("Digite o tamanho do vetor \n")
+	li $v0, 5
+	syscall
+	move $a3, $v0
+	prints("Digite os valores do vetor X\n")
+	
+	li $t1, 0 # indice do for
+	li $t0, 0 # posição do vetor
+	FORQ1: beq $t1, $a3, END1
+		li $v0, 6
+		syscall
+		swc1 $f0, x($t0)
+		addi $t0 , $t0, 4
+		addi $t1, $t1, 1
+		j FORQ1
+	END1:
+	prints("Digite os valores do vetor h \n")
+	
+	li $t1, 0
+	li $t0, 0
+	FORQ12: beq $t1, $a3, END2
+		li $v0, 6
+		syscall
+		swc1 $f0, h($t0)
+		addi $t0, $t0, 4
+		addi $t1, $t1, 1
+		j FORQ12
+	END2:
+	prints("Digite a posição \n")
+		li $v0, 5
+		syscall
+		move $a1, $v0
+	
+	prints("Indo para a função f1\n")
+	j F1
+	
+	FIMQ1: 
+	prints("\nAcabou essa doidera\n")
+	
+		
+	
+		
+	
+
+	
+	
+	
+
+
+
