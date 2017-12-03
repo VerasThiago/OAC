@@ -28,7 +28,7 @@ myLabel: .asciiz %str
 	syscall
 .end_macro
 
-.macro printi (%x) #Pode ser numero direto ou variÃ¡vel
+.macro printi (%x) #Pode ser numero direto ou variável
 	li $v0, 1
 	add $a0, $zero, %x
 	syscall
@@ -123,21 +123,15 @@ F1:
 		
 	sub.s $f0, $f0, $f0  # Y =0.0
 	li $t0, 0 # K = 0
-	li $t5, 4  # vale 4 pra pode multiplicar por 4
-
 	FORK: beq $t0, $a3, ENDK
-		la $t6, x
-		la $t7, h
-		add $t1 , $a1, $t0  # pos + k
-		div $t1,$a3 #dividir pra pegar o Hi
+		add $t2 , $a1, $t0  # pos + k
+		div $t2,$a3 #dividir pra pegar o Hi que contem o mod
 		mfhi $t2 # t2 = (pos+k)%N
-		mult  $t0, $t5
-		mflo $t3 # deslocamento de k
-		mult $t2, $t5
-		mflo $t4 # deslocamento de (pos+k)%N
-		add $t7, $t7, $t3
+		sll $t3, $t0, 2 # deslocamento de k
+		sll $t2, $t2, 2 # deslocamento de (pos+k)%N
+		add $t7, $a2, $t3 #somando o deslocamento de h
+		add $t6, $a0, $t2 #somando o deslocamento de x
 		lwc1 $f2, ($t7) # $f2 = h[k]
-		add $t6, $t6, $t4
 		lwc1 $f4, ($t6) # $f4 = x[(pos+k)%N]		
 		mul.s $f6, $f2, $f4
 		add.s $f0, $f0, $f6
@@ -168,7 +162,7 @@ VETORFLOAT:
 	OUT2:
 		prints("Printando o vetor de float\n")
 		la $t0,floatArray #Endereco
-		addi $t2,$zero,0 #Indice do for
+		li $t2, 0
 	FOR2: beq $t2, $t1, FIM
 		lwc1 $f12, ($t0)
 		li $v0, 2
@@ -187,7 +181,7 @@ QUESTAO1:
 	prints("Digite os valores do vetor X\n")
 	
 	li $t1, 0 # indice do for
-	li $t0, 0 # posição do vetor
+	li $t0, 0 # posi??o do vetor
 	FORQ1: beq $t1, $a3, END1
 		li $v0, 6
 		syscall
@@ -208,12 +202,15 @@ QUESTAO1:
 		addi $t1, $t1, 1
 		j FORQ12
 	END2:
-	prints("Digite a posição \n")
+	prints("Digite a posi??o \n")
 		li $v0, 5
 		syscall
 		move $a1, $v0
 	
-	prints("Indo para a função f1\n")
+	prints("Indo para a fun??o f1\n")
+	la $a0 , x
+	la $a2, h
+	
 	j F1
 	
 	FIMQ1: 
@@ -227,6 +224,5 @@ QUESTAO1:
 	
 	
 	
-
 
 
