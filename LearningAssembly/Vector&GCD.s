@@ -11,6 +11,8 @@
 vetor:  .word 5,6,-4
 endl:	.asciiz "\n"
 tab:	.asciiz "\t"
+parte1: .asciiz "y["
+parte2: .asciiz "]="
 
 
 .text
@@ -52,8 +54,10 @@ myLabel: .asciiz %str
 .end_macro
 
 MAIN:
+	prints("teste\n")
+	la $t0, 0x00000010
+	printi($t0)
 	
-
 	prints("Digite sua operacao:\n")
 	prints("0 - Criar um Vetor\n")
 	prints("1 - Fazer GCD\n")
@@ -119,32 +123,46 @@ INSERIRVETOR:
 
 		
 F1:
-		
-		
-	sub.s $f0, $f0, $f0  # Y =0.0
-	li $t0, 0 # K = 0
-	FORK: beq $t0, $a3, ENDK
-		add $t2 , $a1, $t0  # pos + k
-		div $t2,$a3 #dividir pra pegar o Hi que contem o mod
-		mfhi $t2 # t2 = (pos+k)%N
-		sll $t3, $t0, 2 # deslocamento de k
-		sll $t2, $t2, 2 # deslocamento de (pos+k)%N
-		add $t7, $a2, $t3 #somando o deslocamento de h
-		add $t6, $a0, $t2 #somando o deslocamento de x
-		lwc1 $f2, ($t7) # $f2 = h[k]
-		lwc1 $f4, ($t6) # $f4 = x[(pos+k)%N]		
-		mul.s $f6, $f2, $f4
-		add.s $f0, $f0, $f6
-		addi $t0, $t0 ,1 #i++
-		j FORK 
-	ENDK:
-		prints("y = ")
-		mov.s $f12, $f0
-		li $v0, 2
-		syscall
-		prints("\n")
-	j FIMQ1		
-				
+	# $a0 = *X
+	# $a1 = pos
+	# $a2 = *h
+	# $a3 = N	
+	li $t0 , 0  # indice do for
+	mtc1 $zero, $f0 # y = 0.0
+	FORK : beq $t0, $a3, SAI
+		add $t1, $a1, $t0  # pos + k
+		div $t1,$a3
+		mfhi $t1  # (pos + k) % N 
+		sll $t1, $t1, 2 # deslocamento para o vetor x
+		sll $t2, $t0, 2 # deslocamento do k para o vetor h
+		add $t1 , $t1 , $a0
+		add $t2, $t2, $a2
+		lwc1 $f1, 0($t1) # x[(pos+k)%n]
+		lwc1 $f2, 0($t2) # h[k]
+		mul.s $f1, $f1, $f2
+		add.s $f0, $f0, $f1
+		addi $t0, $t0, 1
+		j FORK
+	SAI:
+
+	# printf("y[%d]=%f\n")
+	la $a0, parte1
+	li $v0, 4
+	syscall
+	move $a0, $a1
+	li $v0, 1
+	syscall
+	la $a0, parte2
+	li $v0, 4
+	syscall
+	mov.s $f12, $f0
+	li $v0, 2
+	syscall
+	la $a0, endl
+	li $v0, 4
+	syscall
+	
+	j FIM
 		
 
 VETORFLOAT:
@@ -173,7 +191,8 @@ VETORFLOAT:
 		j FOR2
 
 
-QUESTAO1: 
+QUESTAO1:
+ 
 	prints("Digite o tamanho do vetor \n")
 	li $v0, 5
 	syscall
