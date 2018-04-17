@@ -1,10 +1,7 @@
 .data
-
-
-
-
-
-
+MENOR: .string "Bhaskara Negativo \n"
+MAIOR: .string "Bhaskara Positivo \n"
+IGUAL: .string "Bhaskara Zero \n"
 .text
 
 
@@ -33,6 +30,7 @@ main:
   
 delta:
    li t0, 4 # Para mutiplica o 4 * A * C
+   
    fmv.s.x ft0, t0 # 4
    fmul.s f3 f1, f1 # B * B
    fmul.s f4 f0, f2 # A * C
@@ -43,6 +41,11 @@ delta:
    fadd.s  f3, f3, f4 # B*B - (4 * A * C)
    fmv.s.x ft0, zero
    feq.s t0,ft0,f3
+   
+   li a7, 2
+   fadd.s fa0, ft0, f3
+   ecall
+   
    beq t0, zero, exato
    flt.s t0,f3,ft0
    beq t0,zero, positivo
@@ -59,13 +62,29 @@ exato: # -b / (2*a)
 	li t0, 2
 	fmv.s.x ft0, t0
 	fmul.s f0, f0, ft0
-	
+	li a7, 4
+	la a0, IGUAL	
+	ecall
+	j end
 	
 positivo:
+	li a7, 4
+	la a0, MAIOR	
+	ecall
+	j end
 
 
 negativo:
- 
+
+	li a7, 4
+	la a0, MENOR	
+	ecall
+ 	j end
   
+end:
+	li a7 10
+	ecall
+	
+	  
     
   
