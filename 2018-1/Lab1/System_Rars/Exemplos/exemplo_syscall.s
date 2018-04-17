@@ -5,9 +5,9 @@
 #  Marcus Vinicius			      	#
 #################################################
 # Conecte o BitMap Display Tool E o Keyboard Display MMIO Tool
+MUDAR PARA ASSEMBLY RISC-V
 
-
-.include "SYSTEM.s"			# carrega as rotinas do sistema
+.include "../SYSTEMv1.s"			# carrega as rotinas do sistema
 
 .data 
 FILE: .asciiz "display.bin"		# string do nome do arquivo

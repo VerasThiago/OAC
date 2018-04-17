@@ -1,6 +1,6 @@
-# Teste dos syscalls 1xx que usam o SYSTEMv6.s
+# Teste dos syscalls 1xx que usam o SYSTEMv1.s
 # Conectar o BitMap Display e o KD MMIO para executar
-# na DE1-SoC e no Rars deve ter o mesmo comportamento sem alaterar nada!
+# na DE1-SoC e no Rars deve ter o mesmo comportamento sem alterar nada!
 
 .include "macros.s"
 

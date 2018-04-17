@@ -1,10 +1,10 @@
 #########################################################
 #  Programa de exemplo de uso do Bitmap Display Tool   	#
-#  ISC Out 2017	  			  		#
+#  OAC Abril 2018			  		#
 #  Marcus Vinicius Lamar		  		#
 #########################################################
 #
-# Cuidar que o arquivo display.bin deve estar no mesmo diretório do Rars10_Custom1.jar
+# Cuidar que o arquivo display.bin deve estar no mesmo diretório do Rars!
 # Use o programa paint.net (baixar da internet) para gerar o arquivo .bmp de imagem 320x240 e 24 bits/pixel 
 # para então usar o programa bmp2oac.exe para gerar o arquivo .bin correspondente
 

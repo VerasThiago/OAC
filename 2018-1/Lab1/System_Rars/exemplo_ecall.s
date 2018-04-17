@@ -1,21 +1,21 @@
 .include "macros.s"	# inclui arquivos de macros no inicio do programa
 .data
-	N: .word 104
 	STR: .string "Digite um Numero:"
 
 .text
 main: 	M_SetEcall(ECALL)	# Macro de SetEcall
 
-	la a0,STR		# Define a0 = endereço STR
+	la a0,STR		# Define a0 = endereï¿½o STR
 	li a7,4			# Define a7 = 4
-	ecall			# Chama o serviço Print String
+	ecall			# Chama o serviï¿½o original Print String
 	
 	li a7,5			# Define a7 = 5
-	ecall			# Chama o serviço Read Int
+	ecall			# Chama o serviï¿½o original Read Int
 
-	M_lia a7,N		# Define a7 = 104
- 	ecall			# Chama o novo serviço 104
+	li a7,104		# Define a7 = 104
+ 	ecall			# Chama o novo serviï¿½o 104
 
- 	M_Exit			# Macro de Exit
+ 	li a7,10		# Define a7 = 10
+ 	ecall			# chama o serviï¿½o de Exit
 
 .include "ECALL.s"	# inclui arquivo ECALLv1.s no final do programa

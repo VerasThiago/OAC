@@ -9,7 +9,7 @@ NÃO FUNCIONA E NÃO ENTENDI AINDA PORQUE.
 
 .text
 # programa do usuário
-	li t1,0xFF100000	# Endereço de controle do KDMMIO
+	li t1,0xFF200000	# Endereço de controle do KDMMIO
 	li t0,0x02		# bit 1 habilita/desabilita a interrupção
 	sw t0,0(t1)   		# Habilita interrupção do teclado
 
@@ -23,7 +23,7 @@ CONTA:	   	# incrementa contador
 	
 
 # rotina de tratamento da interrupção
-KDInterrupt: 	li t1,0xFF100000		# carrega o endereço base do KDMMIO
+KDInterrupt: 	li t1,0xFF200000		# carrega o endereço base do KDMMIO
   		lw t2,4(t1)  			# le a tecla
 		sw t2,12(t1) 			# escreve no display
 

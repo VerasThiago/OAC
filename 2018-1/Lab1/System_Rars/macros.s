@@ -1,12 +1,3 @@
-.macro M_Exit
-	li a7,10		# seta o seviço 10
-	ecall			# chama a execução do serviço
-.end_macro
-
-.macro M_lia(%registrador,%label)		# Le o imediado do endereço LABEL para o registrador
-	la %registrador,%label			# Carrega o registrador com o endereço
-	lw %registrador,0(%registrador)		# Carrega em registrador = Memoria[0+registrador]
-.end_macro
 
 .macro M_SetEcall(%label)
  	la t0,%label		# carrega em t0 o endereço base das rotinas do sistema ECALL
