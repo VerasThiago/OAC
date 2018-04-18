@@ -31,109 +31,15 @@ myLabel: .string %str
 	
 main:
 
-  readf(f0)
-  readf(f1)
-  readf(f2)
-  
-  print_str("A = ")
-  printf(f0)
-  print_str("\n")
- 
-  print_str("B = ")
-  printf(f1)
-  print_str("\n")
-  
-  print_str("c = ")
-  printf(f2)
-  print_str("\n")
-  
-  fmul.s f4, f0, f2 # A * C
-  print_str("A * C = ")
-  printf(f4)
-  print_str("\n")
-   
-  j delta
-  
-  li a7,2
-  ecall
-  
-  
-  
-  
-  
-  
-delta:
-   li t0, 4 # Para mutiplica o 4 * A * C
-   fcvt.s.w ft0, t0 # 4
-   
-   print_str("4 = ")
-   printf(ft0)
-   print_str("\n")
-   
-     
-   fmul.s f3, f1, f1 # B * B
-   
-   print_str("B*B = ")
-   printf(f3)
-   print_str("\n")
-   
-   
-  
-   
-  print_str("A = ")
-  printf(f0)
-  print_str("\n")
- 
-  print_str("c = ")
-  printf(f2)
-  print_str("\n")
- 
-     
-   fmul.s f4, f0, f2 # A * C
-   print_str("A * C = ")
-   printf(f4)
-   print_str("\n")
-   
-   
-   fmul.s f4, f4, ft0 # 4 * A * C
-   
-   print_str("4 * A * C = ")
-   printf(f4)
-   print_str("\n")
-   
-   li t0, -1 # Para mutiplica por -1 e fazer a soma
-   fmv.s.x ft0, t0 # -1
-   fmul.s f4, f4, ft0 # - 4 * A * C
-   
-   print_str("- 4 * A * C = ")
-   printf(f4)
-   print_str("\n")
-   
-   fadd.s  f3, f3, f4 # B*B - (4 * A * C)
-   
-   fmv.s.x ft0, zero
-   feq.s t0, ft0, f3
-   
-   li t0, 0 # Para mutiplica o 4 * A * C
-   fmv.s.x ft0, t0 # 0
-
-   print_str("Delta = ")
-   printf(f3)
-   print_str("\n")
-   
-   
-   beq t0, zero, exato
-   flt.s t0,f3,ft0
-   beq t0,zero, positivo
-   j negativo
-
+  	readf(f0)
+  	readf(f1)
+  	readf(f2)
+        
+  	j delta
  
   
-   
-    
-     
-      
-       
+  
+  
 exato: # -b / (2*a)
 	li t0, 2
 	fmv.s.x ft0, t0
@@ -155,8 +61,52 @@ negativo:
 	li a7, 4
 	la a0, MENOR	
 	ecall
- 	j end
-  
+ 	j end  
+
+
+
+delta:
+   	
+   	li t1, 4 # Para mutiplica o 4 * A * C  	   	
+   	fcvt.s.w f6, t1 # 4
+   
+   	fmul.s f3, f1, f1 # B * B
+   
+   	fmul.s f4, f0, f2 # A * C
+   
+   
+   	fmul.s f4, f4, f6 # 4 * A * C
+   
+   	li t0, -1 # Para mutiplica por -1 e fazer a soma
+   	fcvt.s.w ft0, t0 # -1
+   	fmul.s f4, f4, ft0 # - 4 * A * C
+   
+   
+   	fadd.s  f3, f3, f4 # B*B - (4 * A * C)
+   
+   	fmv.s.x ft0, zero
+	feq.s t0, ft0, f3
+   
+	
+	print_str("Delta = ")
+	printf(f3)
+   	print_str("\n")
+   
+   	
+   	fcvt.s.w f10, zero # para ver se  delta <, > ou = 0
+   	
+   	print_str("f10 = ")
+	printf(f10)
+   	print_str("\n")
+   
+   	
+   	feq.s t0, f10,f3   # delta = 0
+   	bne t0, zero, exato
+   	flt.s t0,f3,f10
+   	beq t0,zero, positivo
+   	j negativo
+
+ 
 end:
 	li a7 10
 	ecall
