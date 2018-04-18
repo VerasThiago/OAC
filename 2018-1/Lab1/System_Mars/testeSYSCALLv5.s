@@ -40,7 +40,7 @@ PRINTSTR1: li $v0,104
 	la $a0,msg1
 	li $a1,0
 	li $a2,0
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	jr $ra
@@ -50,7 +50,7 @@ INPUTSTR: li $v0,104
 	la $a0,msg2
 	li $a1,0
 	li $a2,24
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 # syscall read string
@@ -64,7 +64,7 @@ INPUTSTR: li $v0,104
 	la $a0,buffer
 	li $a1,144
 	li $a2,24
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	
@@ -76,7 +76,7 @@ INPUTINT: li $v0,104
 	la $a0,msg3
 	li $a1,0
 	li $a2,32
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 
 	# syscall read int
@@ -91,7 +91,7 @@ PRINTINT:	li $v0,101
 	move $a0,$t0
 	li $a1,152
 	li $a2,32
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	jr $ra
@@ -108,7 +108,7 @@ INPUTFP: li $t0,0
 	la $a0,msg4
 	li $a1,0
 	li $a2,40
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	li $v0,106
@@ -121,7 +121,7 @@ INPUTFP: li $t0,0
 	li $v0,102
 	li $a1,144
 	li $a2,40
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 FORAFP:	jr $ra
@@ -179,7 +179,7 @@ RAND:	li $v0,104
 	la $a0,msg5
 	li $a1,0
 	li $a2,48
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 
 	# syscall Rand
@@ -190,7 +190,7 @@ RAND:	li $v0,104
 	li $v0,134  #134
 	li $a1,148
 	li $a2,48
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	jr $ra
@@ -203,7 +203,7 @@ TIME:	li $v0,104
 	la $a0,msg6
 	li $a1,0
 	li $a2,56
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 
 	li $v0,130
@@ -217,7 +217,7 @@ TIME:	li $v0,104
 	li $v0,101
 	li $a1,148
 	li $a2,56
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	#print int
@@ -225,7 +225,7 @@ TIME:	li $v0,104
 	li $v0,101
 	li $a1,244
 	li $a2,56
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	jr $ra
@@ -242,7 +242,7 @@ LOOPHMS:li $a0,1000   # 1 segundo
 	li $v0,101
 	li $a1,120
 	li $a2,120
-	li $a3,0xFF00
+	li $a3,0xFF10
 	syscall
 	
 	bne $t0,$zero, LOOPHMS
