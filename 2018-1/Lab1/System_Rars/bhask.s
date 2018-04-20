@@ -1,4 +1,5 @@
 .data
+
 MENOR: .string "Delta Negativo\n"
 MAIOR: .string "Delta Positivo\n"
 IGUAL: .string "Delta Zero\n"
@@ -10,25 +11,27 @@ ENDL: .string "\n"
 I: " i\n"
 MAIS: " + "
 MENOS: " - "
+
 .text
 
-	
+
 main:
 	# Pro 4 * A * C
    	li t1, 4
-   	fcvt.s.w f4, t1  
+   	fcvt.s.w f24, t1  
 
    	# Pro - 4 * A * C
    	li t1, -1
-   	fcvt.s.w f6, t1  		
+   	fcvt.s.w f26, t1  		
 
    	# 2 * A
    	li t1, 2
-   	fcvt.s.w f7, t1 
+   	fcvt.s.w f22, t1 
 
    	# Pra checkar se delta = 0
    	li t1, 0
-   	fcvt.s.w f8, t1  
+   	fcvt.s.w f21, t1
+
   	
   	# Lendo A
   	li a7,6        
@@ -43,77 +46,105 @@ main:
   	ecall
   	fadd.s f2,f10 ,f31
 
-  	# t0 = f0 == 0 ?1:0
-  	feq.s t0, f8, f0
-
-  	# se t0 = 1, então A = 0, logo nao é possivel calcular
-  	bne, t0, zero, impossivel
-
-  	j delta	
-
- 
-impossivel: 
-	# Printando que é impossível calcular pois a = 0
-	li a7, 4
-	la a0, IMPOSSIVEL		
-	ecall
-
-	j end	
-
-
-
   
-# -b / (2*a)  
-exato: 
+  	jal baskara
+  	jal show
+  	j end
+ 
+
+
+
+
+baskara:
+   	# B * B
+   	fmul.s f3, f1, f1 
+   	
+   	# A * C
+   	fmul.s f5, f0, f2 
+   
+   	# 4 * A * C
+   	fmul.s f5, f24, f5 
+
+   	# - 4 * A * C
+   	fmul.s f5, f5, f26 
+   
 	
-	# Printando Delta = 0
+	# B*B - (4 * A * C)
+   	fadd.s  f3, f3, f5 
+   	
+   	# Pritando a string Delta
 	li a7, 4
-	la a0, IGUAL	
+	la a0, DELTA	
 	ecall
 	
-	# Printando a String X1
-	la a0, X1
-	ecall
-
-	# 2 * a
-	fmul.s f0, f0, f7 
-
-	# -b
-	fmul.s f1, f1, f6 
-
-	# -b / (2*a)
-	fdiv.s f11, f1, f0 	
-
-	# Printando valor de X1
+	# Printando valor de Delta
 	li a7, 2
-	fadd.s f10, f8, f11
+	fadd.s f10, f21, f3
 	ecall
 
 	# Quebra de linha
 	li a7, 4
 	la a0, ENDL	
-	ecall
+	ecall	
 	
-	j end
+   	# t0 = delta < 0 ? 1:0
+   	flt.s t0,f3,f21
+
+   	#Se t0 = 0 então delta > 0 logo vai para o positivo
+   	beq t0,zero, positivo
+
+
+	# Se chegou aqui é porque não é positivo o delta	
 	
+	# Alocando espaço para 2 variáveis, parte real e imaginária das raízes (que são as mesmas)
+	addi sp, sp, 8
+
+	# Transformando o delta positivo para tirar a raiz
+	fmul.s f3, f3, f26
+
+	# raiz de delta
+	fsqrt.s f3, f3
+
+	# 2 * a
+	fmul.s f0, f0, f22 
+
+	# -b
+	fmul.s f1, f1, f26 
+
+	# -b/(2*a)
+	fdiv.s f1, f1, f0 
+
+	# raiz de delta / (2*a) parte imaginária
+	fdiv.s f3, f3 ,f0
+
+	# Empilhando a parte real
+	fsw f1, 4(sp)  
+
+	# Empilhando a parte imaginaria
+	fsw f3, 0,(sp)
+
+	# Setando a variável de retorno como 2
+	fadd.s f11, f21, f22
+
+	j continua
+
 
 #x1 = (-b + sqrtdelta)/(2*a)
 #x2 = (-b - sqrtdelta)/(2*a)
 positivo: 
+
 	
-	# Printando que delta > 0
-	li a7, 4
-	la a0, MAIOR
-	ecall
+	#Alocando espaço para 2 variáveis, raiz1 e raiz2
+	addi sp, sp, 8
 
 	# raiz de delta
 	fsqrt.s f3, f3 
 	
 	# 2 * a
-	fmul.s f0, f0, f7 
+	fmul.s f0, f0, f22 
 
 	# -b
-	fmul.s f1, f1, f6 
+	fmul.s f1, f1, f26 
 
 	# -b + sqrt(delta)
 	fadd.s f9, f1, f3 
@@ -122,7 +153,7 @@ positivo:
 	fdiv.s f9, f9, f0 
 
 	 # -sqrt(delta)
-	fmul.s f3, f3, f6
+	fmul.s f3, f3, f26
 
 	# -b - sqrt(delta)
 	fadd.s f11, f1, f3
@@ -130,6 +161,46 @@ positivo:
 	# (-b - sqrtdelta)/(2*a) 
 	fdiv.s f11, f11, f0
 
+	# Empilhando r1
+	fsw f9, 4(sp)
+
+	# Empilhando r2
+	fsw f11, 0(sp)
+
+
+	# Setando a variavel de retorno como 1
+	li a6, 1
+	fcvt.s.w f11, a6
+
+continua:
+	# Volta para a função que chamou
+	jalr zero, ra, 0
+
+show:
+	
+	# Verificando se o argumento passado é 2
+	feq.s t1, f11, f22
+	
+
+	# Se o argumento for 2, vai para o tratamento de imaginarios
+	li t0, 1
+	beq t1,t0, imaginario
+
+	# Se veio aqui é porque as raízes são reais
+
+	# Printando que delta > 0
+	li a7, 4
+	la a0, MAIOR
+	ecall
+
+	# Desempilhando a raiz 1
+	flw f9, 4(sp)
+
+	# Desempilhando a raiz 1
+	flw f11, 0(sp)
+
+	#Desalocando espaço na pilha
+	addi sp, sp, 8
 
 	# Printando string X1
 	li a7, 4
@@ -138,7 +209,7 @@ positivo:
 
 	# Printando valor de X1
 	li a7, 2
-	fadd.s f10, f8, f9
+	fadd.s f10, f21, f9
 	ecall
 
 	# Quebra de linha
@@ -153,41 +224,32 @@ positivo:
 
 	# Printando valor de X2
 	li a7, 2
-	fadd.s f10, f8, f11
+	fadd.s f10, f21, f11
 	ecall
 
 	# Quebra de linha
 	li a7, 4
 	la a0, ENDL	
-	ecall	
+	ecall
 
-	j end
+	j continua2		
 
 
-negativo:
+imaginario:
 	
 	# Pritando que delta < 0
 	li a7, 4
 	la a0, MENOR	
 	ecall
 
-	# Transformando o delta positivo para tirar a raiz
-	fmul.s f3, f3, f6
+	#desempilhando a parte real
+	flw f1, 4(sp)
+	
+	#desempilhando a parte imaginaria
+	flw f3, 0(sp)
 
-	# raiz de delta
-	fsqrt.s f3, f3
-
-	# 2 * a
-	fmul.s f0, f0, f7 
-
-	# -b
-	fmul.s f1, f1, f6 
-
-	# -b/(2*a)
-	fdiv.s f1, f1, f0 
-
-	# raiz de delta / (2*a) parte imaginária
-	fdiv.s f3, f3 ,f0
+	#Desalocando espaço na pilha
+	addi sp, sp, 8
 
 	# Printando a string X1
 	li a7, 4
@@ -196,7 +258,7 @@ negativo:
 
 	# Printando a parte real de X1
 	li a7, 2
-	fadd.s f10, f8, f1
+	fadd.s f10, f21, f1
 	ecall
 
 	# Printando sinal positivo
@@ -204,10 +266,9 @@ negativo:
 	la a0, MAIS	
 	ecall
 
-
 	# Printando a parte imaginária de X1
 	li a7, 2
-	fadd.s f10, f8, f3
+	fadd.s f10, f21, f3
 	ecall
 
 	# Printando a string i
@@ -222,7 +283,7 @@ negativo:
 
 	# Printando a parte real de X2
 	li a7, 2
-	fadd.s f10, f8, f1
+	fadd.s f10, f21, f1
 	ecall
 
 	# Printando sinal negativo
@@ -233,65 +294,18 @@ negativo:
 
 	# Printando a parte imaginária de X2
 	li a7, 2
-	fadd.s f10, f8, f3
+	fadd.s f10, f21, f3
 	ecall
 
 	# Printando a string i
 	li a7, 4
 	la a0, I	
-	ecall	
-
-	j end
-
-delta:
-   	# B * B
-   	fmul.s f3, f1, f1 
-   	
-   	# A * C
-   	fmul.s f5, f0, f2 
-   
-   	# 4 * A * C
-   	fmul.s f5, f4, f5 
-
-   	# - 4 * A * C
-   	fmul.s f5, f5, f6 
-   
-	
-	# B*B - (4 * A * C)
-   	fadd.s  f3, f3, f5 
-   
-   	
-   	# Pritando a string Delta
-	li a7, 4
-	la a0, DELTA	
-	ecall
-	
-	# Printando valor de Delta
-	li a7, 2
-	fadd.s f10, f8, f3
 	ecall
 
-	# Quebra de linha
-	li a7, 4
-	la a0, ENDL	
-	ecall	
-	
-	# t0 = delta == ? 1:0
-   	feq.s t0, f8,f3  
+continua2:
+	jalr zero, ra, 0
 
-   	# Se  t0 nao for zero, é porque ele é 1 e então delta é igual a zero
-   	bne t0, zero, exato
 
-   	# t0 = delta < 0 ? 1:0
-   	flt.s t0,f3,f8
-
-   	#Se t0 = 0 então delta > 0 logo vai para o positivo
-   	beq t0,zero, positivo
-
-   	#Ultimo caso, só restou ser negativo
-   	j negativo
-
- 
 end:
 	# Fim do programa
 	li a7 10
