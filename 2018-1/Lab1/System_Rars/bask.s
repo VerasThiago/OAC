@@ -1,145 +1,226 @@
 .data
-MENOR: .string "Bhaskara Negativo \n"
-MAIOR: .string "Bhaskara Positivo \n"
-IGUAL: .string "Bhaskara Zero \n"
+MENOR: .string "Delta Negativo\n"
+MAIOR: .string "Delta Positivo\n"
+IGUAL: .string "Delta Zero\n"
+DELTA: .string "Delta = "
 X1: .string "X1 = "
 X2: .string "X2 = "
+IMPOSSIVEL: "Impossivel Calcular, A = 0\n"
+endl: .string "\n"
 .text
 
-
-.macro print_str (%str)
-	.data
-myLabel: .string %str
-	.text
-	li a7, 4
-	la a0, myLabel
-	ecall
-.end_macro
-
-.macro printf(%x)
-   li a7, 2
-   fcvt.s.w f31, zero # 0
-   fadd.s f30, f31, %x
-   ecall
-
-.end_macro
-
-.macro readf(%x)
- li a7,6
- ecall
- fcvt.s.w f31, zero # 0
- fadd.s %x,f30 ,f31
-.end_macro
 	
 main:
+	# Pro 4 * A * C
+   	li t1, 4
+   	fcvt.s.w f4, t1  
 
-  	readf(f0)
-  	readf(f1)
-  	readf(f2)
-        
-  	j delta
+   	# Pro - 4 * A * C
+   	li t1, -1
+   	fcvt.s.w f6, t1  
+
+   	# 2 * A
+   	li t1, 2
+   	fcvt.s.w f7, t1 
+
+   	# Pra checkar se delta = 0
+   	li t1, 0
+   	fcvt.s.w f8, t1  
+  	
+  	# Lendo A
+  	li a7,6        
+  	ecall     
+  	fadd.s f0,f10 ,f31
+
+  	# Lendo B
+  	ecall
+  	fadd.s f1,f10 ,f31
+
+  	# Lendo C
+  	ecall
+  	fadd.s f2,f10 ,f31
+
+  	# t0 = f0 == 0 ?1:0
+  	feq.s t0, f8, f0
+
+  	# se t0 = 1, então A = 0, logo nao é possivel calcular
+  	bne, t0, zero, impossivel
+
+  	j delta	
+
  
+impossivel: 
+	# Printando que é impossível calcular pois a = 0
+	li a7, 4
+	la a0, IMPOSSIVEL		
+	ecall
+
+	j end	
+
+
+
   
-  
-  
-exato: # -b / (2*a)
+# -b / (2*a)  
+exato: 
 	
+	# Printando Delta = 0
 	li a7, 4
 	la a0, IGUAL	
 	ecall
+	
+	# Printando a String X1
 	la a0, X1
 	ecall
-	fmul.s f0, f0, f7 # 2 * a
-	fmul.s f1, f1, f6 # -b
-	fdiv.s f10, f1, f0 	
-	printf(f10)
-	print_str("\n")
+
+	# 2 * a
+	fmul.s f0, f0, f7 
+
+	# -b
+	fmul.s f1, f1, f6 
+
+	# -b / (2*a)
+	fdiv.s f11, f1, f0 	
+
+	# Printando valor de X1
+	li a7, 2
+	fadd.s f10, f8, f11
+	ecall
+
+	# Quebra de linha
+	li a7, 4
+	la a0, endl	
+	ecall
 	
 	j end
 	
-positivo: #x1 = (-b + sqrtdelta)/(2*a)
-	fsqrt.s f3, f3 # rai de delta
-	fmul.s f0, f0, f7 # 2 * a
-	fmul.s f1, f1, f6 # -b
-	fadd.s f9, f1, f3 # -b + sqrt(delta)
-	fdiv.s f9, f9, f0 # X1
-	fmul.s f3, f3, f6 # -sqrt(delta)
-	fadd.s f10, f1, f3 # -b - sqrt(delta)
-	fdiv.s f10, f10, f7 #X2
+
+#x1 = (-b + sqrtdelta)/(2*a)
+#x2 = (-b - sqrtdelta)/(2*a)
+positivo: 
+	# raiz de delta
+	fsqrt.s f3, f3 
+	
+	# 2 * a
+	fmul.s f0, f0, f7 
+
+	# -b
+	fmul.s f1, f1, f6 
+
+	# -b + sqrt(delta)
+	fadd.s f9, f1, f3 
+
+	# (-b + sqrtdelta)/(2*a)
+	fdiv.s f9, f9, f0 
+
+	 # -sqrt(delta)
+	fmul.s f3, f3, f6
+
+	# -b - sqrt(delta)
+	fadd.s f11, f1, f3
+
+	# (-b - sqrtdelta)/(2*a) 
+	fdiv.s f11, f11, f0
+
+	# Printando que delta > 0
 	li a7, 4
 	la a0, MAIOR
 	ecall	
+
+	# Printando string X1
+	li a7, 4
 	la a0, X1
 	ecall
-	printf(f9)
-	print_str("\n")
+
+	# Printando valor de X1
+	li a7, 2
+	fadd.s f10, f8, f9
+	ecall
+
+	# Quebra de linha
+	li a7, 4
+	la a0, endl	
+	ecall	
+	
+	# Printando a string X2
+	li a7, 4
 	la a0, X2
 	ecall
-	printf(f10)
-	print_str("\n") 
-	
+
+	# Printando valor de X2
+	li a7, 2
+	fadd.s f10, f8, f11
+	ecall
+
+	# Quebra de linha
+	li a7, 4
+	la a0, endl	
+	ecall	
+
 	j end
 
 
 negativo:
-
+	
+	# Pritando que delta < 0
 	li a7, 4
 	la a0, MENOR	
 	ecall
+
  	j end  
 
 
 
 delta:
+   	# B * B
+   	fmul.s f3, f1, f1 
    	
-   	# f4 = 4
-   	# f6 = -1
-   	# f7 = 2
-   	# f8 = 0
-   	
-   	li t1, 4 # Para mutiplica o 4 * A * C  	   	
-   	fcvt.s.w f4, t1 # 4
+   	# A * C
+   	fmul.s f5, f0, f2 
    
-   	fmul.s f3, f1, f1 # B * B
-   	
-   	print_str("B * B = ")
-	printf(f3)
-   	print_str("\n")
-   
-   
-   	fmul.s f5, f0, f2 # A * C
-   
-   
-   	fmul.s f5, f4, f5 # 4 * A * C
-   
-   	li t0, -1 # Para mutiplica por -1 e fazer a soma
-   	fcvt.s.w f6, t0 # -1
-   	fmul.s f5, f5, f6 # - 4 * A * C
-   
-   	print_str("-4 A C = ")
-	printf(f5)
-   	print_str("\n")
-   
-   
-   	fadd.s  f3, f3, f4 # B*B - (4 * A * C)
-   
-   	fmv.s.x f8, zero
-	feq.s t0, f8, f3
+   	# 4 * A * C
+   	fmul.s f5, f4, f5 
+
+   	# - 4 * A * C
+   	fmul.s f5, f5, f6 
    
 	
-	print_str("Delta = ")
-	printf(f3)
-   	print_str("\n")
+	# B*B - (4 * A * C)
+   	fadd.s  f3, f3, f5 
    
-  
-   	feq.s t0, f8,f3   # delta = 0
+   	
+   	# Pritando a string Delta
+	li a7, 4
+	la a0, DELTA	
+	ecall
+	
+	# Printando valor de Delta
+	li a7, 2
+	fadd.s f10, f8, f3
+	ecall
+
+	# Quebra de linha
+	li a7, 4
+	la a0, endl	
+	ecall	
+	
+	# t0 = delta == ? 1:0
+   	feq.s t0, f8,f3  
+
+   	# Se  t0 nao for zero, é porque ele é 1 e então delta é igual a zero
    	bne t0, zero, exato
+
+   	# t0 = delta < 0 ? 1:0
    	flt.s t0,f3,f8
+
+   	#Se t0 = 0 então delta > 0 logo vai para o positivo
    	beq t0,zero, positivo
+
+   	#Ultimo caso, só restou ser negativo
    	j negativo
 
  
 end:
+	# Fim do programa
 	li a7 10
 	ecall
 	
