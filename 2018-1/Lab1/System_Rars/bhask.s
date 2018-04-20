@@ -3,10 +3,13 @@ MENOR: .string "Delta Negativo\n"
 MAIOR: .string "Delta Positivo\n"
 IGUAL: .string "Delta Zero\n"
 DELTA: .string "Delta = "
-X1: .string "X1 = "
-X2: .string "X2 = "
+X1: .string "R(1)="
+X2: .string "R(2)="
 IMPOSSIVEL: "Impossivel Calcular, A = 0\n"
-endl: .string "\n"
+ENDL: .string "\n"
+I: " i\n"
+MAIS: " + "
+MENOS: " - "
 .text
 
 	
@@ -17,7 +20,7 @@ main:
 
    	# Pro - 4 * A * C
    	li t1, -1
-   	fcvt.s.w f6, t1  
+   	fcvt.s.w f6, t1  		
 
    	# 2 * A
    	li t1, 2
@@ -88,7 +91,7 @@ exato:
 
 	# Quebra de linha
 	li a7, 4
-	la a0, endl	
+	la a0, ENDL	
 	ecall
 	
 	j end
@@ -97,6 +100,12 @@ exato:
 #x1 = (-b + sqrtdelta)/(2*a)
 #x2 = (-b - sqrtdelta)/(2*a)
 positivo: 
+	
+	# Printando que delta > 0
+	li a7, 4
+	la a0, MAIOR
+	ecall
+
 	# raiz de delta
 	fsqrt.s f3, f3 
 	
@@ -121,10 +130,6 @@ positivo:
 	# (-b - sqrtdelta)/(2*a) 
 	fdiv.s f11, f11, f0
 
-	# Printando que delta > 0
-	li a7, 4
-	la a0, MAIOR
-	ecall	
 
 	# Printando string X1
 	li a7, 4
@@ -138,7 +143,7 @@ positivo:
 
 	# Quebra de linha
 	li a7, 4
-	la a0, endl	
+	la a0, ENDL	
 	ecall	
 	
 	# Printando a string X2
@@ -153,7 +158,7 @@ positivo:
 
 	# Quebra de linha
 	li a7, 4
-	la a0, endl	
+	la a0, ENDL	
 	ecall	
 
 	j end
@@ -166,9 +171,77 @@ negativo:
 	la a0, MENOR	
 	ecall
 
- 	j end  
+	# Transformando o delta positivo para tirar a raiz
+	fmul.s f3, f3, f6
+
+	# raiz de delta
+	fsqrt.s f3, f3
+
+	# 2 * a
+	fmul.s f0, f0, f7 
+
+	# -b
+	fmul.s f1, f1, f6 
+
+	# -b/(2*a)
+	fdiv.s f1, f1, f0 
+
+	# raiz de delta / (2*a) parte imaginária
+	fdiv.s f3, f3 ,f0
+
+	# Printando a string X1
+	li a7, 4
+	la a0, X1
+	ecall
+
+	# Printando a parte real de X1
+	li a7, 2
+	fadd.s f10, f8, f1
+	ecall
+
+	# Printando sinal positivo
+	li a7, 4
+	la a0, MAIS	
+	ecall
 
 
+	# Printando a parte imaginária de X1
+	li a7, 2
+	fadd.s f10, f8, f3
+	ecall
+
+	# Printando a string i
+	li a7, 4
+	la a0, I	
+	ecall	
+	
+	#Printando a string X2
+	li a7, 4
+	la a0, X2
+	ecall
+
+	# Printando a parte real de X2
+	li a7, 2
+	fadd.s f10, f8, f1
+	ecall
+
+	# Printando sinal negativo
+	li a7, 4
+	la a0, MENOS	
+	ecall
+
+
+	# Printando a parte imaginária de X2
+	li a7, 2
+	fadd.s f10, f8, f3
+	ecall
+
+	# Printando a string i
+	li a7, 4
+	la a0, I	
+	ecall	
+
+	j end
 
 delta:
    	# B * B
@@ -200,7 +273,7 @@ delta:
 
 	# Quebra de linha
 	li a7, 4
-	la a0, endl	
+	la a0, ENDL	
 	ecall	
 	
 	# t0 = delta == ? 1:0
