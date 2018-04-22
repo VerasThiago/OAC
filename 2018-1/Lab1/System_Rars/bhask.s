@@ -16,11 +16,13 @@ MENOS: " - "
 
 
 main:
-	# Pro 4 * A * C
+	#Constantes => f21, f22, f24 e f6. Utilizadas para:
+	
+	# 4 * A * C
    	li t1, 4
    	fcvt.s.w f24, t1  
 
-   	# Pro - 4 * A * C
+   	# - 4 * A * C
    	li t1, -1
    	fcvt.s.w f26, t1  		
 
@@ -187,12 +189,7 @@ show:
 	beq t1,t0, imaginario
 
 	# Se veio aqui é porque as raízes são reais
-
-	# Printando que delta > 0
-	li a7, 4
-	la a0, MAIOR
-	ecall
-
+	
 	# Desempilhando a raiz 1
 	flw f9, 4(sp)
 
@@ -237,11 +234,7 @@ show:
 
 imaginario:
 	
-	# Pritando que delta < 0
-	li a7, 4
-	la a0, MENOR	
-	ecall
-
+	
 	#desempilhando a parte real
 	flw f1, 4(sp)
 	
