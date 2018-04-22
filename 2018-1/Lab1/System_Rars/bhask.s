@@ -74,21 +74,6 @@ baskara:
 	# B*B - (4 * A * C)
    	fadd.s  f3, f3, f5 
    	
-   	# Pritando a string Delta
-	li a7, 4
-	la a0, DELTA	
-	ecall
-	
-	# Printando valor de Delta
-	li a7, 2
-	fadd.s f10, f21, f3
-	ecall
-
-	# Quebra de linha
-	li a7, 4
-	la a0, ENDL	
-	ecall	
-	
    	# t0 = delta < 0 ? 1:0
    	flt.s t0,f3,f21
 
@@ -128,6 +113,7 @@ baskara:
 	# Setando a variável de retorno como 2
 	fadd.s f11, f21, f22
 
+	# Pulando a parte do delta > 0
 	j continua
 
 
