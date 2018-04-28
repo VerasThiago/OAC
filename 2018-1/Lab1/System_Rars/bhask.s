@@ -84,7 +84,7 @@ baskara:
 	# Se chegou aqui é porque não é positivo o delta	
 	
 	# Alocando espaço para 2 variáveis, parte real e imaginária das raízes (que são as mesmas)
-	addi sp, sp, 8
+	addi sp, sp, -8
 
 	# Transformando o delta positivo para tirar a raiz
 	fmul.s f3, f3, f26
@@ -123,7 +123,7 @@ positivo:
 
 	
 	#Alocando espaço para 2 variáveis, raiz1 e raiz2
-	addi sp, sp, 8
+	addi sp, sp, - 8
 
 	# raiz de delta
 	fsqrt.s f3, f3 
