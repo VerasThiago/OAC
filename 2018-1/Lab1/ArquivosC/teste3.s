@@ -6,7 +6,7 @@
 	.type	main, @function
 main:
 	addi	sp,sp,-32
-	sd	s0,24(sp)
+	sw	s0,28(sp)
 	addi	s0,sp,32
 	lui	a5,%hi(.LC0)
 	flw	fa5,%lo(.LC0)(a5)
@@ -18,7 +18,7 @@ main:
 	flw	fa5,-24(s0)
 	fmul.s	fa5,fa4,fa5
 	fmv.s	fa0,fa5
-	ld	s0,24(sp)
+	lw	s0,28(sp)
 	addi	sp,sp,32
 	jr	ra
 	.size	main, .-main

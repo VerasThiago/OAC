@@ -1,7 +1,7 @@
 	.file	"sortc.c"
 	.option nopic
 	.data
-	.align	3
+	.align	2
 	.type	v, @object
 	.size	v, 40
 v:
@@ -16,7 +16,7 @@ v:
 	.word	6
 	.word	7
 	.section	.rodata
-	.align	3
+	.align	2
 .LC0:
 	.string	"%d\t"
 	.text
@@ -25,18 +25,17 @@ v:
 	.type	show, @function
 show:
 	addi	sp,sp,-48
-	sd	ra,40(sp)
-	sd	s0,32(sp)
+	sw	ra,44(sp)
+	sw	s0,40(sp)
 	addi	s0,sp,48
-	sd	a0,-40(s0)
-	mv	a5,a1
-	sw	a5,-44(s0)
+	sw	a0,-36(s0)
+	sw	a1,-40(s0)
 	sw	zero,-20(s0)
 	j	.L2
 .L3:
 	lw	a5,-20(s0)
 	slli	a5,a5,2
-	ld	a4,-40(s0)
+	lw	a4,-36(s0)
 	add	a5,a4,a5
 	lw	a5,0(a5)
 	mv	a1,a5
@@ -44,19 +43,17 @@ show:
 	addi	a0,a5,%lo(.LC0)
 	call	printf
 	lw	a5,-20(s0)
-	addiw	a5,a5,1
+	addi	a5,a5,1
 	sw	a5,-20(s0)
 .L2:
 	lw	a4,-20(s0)
-	lw	a5,-44(s0)
-	sext.w	a4,a4
-	sext.w	a5,a5
+	lw	a5,-40(s0)
 	blt	a4,a5,.L3
 	li	a0,10
 	call	putchar
 	nop
-	ld	ra,40(sp)
-	ld	s0,32(sp)
+	lw	ra,44(sp)
+	lw	s0,40(sp)
 	addi	sp,sp,48
 	jr	ra
 	.size	show, .-show
@@ -65,37 +62,36 @@ show:
 	.type	swap, @function
 swap:
 	addi	sp,sp,-48
-	sd	s0,40(sp)
+	sw	s0,44(sp)
 	addi	s0,sp,48
-	sd	a0,-40(s0)
-	mv	a5,a1
-	sw	a5,-44(s0)
-	lw	a5,-44(s0)
+	sw	a0,-36(s0)
+	sw	a1,-40(s0)
+	lw	a5,-40(s0)
 	slli	a5,a5,2
-	ld	a4,-40(s0)
+	lw	a4,-36(s0)
 	add	a5,a4,a5
 	lw	a5,0(a5)
 	sw	a5,-20(s0)
-	lw	a5,-44(s0)
+	lw	a5,-40(s0)
 	addi	a5,a5,1
 	slli	a5,a5,2
-	ld	a4,-40(s0)
+	lw	a4,-36(s0)
 	add	a4,a4,a5
-	lw	a5,-44(s0)
+	lw	a5,-40(s0)
 	slli	a5,a5,2
-	ld	a3,-40(s0)
+	lw	a3,-36(s0)
 	add	a5,a3,a5
 	lw	a4,0(a4)
 	sw	a4,0(a5)
-	lw	a5,-44(s0)
+	lw	a5,-40(s0)
 	addi	a5,a5,1
 	slli	a5,a5,2
-	ld	a4,-40(s0)
+	lw	a4,-36(s0)
 	add	a5,a4,a5
 	lw	a4,-20(s0)
 	sw	a4,0(a5)
 	nop
-	ld	s0,40(sp)
+	lw	s0,44(sp)
 	addi	sp,sp,48
 	jr	ra
 	.size	swap, .-swap
@@ -104,57 +100,51 @@ swap:
 	.type	sort, @function
 sort:
 	addi	sp,sp,-48
-	sd	ra,40(sp)
-	sd	s0,32(sp)
+	sw	ra,44(sp)
+	sw	s0,40(sp)
 	addi	s0,sp,48
-	sd	a0,-40(s0)
-	mv	a5,a1
-	sw	a5,-44(s0)
+	sw	a0,-36(s0)
+	sw	a1,-40(s0)
 	sw	zero,-20(s0)
 	j	.L6
 .L10:
 	lw	a5,-20(s0)
-	addiw	a5,a5,-1
+	addi	a5,a5,-1
 	sw	a5,-24(s0)
 	j	.L7
 .L9:
-	lw	a5,-24(s0)
-	mv	a1,a5
-	ld	a0,-40(s0)
+	lw	a1,-24(s0)
+	lw	a0,-36(s0)
 	call	swap
 	lw	a5,-24(s0)
-	addiw	a5,a5,-1
+	addi	a5,a5,-1
 	sw	a5,-24(s0)
 .L7:
 	lw	a5,-24(s0)
-	sext.w	a5,a5
 	bltz	a5,.L8
 	lw	a5,-24(s0)
 	slli	a5,a5,2
-	ld	a4,-40(s0)
+	lw	a4,-36(s0)
 	add	a5,a4,a5
-	lw	a3,0(a5)
+	lw	a4,0(a5)
 	lw	a5,-24(s0)
 	addi	a5,a5,1
 	slli	a5,a5,2
-	ld	a4,-40(s0)
-	add	a5,a4,a5
+	lw	a3,-36(s0)
+	add	a5,a3,a5
 	lw	a5,0(a5)
-	mv	a4,a3
 	bgt	a4,a5,.L9
 .L8:
 	lw	a5,-20(s0)
-	addiw	a5,a5,1
+	addi	a5,a5,1
 	sw	a5,-20(s0)
 .L6:
 	lw	a4,-20(s0)
-	lw	a5,-44(s0)
-	sext.w	a4,a4
-	sext.w	a5,a5
+	lw	a5,-40(s0)
 	blt	a4,a5,.L10
 	nop
-	ld	ra,40(sp)
-	ld	s0,32(sp)
+	lw	ra,44(sp)
+	lw	s0,40(sp)
 	addi	sp,sp,48
 	jr	ra
 	.size	sort, .-sort
@@ -163,8 +153,8 @@ sort:
 	.type	main, @function
 main:
 	addi	sp,sp,-16
-	sd	ra,8(sp)
-	sd	s0,0(sp)
+	sw	ra,12(sp)
+	sw	s0,8(sp)
 	addi	s0,sp,16
 	li	a1,10
 	lui	a5,%hi(v)
@@ -179,8 +169,8 @@ main:
 	addi	a0,a5,%lo(v)
 	call	show
 	nop
-	ld	ra,8(sp)
-	ld	s0,0(sp)
+	lw	ra,12(sp)
+	lw	s0,8(sp)
 	addi	sp,sp,16
 	jr	ra
 	.size	main, .-main

@@ -1,13 +1,14 @@
 	.file	"teste7.c"
 	.option nopic
 	.section	.rodata
-	.align	3
+	.align	2
 .LC0:
 	.string	"Digite um numero:"
-	.align	3
+	.align	2
 .LC1:
 	.string	"%d"
-	.align	3
+	.globl	__extendsfdf2
+	.align	2
 .LC2:
 	.string	"O resultado eh %f\n"
 	.text
@@ -16,8 +17,8 @@
 	.type	main, @function
 main:
 	addi	sp,sp,-32
-	sd	ra,24(sp)
-	sd	s0,16(sp)
+	sw	ra,28(sp)
+	sw	s0,24(sp)
 	addi	s0,sp,32
 	lui	a5,%hi(.LC0)
 	addi	a0,a5,%lo(.LC0)
@@ -28,38 +29,35 @@ main:
 	addi	a0,a5,%lo(.LC1)
 	call	scanf
 	lw	a5,-24(s0)
-	sext.w	a5,a5
 	andi	a5,a5,1
-	sext.w	a5,a5
 	bnez	a5,.L2
-	lw	a5,-24(s0)
-	mv	a4,a5
+	lw	a4,-24(s0)
 	mv	a5,a4
-	slliw	a5,a5,1
-	addw	a5,a5,a4
-	sext.w	a5,a5
+	slli	a5,a5,1
+	add	a5,a5,a4
 	fcvt.s.w	fa5,a5
 	fsw	fa5,-20(s0)
 	j	.L3
 .L2:
-	lw	a5,-24(s0)
-	mv	a4,a5
+	lw	a4,-24(s0)
 	mv	a5,a4
-	slliw	a5,a5,3
-	addw	a5,a5,a4
-	sext.w	a5,a5
+	slli	a5,a5,3
+	add	a5,a5,a4
 	fcvt.s.w	fa5,a5
 	fsw	fa5,-20(s0)
 .L3:
-	flw	fa5,-20(s0)
-	fcvt.d.s	fa5,fa5
-	fmv.x.d	a1,fa5
+	flw	fa0,-20(s0)
+	call	__extendsfdf2
+	mv	a5,a0
+	mv	a6,a1
+	mv	a2,a5
+	mv	a3,a6
 	lui	a5,%hi(.LC2)
 	addi	a0,a5,%lo(.LC2)
 	call	printf
 	nop
-	ld	ra,24(sp)
-	ld	s0,16(sp)
+	lw	ra,28(sp)
+	lw	s0,24(sp)
 	addi	sp,sp,32
 	jr	ra
 	.size	main, .-main

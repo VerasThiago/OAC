@@ -1,16 +1,16 @@
 	.file	"teste8.c"
 	.option nopic
 	.section	.rodata
-	.align	3
+	.align	2
 .LC0:
 	.string	"Digite um numero:"
-	.align	3
+	.align	2
 .LC1:
 	.string	"%d"
-	.align	3
+	.align	2
 .LC2:
 	.string	"Fora dos Limites"
-	.align	3
+	.align	2
 .LC3:
 	.string	"Dentro dos Limites"
 	.text
@@ -19,8 +19,8 @@
 	.type	main, @function
 main:
 	addi	sp,sp,-128
-	sd	ra,120(sp)
-	sd	s0,112(sp)
+	sw	ra,124(sp)
+	sw	s0,120(sp)
 	addi	s0,sp,128
 	li	a5,100
 	sb	a5,-17(s0)
@@ -32,10 +32,9 @@ main:
 	lui	a5,%hi(.LC1)
 	addi	a0,a5,%lo(.LC1)
 	call	scanf
-	lbu	a4,-18(s0)
-	lbu	a5,-17(s0)
-	andi	a5,a5,0xff
-	bgtu	a5,a4,.L2
+	lbu	a5,-18(s0)
+	lbu	a4,-17(s0)
+	bgtu	a4,a5,.L2
 	lui	a5,%hi(.LC2)
 	addi	a0,a5,%lo(.LC2)
 	call	puts
@@ -46,8 +45,8 @@ main:
 	call	puts
 .L4:
 	nop
-	ld	ra,120(sp)
-	ld	s0,112(sp)
+	lw	ra,124(sp)
+	lw	s0,120(sp)
 	addi	sp,sp,128
 	jr	ra
 	.size	main, .-main

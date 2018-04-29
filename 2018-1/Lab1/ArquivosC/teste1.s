@@ -1,17 +1,17 @@
-	.file	"teste1.c"
-	.option nopic
+	#.file	"teste1.c"
+	#.option nopic
 	.text
-	.align	2
-	.globl	main
-	.type	main, @function
+	#.align	2
+	#.globl	main
+	#.type	main, @function
 main:
 	addi	sp,sp,-16
-	sd	s0,8(sp)
+	sw	s0,12(sp)
 	addi	s0,sp,16
 	li	a5,10
 	mv	a0,a5
-	ld	s0,8(sp)
+	lw	s0,12(sp)
 	addi	sp,sp,16
 	jr	ra
-	.size	main, .-main
-	.ident	"GCC: (GNU) 7.2.0"
+	#.size	main, .-main
+	#.ident	"GCC: (GNU) 7.2.0"

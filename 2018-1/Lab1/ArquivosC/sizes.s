@@ -1,19 +1,19 @@
 	.file	"sizes.c"
 	.option nopic
 	.section	.rodata
-	.align	3
+	.align	2
 .LC0:
 	.string	"sizeof(char)=%d\n"
-	.align	3
+	.align	2
 .LC1:
 	.string	"sizeof(short)=%d\n"
-	.align	3
+	.align	2
 .LC2:
 	.string	"sizeof(int)=%d\n"
-	.align	3
+	.align	2
 .LC3:
 	.string	"sizeof(long int)=%d\n"
-	.align	3
+	.align	2
 .LC4:
 	.string	"sizeof(long long int)=%d\n"
 	.text
@@ -22,8 +22,8 @@
 	.type	main, @function
 main:
 	addi	sp,sp,-16
-	sd	ra,8(sp)
-	sd	s0,0(sp)
+	sw	ra,12(sp)
+	sw	s0,8(sp)
 	addi	s0,sp,16
 	li	a1,1
 	lui	a5,%hi(.LC0)
@@ -37,7 +37,7 @@ main:
 	lui	a5,%hi(.LC2)
 	addi	a0,a5,%lo(.LC2)
 	call	printf
-	li	a1,8
+	li	a1,4
 	lui	a5,%hi(.LC3)
 	addi	a0,a5,%lo(.LC3)
 	call	printf
@@ -46,8 +46,8 @@ main:
 	addi	a0,a5,%lo(.LC4)
 	call	printf
 	nop
-	ld	ra,8(sp)
-	ld	s0,0(sp)
+	lw	ra,12(sp)
+	lw	s0,8(sp)
 	addi	sp,sp,16
 	jr	ra
 	.size	main, .-main
