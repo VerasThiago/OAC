@@ -34,6 +34,3 @@ main:
 	
 	li a7, 1
 	ecall
-	#jr	ra
-	.size	main, .-main
-	.ident	"GCC: (GNU) 7.2.0"

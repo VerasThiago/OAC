@@ -2,11 +2,11 @@
 
 .data
 v:	.word	9,2,5,1,8,2,4,3,6,7
-.LC0:	.string	"Nova ordem: \n"
+.LC0:	.string	"\t"
 
 .text
 main:
-	addi	sp,sp,-16
+	addi	sp,sp,-16 #RESPONSAVEL POR MOSTRAR O VETOR ORIGINAL
 	sw	a7,12(sp)
 	sw	s0,8(sp)
 	addi	s0,sp,16
@@ -15,12 +15,12 @@ main:
 	addi	a0,a5,%lo(v)
 	jal	show
 	
-	li	a1,10
+	li	a1,10 #RESPONSAVEL POR ORDENAR O VETOR
 	lui	a5,%hi(v)
 	addi	a0,a5,%lo(v)
 	jal	sort
 	
-	li	a1,10
+	li	a1,10 #RESPONSAVEL POR MOSTRAR O VETOR ORDENADO
 	lui	a5,%hi(v)
 	addi	a0,a5,%lo(v)
 	jal	show
@@ -31,6 +31,8 @@ main:
 	
 	li a7, 1
 	ecall
+
+
 
 show:
 	addi	sp,sp,-48
@@ -133,12 +135,11 @@ sort:
 .L9:
 	lw	a1,-24(s0)
 	lw	a0,-36(s0)
-	jal	swap
+	jal	swap #OLHAR ISSO AQUI
 	lw	a5,-24(s0)
 	addi	a5,a5,-1
 	sw	a5,-24(s0)
 	
-
 swap:
 	addi	sp,sp,-48
 	sw	s0,44(sp)
@@ -175,12 +176,6 @@ swap:
 	
 	li a7, 1
 	ecall
+
 	
-
-
-
-
-
-
-
 
