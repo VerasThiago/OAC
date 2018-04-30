@@ -1,9 +1,5 @@
-	.file	"teste2.c"
-	.option nopic
-	.text
-	.align	2
-	.globl	main
-	.type	main, @function
+.data
+.text
 main:
 	addi	sp,sp,-32
 	sw	s0,28(sp)
@@ -16,6 +12,6 @@ main:
 	mv	a0,a5
 	lw	s0,28(sp)
 	addi	sp,sp,32
-	jr	ra
-	.size	main, .-main
-	.ident	"GCC: (GNU) 7.2.0"
+	
+	li a7, 1
+	ecall

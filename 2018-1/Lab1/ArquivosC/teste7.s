@@ -1,20 +1,12 @@
-	.file	"teste7.c"
-	.option nopic
-	.section	.rodata
-	.align	2
+.data
 .LC0:
-	.string	"Digite um numero:"
-	.align	2
+	.asciz	"Digite um numero:"
 .LC1:
-	.string	"%d"
-	.globl	__extendsfdf2
-	.align	2
+	.asciz	""
 .LC2:
-	.string	"O resultado eh %f\n"
-	.text
-	.align	2
-	.globl	main
-	.type	main, @function
+	.asciz	"O resultado eh "
+.text
+	
 main:
 	addi	sp,sp,-32
 	sw	ra,28(sp)

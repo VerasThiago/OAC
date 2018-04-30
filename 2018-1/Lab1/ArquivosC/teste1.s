@@ -1,6 +1,7 @@
+.data
 	#.file	"teste1.c"
 	#.option nopic
-	.text
+.text
 	#.align	2
 	#.globl	main
 	#.type	main, @function
@@ -12,6 +13,9 @@ main:
 	mv	a0,a5
 	lw	s0,12(sp)
 	addi	sp,sp,16
-	jr	ra
+	
+	li a7, 1
+	ecall
+	#jr	ra
 	#.size	main, .-main
 	#.ident	"GCC: (GNU) 7.2.0"

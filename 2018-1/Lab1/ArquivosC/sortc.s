@@ -1,37 +1,65 @@
-	.file	"sortc.c"
-	.option nopic
-	.data
-	.align	2
-	.type	v, @object
-	.size	v, 40
-v:
-	.word	9
-	.word	2
-	.word	5
-	.word	1
-	.word	8
-	.word	2
-	.word	4
-	.word	3
-	.word	6
-	.word	7
-	.section	.rodata
-	.align	2
-.LC0:
-	.string	"%d\t"
-	.text
-	.align	2
-	.globl	show
-	.type	show, @function
+.eqv N 10
+
+.data
+v:	.word	9,2,5,1,8,2,4,3,6,7
+.LC0:	.string	"Nova ordem: \n"
+
+.text
+main:
+	addi	sp,sp,-16
+	sw	a7,12(sp)
+	sw	s0,8(sp)
+	addi	s0,sp,16
+	li	a1,10
+	lui	a5,%hi(v)
+	addi	a0,a5,%lo(v)
+	jal	show
+	
+	li	a1,10
+	lui	a5,%hi(v)
+	addi	a0,a5,%lo(v)
+	jal	sort
+	
+	li	a1,10
+	lui	a5,%hi(v)
+	addi	a0,a5,%lo(v)
+	jal	show
+	
+	lw	a7,12(sp)
+	lw	s0,8(sp)
+	addi	sp,sp,16
+	
+	li a7, 1
+	ecall
+
 show:
 	addi	sp,sp,-48
-	sw	ra,44(sp)
+	sw	a7,44(sp)
 	sw	s0,40(sp)
 	addi	s0,sp,48
 	sw	a0,-36(s0)
 	sw	a1,-40(s0)
 	sw	zero,-20(s0)
-	j	.L2
+	jal	.L2
+
+.L2:
+	lw	a4,-20(s0)
+	lw	a5,-40(s0)
+	blt	a4,a5,.L3
+	li	a0,10
+	
+	li a6, 4
+	la a0, .LC0
+	ecall
+	
+	nop
+	lw	a7,44(sp)
+	lw	s0,40(sp)
+	addi	sp,sp,48
+	
+	li a7, 1
+	ecall
+
 .L3:
 	lw	a5,-20(s0)
 	slli	a5,a5,2
@@ -41,25 +69,76 @@ show:
 	mv	a1,a5
 	lui	a5,%hi(.LC0)
 	addi	a0,a5,%lo(.LC0)
-	call	printf
+	
+	li a7, 4
+	la a0, .LC0
+	ecall
+
 	lw	a5,-20(s0)
 	addi	a5,a5,1
 	sw	a5,-20(s0)
-.L2:
+
+
+	
+sort:
+	addi	sp,sp,-48
+	sw	a7,44(sp)
+	sw	s0,40(sp)
+	addi	s0,sp,48
+	sw	a0,-36(s0)
+	sw	a1,-40(s0)
+	sw	zero,-20(s0)
+	jal	.L6
+
+.L6:
 	lw	a4,-20(s0)
 	lw	a5,-40(s0)
-	blt	a4,a5,.L3
-	li	a0,10
-	call	putchar
+	blt	a4,a5,.L10
 	nop
-	lw	ra,44(sp)
+	lw	a7,44(sp)
 	lw	s0,40(sp)
 	addi	sp,sp,48
-	jr	ra
-	.size	show, .-show
-	.align	2
-	.globl	swap
-	.type	swap, @function
+	
+	li a7, 1
+	ecall
+
+.L10:
+	lw	a5,-20(s0)
+	addi	a5,a5,-1
+	sw	a5,-24(s0)
+	jal	.L7
+
+.L7:
+	lw	a5,-24(s0)
+	bltz	a5,.L8
+	lw	a5,-24(s0)
+	slli	a5,a5,2
+	lw	a4,-36(s0)
+	add	a5,a4,a5
+	lw	a4,0(a5)
+	lw	a5,-24(s0)
+	addi	a5,a5,1
+	slli	a5,a5,2
+	lw	a3,-36(s0)
+	add	a5,a3,a5
+	lw	a5,0(a5)
+	bgt	a4,a5,.L9
+
+
+.L8:
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	sw	a5,-20(s0)
+
+.L9:
+	lw	a1,-24(s0)
+	lw	a0,-36(s0)
+	jal	swap
+	lw	a5,-24(s0)
+	addi	a5,a5,-1
+	sw	a5,-24(s0)
+	
+
 swap:
 	addi	sp,sp,-48
 	sw	s0,44(sp)
@@ -93,85 +172,15 @@ swap:
 	nop
 	lw	s0,44(sp)
 	addi	sp,sp,48
-	jr	ra
-	.size	swap, .-swap
-	.align	2
-	.globl	sort
-	.type	sort, @function
-sort:
-	addi	sp,sp,-48
-	sw	ra,44(sp)
-	sw	s0,40(sp)
-	addi	s0,sp,48
-	sw	a0,-36(s0)
-	sw	a1,-40(s0)
-	sw	zero,-20(s0)
-	j	.L6
-.L10:
-	lw	a5,-20(s0)
-	addi	a5,a5,-1
-	sw	a5,-24(s0)
-	j	.L7
-.L9:
-	lw	a1,-24(s0)
-	lw	a0,-36(s0)
-	call	swap
-	lw	a5,-24(s0)
-	addi	a5,a5,-1
-	sw	a5,-24(s0)
-.L7:
-	lw	a5,-24(s0)
-	bltz	a5,.L8
-	lw	a5,-24(s0)
-	slli	a5,a5,2
-	lw	a4,-36(s0)
-	add	a5,a4,a5
-	lw	a4,0(a5)
-	lw	a5,-24(s0)
-	addi	a5,a5,1
-	slli	a5,a5,2
-	lw	a3,-36(s0)
-	add	a5,a3,a5
-	lw	a5,0(a5)
-	bgt	a4,a5,.L9
-.L8:
-	lw	a5,-20(s0)
-	addi	a5,a5,1
-	sw	a5,-20(s0)
-.L6:
-	lw	a4,-20(s0)
-	lw	a5,-40(s0)
-	blt	a4,a5,.L10
-	nop
-	lw	ra,44(sp)
-	lw	s0,40(sp)
-	addi	sp,sp,48
-	jr	ra
-	.size	sort, .-sort
-	.align	2
-	.globl	main
-	.type	main, @function
-main:
-	addi	sp,sp,-16
-	sw	ra,12(sp)
-	sw	s0,8(sp)
-	addi	s0,sp,16
-	li	a1,10
-	lui	a5,%hi(v)
-	addi	a0,a5,%lo(v)
-	call	show
-	li	a1,10
-	lui	a5,%hi(v)
-	addi	a0,a5,%lo(v)
-	call	sort
-	li	a1,10
-	lui	a5,%hi(v)
-	addi	a0,a5,%lo(v)
-	call	show
-	nop
-	lw	ra,12(sp)
-	lw	s0,8(sp)
-	addi	sp,sp,16
-	jr	ra
-	.size	main, .-main
-	.ident	"GCC: (GNU) 7.2.0"
+	
+	li a7, 1
+	ecall
+	
+
+
+
+
+
+
+
+
