@@ -1,18 +1,18 @@
-# INSTRUÇÕES
+# INSTRUÇÕES 
 
-[ ] ADD      [ ] SUB      [ ] AND
+[X] ADD      [X] SUB      [X] AND
 
-[ ] OR       [ ] XOR      [ ] SLT
+[X] OR       [X] XOR      [X] SLT
 
-[ ] SLTU     [ ] SLL      [ ] SRL
+[X] SLTU     [X] SLL      [X] SRL
 
-[ ] SRA      [ ] ADDI     [ ] ANDI
+[X] SRA      [ ] ADDI     [ ] ANDI
 
 [ ] ORI      [ ] XORI     [ ] SLTI
 
 [ ] SLTIU    [ ] SLLI     [ ] SRLI
 
-[ ] SRAI     [ ] AUIPC    [ ] LUI
+[ ] SRAI     [ ] AUIPC    [X] LUI
 
 [ ] BEQ      [ ] BNE      [ ] BGE
 
@@ -24,8 +24,8 @@
 
 [ ] SB       [ ] SH       [ ] SW
 
-[ ] MUL      [ ] MULH     [ ] MULHU
+[X] MUL      [ ] MULH     [ ] MULHU
 
-[ ] MULHSU   [ ] DIV      [ ] DIVU
+[ ] MULHSU   [X] DIV      [X] DIVU
 
 [ ] REM      [ ] REMU
