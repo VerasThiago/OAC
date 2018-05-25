@@ -1,31 +1,31 @@
 # INSTRUÇÕES
 
-[X] ADD      
+[ ] ADD      [ ] SUB      [ ] AND
 
-[ ] OR      
+[ ] OR       [ ] XOR      [ ] SLT
 
-[ ] SLTU     
+[ ] SLTU     [ ] SLL      [ ] SRL
 
-[ ] SRA      
+[ ] SRA      [ ] ADDI     [ ] ANDI
 
-[ ] ORI    
+[ ] ORI      [ ] XORI     [ ] SLTI
 
-[ ] SLTIU   
+[ ] SLTIU    [ ] SLLI     [ ] SRLI
 
-[ ] SRAI     
+[ ] SRAI     [ ] AUIPC    [ ] LUI
 
-[ ] BEQ     
+[ ] BEQ      [ ] BNE      [ ] BGE
 
-[ ] BGEU     
+[ ] BGEU     [ ] BLT      [ ] JAL
 
-[ ] JALR    
+[ ] JALR     [ ] LB       [ ] LBU
 
-[ ] LH       
+[ ] LH       [ ] LHU      [ ] LW
 
-[ ] SB       
+[ ] SB       [ ] SH       [ ] SW
 
-[ ] MUL      
+[ ] MUL      [ ] MULH     [ ] MULHU
 
-[ ] MULHSU  
+[ ] MULHSU   [ ] DIV      [ ] DIVU
 
-[ ] REM     
+[ ] REM      [ ] REMU
