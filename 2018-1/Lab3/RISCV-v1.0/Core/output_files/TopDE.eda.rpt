@@ -1,5 +1,5 @@
 EDA Netlist Writer report for TopDE
-Fri May 25 00:44:53 2018
+Fri May 25 11:15:02 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Fri May 25 00:44:53 2018 ;
+; EDA Netlist Writer Status ; Successful - Fri May 25 11:15:02 2018 ;
 ; Revision Name             ; TopDE                                 ;
 ; Top-level Entity Name     ; ALU                                   ;
 ; Family                    ; Cyclone V                             ;
@@ -65,13 +65,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+--------------------------------------------------------------------+
-; Simulation Generated Files                                         ;
-+--------------------------------------------------------------------+
-; Generated Files                                                    ;
-+--------------------------------------------------------------------+
-; C:/Users/tvmma/Downloads/RISCV-v1.0/Core/simulation/qsim//TopDE.vo ;
-+--------------------------------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                           ;
++--------------------------------------------------------------------------------------+
+; Generated Files                                                                      ;
++--------------------------------------------------------------------------------------+
+; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim//TopDE.vo ;
++--------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -93,8 +93,8 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Fri May 25 00:44:47 2018
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/tvmma/Downloads/RISCV-v1.0/Core/simulation/qsim/ RISCV -c TopDE
+    Info: Processing started: Fri May 25 11:14:57 2018
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim/ RISCV -c TopDE
 Warning (20013): Ignored 16 assignments for entity "PLL_Main" -- entity does not exist in design
     Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_NAME altera_pll -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
     Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_VERSION 18.0 -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
@@ -105,11 +105,11 @@ Warning (20013): Ignored 16 assignments for entity "VgaPll" -- entity does not e
     Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_VERSION 18.0 -entity VgaPll -sip VGA/VgaPll.sip -library lib_VgaPll was ignored
     Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_ENV mwpim -entity VgaPll -sip VGA/VgaPll.sip -library lib_VgaPll was ignored
 Warning (20013): Ignored 318 assignments for entity "VgaPll_0002" -- entity does not exist in design
-Info (204019): Generated file TopDE.vo in folder "C:/Users/tvmma/Downloads/RISCV-v1.0/Core/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file TopDE.vo in folder "C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 694 megabytes
-    Info: Processing ended: Fri May 25 00:44:53 2018
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Peak virtual memory: 696 megabytes
+    Info: Processing ended: Fri May 25 11:15:02 2018
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:05
 
 

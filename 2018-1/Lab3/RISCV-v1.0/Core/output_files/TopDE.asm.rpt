@@ -1,5 +1,5 @@
 Assembler report for TopDE
-Fri May 25 00:43:26 2018
+Fri May 25 11:20:38 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -10,7 +10,7 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/tvmma/Downloads/RISCV-v1.0/Core/output_files/TopDE.sof
+  5. Assembler Device Options: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/output_files/TopDE.sof
   6. Assembler Messages
 
 
@@ -37,7 +37,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri May 25 00:43:26 2018 ;
+; Assembler Status      ; Successful - Fri May 25 11:20:38 2018 ;
 ; Revision Name         ; TopDE                                 ;
 ; Top-level Entity Name ; ALU                                   ;
 ; Family                ; Cyclone V                             ;
@@ -52,23 +52,23 @@ refer to the applicable agreement for further details.
 +--------+---------+---------------+
 
 
-+-----------------------------------------------------------------+
-; Assembler Generated Files                                       ;
-+-----------------------------------------------------------------+
-; File Name                                                       ;
-+-----------------------------------------------------------------+
-; C:/Users/tvmma/Downloads/RISCV-v1.0/Core/output_files/TopDE.sof ;
-+-----------------------------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Assembler Generated Files                                                         ;
++-----------------------------------------------------------------------------------+
+; File Name                                                                         ;
++-----------------------------------------------------------------------------------+
+; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/output_files/TopDE.sof ;
++-----------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/tvmma/Downloads/RISCV-v1.0/Core/output_files/TopDE.sof ;
-+----------------+--------------------------------------------------------------------------+
-; Option         ; Setting                                                                  ;
-+----------------+--------------------------------------------------------------------------+
-; JTAG usercode  ; 0x011B38B0                                                               ;
-; Checksum       ; 0x011B38B0                                                               ;
-+----------------+--------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/output_files/TopDE.sof ;
++----------------+--------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                    ;
++----------------+--------------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x011BC543                                                                                 ;
+; Checksum       ; 0x011BC543                                                                                 ;
++----------------+--------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -77,13 +77,13 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Fri May 25 00:43:10 2018
+    Info: Processing started: Fri May 25 11:20:25 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off RISCV -c TopDE
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 807 megabytes
-    Info: Processing ended: Fri May 25 00:43:26 2018
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Peak virtual memory: 804 megabytes
+    Info: Processing ended: Fri May 25 11:20:38 2018
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:12
 
 

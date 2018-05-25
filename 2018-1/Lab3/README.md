@@ -8,7 +8,7 @@
 
 [X] SRA      [?] ADDI     [?] ANDI
 
-[ ] ORI      [ ] XORI     [ ] SLTI
+[?] ORI      [?] XORI     [?] SLTI
 
 [ ] SLTIU    [ ] SLLI     [ ] SRLI
 

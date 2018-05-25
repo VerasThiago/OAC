@@ -36,7 +36,9 @@ parameter
 	 OPADDI      = 6'b011100,             //28        VERAS
 	 OPANDI      = 6'b011101,				  //29        VERAS
 	 OPBEQ       = 6'b011110,             //30        VERAS
-	 
+	 OPORI		 = 6'b011111,             //31        VERAS
+	 OPXORI      = 6'b100000,				  //32        VERAS
+	 OPSLTI      = 6'b100001,             //33        VERAS
 /* Operacoes da ULA FP */
     OPADDS      = 4'b0001,
     OPSUBS      = 4'b0010,
@@ -86,9 +88,12 @@ parameter
 	FUNSLLV     = 6'h04,
 	FUNSRLV     = 6'h06,
 	FUNSRAV     = 6'h07,
-	FUNADDI     = 6'h09,               //VERAS
-	FUNANDI     = 6'h14,               //VERAS
-	FUNBEQ      = 6'h15,					  //VERAS
+	FUNADDI     = 6'h09,             //VERAS
+	FUNANDI     = 6'h14,             //VERAS
+	FUNBEQ      = 6'h15,					//VERAS
+	FUNORI      = 6'h16,					//VERAS
+	FUNXORI     = 6'h17,					//VERAS
+	FUNSLTI     = 6'h28,					//VERAS
 	/*Abaixo FUNCT de operacoes em ponto flutuante*/
 	FUNADDS     = 6'h00,
 	FUNSUBS     = 6'h01,

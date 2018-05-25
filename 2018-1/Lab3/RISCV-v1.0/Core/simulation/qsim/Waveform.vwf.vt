@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "05/25/2018 00:44:46"
+// Generated on "05/25/2018 11:14:56"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          ALU
 // 
@@ -180,7 +180,7 @@ end
 // iA[ 7 ]
 initial
 begin
-	iA[7] = 1'b0;
+	iA[7] = 1'b1;
 end 
 // iA[ 6 ]
 initial
@@ -205,7 +205,7 @@ end
 // iA[ 2 ]
 initial
 begin
-	iA[2] = 1'b1;
+	iA[2] = 1'b0;
 end 
 // iA[ 1 ]
 initial
@@ -386,32 +386,32 @@ end
 // iControlSignal[ 5 ]
 initial
 begin
-	iControlSignal[5] = 1'b0;
+	iControlSignal[5] = 1'b1;
 end 
 // iControlSignal[ 4 ]
 initial
 begin
-	iControlSignal[4] = 1'b1;
+	iControlSignal[4] = 1'b0;
 end 
 // iControlSignal[ 3 ]
 initial
 begin
-	iControlSignal[3] = 1'b1;
+	iControlSignal[3] = 1'b0;
 end 
 // iControlSignal[ 2 ]
 initial
 begin
-	iControlSignal[2] = 1'b1;
+	iControlSignal[2] = 1'b0;
 end 
 // iControlSignal[ 1 ]
 initial
 begin
-	iControlSignal[1] = 1'b1;
+	iControlSignal[1] = 1'b0;
 end 
 // iControlSignal[ 0 ]
 initial
 begin
-	iControlSignal[0] = 1'b0;
+	iControlSignal[0] = 1'b1;
 end 
 
 // iRST

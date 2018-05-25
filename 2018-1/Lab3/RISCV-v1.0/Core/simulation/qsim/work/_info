@@ -7,15 +7,15 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/tvmma/Downloads/RISCV-v1.0/Core/simulation/qsim
+dC:/Users/tvmma/Downloads/RISCV-v1.0/Core/simulation/qsim
 vALU
-Z1 !s110 1527219897
+Z0 !s110 1527257705
 !i10b 1
-!s100 >Iz6P[5=l_o>VAF=Q<YFE3
-IKlGK7e4<UXf5J9=7VC<oV3
-Z2 VDg1SIo80bB@j0V0VzS_@n1
-R0
-w1527219893
+!s100 >d[olIFB_c9Y3Q=I>@HbC0
+ImQ14OT5@7l337IN^Dd2G^0
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim
+w1527257702
 8TopDE.vo
 FTopDE.vo
 L0 31
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1527219894.000000
+!s108 1527257703.000000
 !s107 TopDE.vo|
 !s90 -work|work|TopDE.vo|
 !i113 1
@@ -31,13 +31,13 @@ Z4 o-work work
 Z5 tCvgOpt 0
 n@a@l@u
 vALU_vlg_vec_tst
-R1
-!i10b 1
-!s100 M@@PfHc[cm5CQZIFVaVU91
-IRN_SXS^jZMolYj220B?A=1
-R2
 R0
-w1527219887
+!i10b 1
+!s100 2B?L7<_13@>Tcj__HRVZ20
+I]i;Al6>_6A2=9FW^4UOH=0
+R1
+R2
+w1527257696
 8Waveform.vwf.vt
 FWaveform.vwf.vt
 L0 29
@@ -45,7 +45,7 @@ R3
 r1
 !s85 0
 31
-!s108 1527219897.000000
+!s108 1527257705.000000
 !s107 Waveform.vwf.vt|
 !s90 -work|work|Waveform.vwf.vt|
 !i113 1

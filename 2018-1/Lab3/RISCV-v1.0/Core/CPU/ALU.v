@@ -73,7 +73,14 @@ begin
 		  OPANDI:                              //VERAS
 				oALUresult  = iA & iB;           //VERAS
 		  OPBEQ:											//VERAS
-				oALUresult  = iA - iB;
+				oALUresult  = iA - iB;				//VERAS
+		  OPORI:											//VERAS
+            oALUresult  = iA | iB;				//VERAS
+		  OPXORI:										//VERAS
+				oALUresult  = iA ^ iB;				//VERAS
+		  OPSLTI:										//VERAS
+				oALUresult  = iA < iB;				//VERAS
+			
 
 // para testes e simulacao
         OPMULT:

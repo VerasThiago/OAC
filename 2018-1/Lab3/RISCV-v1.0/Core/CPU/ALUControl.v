@@ -30,59 +30,65 @@ begin
         begin
             case (iFunct)
                 FUNSLL:
-                    oControlSignal  = OPSLL;
+                     oControlSignal  = OPSLL;
                 FUNSRL:
-                    oControlSignal  = OPSRL;
+                     oControlSignal  = OPSRL;
                 FUNSRA:
-                    oControlSignal  = OPSRA;
+                     oControlSignal  = OPSRA;
                 FUNMFHI:
-                    oControlSignal  = OPMFHI;                // 2015/1
+                     oControlSignal  = OPMFHI;                // 2015/1
                 FUNMTHI:
-                    oControlSignal  = OPMTHI;
+                     oControlSignal  = OPMTHI;
                 FUNMFLO:
-                    oControlSignal  = OPMFLO;                // 2015/1
+                     oControlSignal  = OPMFLO;                // 2015/1
                 FUNMTLO:
-                    oControlSignal  = OPMTLO;
+                     oControlSignal  = OPMTLO;
                 FUNMULT:
-                    oControlSignal  = OPMULT;
+                     oControlSignal  = OPMULT;
                 FUNDIV:
-                    oControlSignal  = OPDIV;
+                     oControlSignal  = OPDIV;
                 FUNMULTU:
-                    oControlSignal  = OPMULTU;
+                     oControlSignal  = OPMULTU;
                 FUNDIVU:
-                    oControlSignal  = OPDIVU;
+                     oControlSignal  = OPDIVU;
                 FUNADD:
-                    oControlSignal  = OPADD;
+                     oControlSignal  = OPADD;
                 FUNADDU:
-                    oControlSignal  = OPADD;
+                     oControlSignal  = OPADD;
                 FUNSUB:
-                    oControlSignal  = OPSUB;
+                     oControlSignal  = OPSUB;
                 FUNSUBU:
-                    oControlSignal  = OPSUB;
+                     oControlSignal  = OPSUB;
                 FUNAND:
-                    oControlSignal  = OPAND;
+                     oControlSignal  = OPAND;
                 FUNOR:
-                    oControlSignal  = OPOR;
+                     oControlSignal  = OPOR;
                 FUNXOR:
-                    oControlSignal  = OPXOR;
+                     oControlSignal  = OPXOR;
                 FUNNOR:
-                    oControlSignal  = OPNOR;
+                     oControlSignal  = OPNOR;
                 FUNSLT:
-                    oControlSignal  = OPSLT;
+                     oControlSignal  = OPSLT;
                 FUNSLTU:
-                    oControlSignal  = OPSLTU;
+                     oControlSignal  = OPSLTU;
                 FUNSRLV:
-                    oControlSignal  = OPSRLV;
+                     oControlSignal  = OPSRLV;
                 FUNSLLV:
-                    oControlSignal  = OPSLLV;
+                     oControlSignal  = OPSLLV;
                 FUNSRAV:
-                    oControlSignal  = OPSRAV;
+                     oControlSignal  = OPSRAV;
 					 FUNADDI:
-						  oControlSignal  = OPADDI;   //VERAS
-					 FUNANDI:								//VERAS
-						  oControlSignal  = OPANDI;	//VERAS
-					 FUNBEQ:									//VERAS
-						  oControlSignal  = OPBEQ;		//VERAS
+						   oControlSignal  = OPADDI;   	//VERAS
+					 FUNANDI:								 	//VERAS
+						   oControlSignal  = OPANDI;	   //VERAS
+					 FUNBEQ:									 	//VERAS
+						   oControlSignal  = OPBEQ;	 	//VERAS
+					 FUNORI:										//VERAS
+							oControlSignal = OPORI;			//VERAS
+					 FUNXORI:									//VERAS
+							oControlSignal = OPXORI;		//VERAS
+					 FUNSLTI:									//VERAS
+							oControlSignal = OPSLTI;		//VERAS
 					 
 							
                 default:
