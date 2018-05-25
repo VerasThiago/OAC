@@ -1,6 +1,6 @@
 # INSTRUÇÕES
 
-[X] ADD      [ ] SUB      [ ] AND
+[ ] ADD      [ ] SUB      [ ] AND
 
 [ ] OR       [ ] XOR      [ ] SLT
 
