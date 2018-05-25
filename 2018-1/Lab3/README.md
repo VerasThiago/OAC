@@ -6,7 +6,7 @@
 
 [X] SLTU     [X] SLL      [X] SRL
 
-[X] SRA      [ ] ADDI     [ ] ANDI
+[X] SRA      [?] ADDI     [?] ANDI
 
 [ ] ORI      [ ] XORI     [ ] SLTI
 
@@ -14,7 +14,7 @@
 
 [ ] SRAI     [ ] AUIPC    [X] LUI
 
-[ ] BEQ      [ ] BNE      [ ] BGE
+[?] BEQ      [ ] BNE      [ ] BGE
 
 [ ] BGEU     [ ] BLT      [ ] JAL
 
