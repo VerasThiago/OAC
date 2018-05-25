@@ -8,7 +8,7 @@
 module ALU (
 	input iCLK, iRST,
 	input signed [31:0] iA, iB,
-	input [5:0] iControlSignal,
+	input [4:0] iControlSignal,
 	input [4:0] iShamt,
 	output oZero, oOverflow,
 	output [31:0] oALUresult
@@ -68,19 +68,6 @@ begin
             oALUresult  = iB >>> iA[4:0];
         OPSRLV:
             oALUresult  = iB >> iA[4:0];
-		  OPADDI:                              //VERAS
-				oALUresult  = iA + iB;           //VERAS
-		  OPANDI:                              //VERAS
-				oALUresult  = iA & iB;           //VERAS
-		  OPBEQ:											//VERAS
-				oALUresult  = iA - iB;				//VERAS
-		  OPORI:											//VERAS
-            oALUresult  = iA | iB;				//VERAS
-		  OPXORI:										//VERAS
-				oALUresult  = iA ^ iB;				//VERAS
-		  OPSLTI:										//VERAS
-				oALUresult  = iA < iB;				//VERAS
-			
 
 // para testes e simulacao
         OPMULT:
