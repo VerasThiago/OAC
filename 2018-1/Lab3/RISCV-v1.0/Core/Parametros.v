@@ -18,7 +18,7 @@ parameter
     OPXOR       = 5'b01010,             //10
     OPSLTU      = 5'b01011,             //11
     OPNOR       = 5'b01100,             //12
-    OPMULT      = 5'b01101,             //13
+    OPMUL       = 5'b01101,             //13
     OPDIV       = 5'b01110,             //14
     OPLUI       = 5'b01111,             //15
     OPSLLV      = 5'b10000,             //16
@@ -33,7 +33,8 @@ parameter
 	 OPMADDU		 = 5'b11001,				 //25 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
 	 OPMSUB		 = 5'b11010,				 //26 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
 	 OPMSUBU		 = 5'b11011,				 //27 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-
+	 OPMULH 		 = 5'b11100, 				 //28
+	
 /* Operacoes da ULA FP */
     OPADDS      = 4'b0001,
     OPSUBS      = 4'b0010,
@@ -52,70 +53,122 @@ parameter
     OPROUNDWS   = 4'b1111,
 
 
-/* Campo FUNCT */
-    FUNSLL      = 6'h00,
-	 FUNMADD		 = 6'h00,					 // Relatorio questao B.9) - Grupo 2 - (2/2016)
-	 FUNMADDU	 = 6'h01,					 // Relatorio questao B.9) - Grupo 2 - (2/2016)
-    FUNSRL      = 6'h02,
-    FUNSRA      = 6'h03,
-	 FUNMSUB		 = 6'h04,					 // Relatorio questao B.9) - Grupo 2 - (2/2016)
-	 FUNMSUBU	 = 6'h05,					 // Relatorio questao B.9) - Grupo 2 - (2/2016)
-    FUNJR       = 6'h08,
-    FUNSYS      = 6'h0C,
-    FUNMFHI     = 6'h10,
-    FUNMTHI     = 6'h11,                // 2015/1
-    FUNMFLO     = 6'h12,
-    FUNMTLO     = 6'h13,                // 2015/1
-    FUNMULT     = 6'h18,
-    FUNMULTU    = 6'h19,
-    FUNDIV      = 6'h1A,
-    FUNDIVU     = 6'h1B,
-    FUNADD      = 6'h20,
-    FUNADDU     = 6'h21,
-    FUNSUB      = 6'h22,
-    FUNSUBU     = 6'h23,
-    FUNAND      = 6'h24,
-    FUNOR       = 6'h25,
-    FUNXOR      = 6'h26,
-    FUNNOR      = 6'h27,
-    FUNSLT      = 6'h2A,
-    FUNSLTU     = 6'h2B,
-    FUNSLLV     = 6'h04,
-    FUNSRLV     = 6'b000110,
-    FUNSRAV     = 6'b000111,
-    /*Abaixo FUNCT de operacoes em ponto flutuante*/
-    FUNADDS     = 6'h00,
-    FUNSUBS     = 6'h01,
-    FUNMULS     = 6'h02,
-    FUNDIVS     = 6'h03,
-    FUNSQRT     = 6'h04,
-    FUNABS      = 6'h05,
-    FUNMOV      = 6'h06,
-    FUNNEG      = 6'h07,
-    FUNCEQ      = 6'h32,
-    FUNCLT      = 6'h3c,
-    FUNCLE      = 6'h3e,
-    FUNCVTSW    = 6'h20,
-    FUNCVTWS    = 6'h24,
-    FUNERET     = 6'h18,                // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
-    FUNROUNDWS  = 6'h0c,
-	 FUNCEILWS   = 6'h0e,
-	 FUNFLOORWS  = 6'h0f,
-
+/* Campo FUNCT3 */
+	 FUN3BEQ		 = 3'h0, 
+	 FUN3BNE 	 = 3'h1, 
+	 FUN3ADDI 	 = 3'h0, 
+	 FUN3SLTI 	 = 3'h2, 
+	 FUN3SLTIU 	 = 3'h3, 
+	 FUN3ANDI 	 = 3'h7, 
+	 FUN3XORI 	 = 3'h4, 
+	 FUN3LW 	 	 = 3'h2, 
+	 FUN3LB 	    = 3'h0, 
+	 FUN3LBU 	 = 3'h4, 
+	 FUN3LH 		 = 3'h1, 
+	 FUN3LHU 	 = 3'h5, 
+	 FUN3SW 		 = 3'h2, 
+	 FUN3SB 	  	 = 3'h0, 
+	 FUN3SH 		 = 3'h1, 
+	 FUN3JALR 	 = 3'h0, 
+	 FUN3ADD 	 = 3'h0,
+	 FUN3SUB 	 = 3'h0,
+	 FUN3AND		 = 3'h7,
+	 FUN3OR 		 = 3'h6,
+	 FUN3XOR 	 = 3'h4,
+	 FUN3SLT 	 = 3'h2, 
+	 FUN3SLTU 	 = 3'h3,
+	 FUN3SLL 	 = 3'h1,
+	 FUN3SRL 	 = 3'h5,
+	 FUN3SRA 	 = 3'h5,
+	 FUN3ORI		 = 3'h6,
+	 FUN3SLLI	 = 3'h1,
+	 FUN3SRLI	 = 3'h5,
+	 FUN3SRAI	 = 3'h5,
+	 FUN3BGE		 = 3'h5,
+	 FUN3BGEU	 = 3'h7,
+	 FUN3BLT		 = 3'h4,
+	 FUN3BLTU	 = 3'h6,
+	 FUN3MUL		 = 3'h0,
+	 FUN3MULH	 = 3'h1,
+	 FUN3MULHU	 =	3'h2,
+	 FUN3MULHSU	 = 3'h3,
+	 FUN3DIV		 = 3'h4,
+	 FUN3DIVU	 = 3'h5,
+	 FUN3REM		 = 3'h6,
+	 FUN3REMU	 = 3'h7,
+	 
+	 
+	 
+/*Campo FUNCT7*/
+	
+    FUN7ADD 		 = 7'h00,
+	 FUN7SUB 		 = 7'h20,
+	 FUN7AND 		 = 7'h00,
+	 FUN7OR	 	    = 7'h00,
+	 FUN7XOR 		 = 7'h00,
+	 FUN7SLT 		 = 7'h00,
+	 FUN7SLTU 		 = 7'h00,
+	 FUN7SLL 		 = 7'h00,
+	 FUN7SRL 	    = 7'h00, 
+	 FUN7SRA 		 = 7'h20,
+	 FUN7SRLI 		 = 7'h00,
+	 FUN7SRAI 	 	 = 7'h20,
+	 FUN7MUL 		 = 7'h01,
+	 FUN7MULH       = 7'h01,
+	
 /* Campo OPCODE */
-    OPCRFMT     = 6'h00,                /* Tipo-R */
-    OPCJMP      = 6'h02,
-    OPCJAL      = 6'h03,
-    OPCBEQ      = 6'h04,
-    OPCBNE      = 6'h05,
-    OPCADDI     = 6'h08,
-    OPCADDIU    = 6'h09,
-    OPCSLTI     = 6'h0A,
-    OPCSLTIU    = 6'h0B,
-    OPCANDI     = 6'h0C,
-    OPCORI      = 6'h0D,
-    OPCXORI     = 6'h0E,
-    OPCLUI      = 6'h0F,
+//	 OPCADD 		 = 7'h33, //1
+//	 OPCSUB 		 = 7'h33, //2
+//	 OPCAND		 = 7'h33, //3
+//	 OPCOR 		 = 7'h33, //4
+//	 OPCXOR 		 = 7'h33, //5
+//	 OPCSLT      = 7'h33, //6
+//	 OPCSLTU     = 7'h33, //7
+//	 OPCSLL      = 7'h33, //8
+//	 OPCSRL      = 7'h33, //9
+//	 OPCSRA      = 7'h33, //10
+//  OPCADDI     = 7'h13, //11
+//  OPCANDI     = 7'h13, //12
+//	 OPCORI  	 = 7'h13, //13
+//	 OPCXORI 	 = 7'h13, //14
+//  OPCSLTI     = 7'h13, //15
+//  OPCSLTIU    = 7'h13, //16
+//	 OPCSLLI 	 = 7'h13, //17
+//	 OPCSRLI 	 = 7'h13, //18
+//	 OPCSRAI 	 = 7'h13, //19
+	 OPCAUIPC  	 = 7'h17, //20
+    OPCLUI      = 7'h37, //21
+//	 OPCBEQ      = 7'h63, //22
+//  OPCBNE      = 7'h63, //23
+//	 OPCBGE		 = 7'h63, //24
+//	 OPCBGEU 	 = 7'h63, //25
+//	 OPCBLT 	 	 = 7'h63, //26
+//	 OPCBLTU 	 = 7'h63, //27
+    OPCJAL      = 7'h6F, //28
+    OPCJALR     = 7'h67, //29
+//  OPCLB       = 7'h03, //30
+//  OPCLBU      = 7'h03, //31
+//  OPCLH       = 7'h03, //32
+//  OPCLHU      = 7'h03, //33
+//	 OPCLW       = 7'h03, //34	 
+    OPCSB       = 7'h23, //35
+    OPCSH       = 7'h23, //36
+	 OPCSW       = 7'h23, //37
+//	 OPCMUL 	  	 = 7'h33, //38
+//	 OPCMULH 	 = 7'h33, //39
+//	 OPCMULHU 	 = 7'h33, //40
+//	 OPCMULHSU 	 = 7'h33, //41
+//	 OPCDIV 	  	 = 7'h33, //42
+//	 OPCDIVU	 	 = 7'h33, //43
+//	 OPCREM 	 	 = 7'h33, //44
+//	 OPCREMU 	 = 7'h33, //45	
+	 OPCRTYPE 	 = 7'h33, //R-type funct 1-10 <-> 38-45
+	 OPCSHIFTIMM = 7'h13, //Imm-type funct 15-19
+	 OPCLOAD 	 = 7'h03, //Load-type funct 30-34
+	 OPCLOGICIMM = 7'h13, //LogicImm-type funct 11-14
+	 OPCBRANCH 	 = 7'h63, //Branch-type funct 22-27
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
     OPCCOP0     = 6'h10,                // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
     OPCFLT      = 6'h11,                /*OPCODE para operacoes da FPU*/
 	 OPCRM	 	 = 6'h1C,   				 // Grupo 2 - (2/2016)
@@ -125,9 +178,9 @@ parameter
     OPCLBU      = 6'h24,
     OPCLH       = 6'h21,
     OPCLHU      = 6'h25,
-    OPCSW       = 6'h2B,
-    OPCSB       = 6'h28,
-    OPCSH       = 6'h29,
+    //OPCSW       = 6'h2B,
+    //OPCSB       = 6'h28,
+    //OPCSH       = 6'h29,
     OPCLWC1     = 6'h31,
     OPCSWC1     = 6'h39,
     OPCDUMMY    = 6'h3F,                // Para o MemStore e MemLoad
