@@ -34,6 +34,7 @@ parameter
 	 OPMSUB		 = 5'b11010,				 //26 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
 	 OPMSUBU		 = 5'b11011,				 //27 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
 	 OPMULH 		 = 5'b11100, 				 //28
+	 OPMULHSU    = 5'b11101,             //29
 	
 /* Operacoes da ULA FP */
     OPADDS      = 4'b0001,

@@ -22,46 +22,124 @@ module ALUControl (
 	
 always @(*)
 begin
-    case (iALUOp)
-        2'b00:
-            oControlSignal = OPADD;
-        2'b01:
-            oControlSignal = OPSUB;
-        2'b10:
-        begin
-            case (iFunct3)
-		        FUN3MUL,
-		        FUN3SUB,
-		    	  FUN3ADD:
-                begin
-                	case (iFunct7)
-                        FUN7MUL:              
-                        	oControlSignal = OPMUL;
-                        FUN7SUB:
-                        	oControlSignal = OPSUB;             
-                        FUN7ADD:
-                        	oControlSignal = OPADD;
-                        default:
-                        	oControlSignal = ZERO;
-                    endcase
-                end
-                FUN3SLL,
-					 FUN3MULH:
-               	begin
-		            case (iFunct7)
-                       	FUN7SLL:
-                       		oControlSignal = OPSLL;
-			            FUN7MULH:
-			            	oControlSignal = OPMULH;
-			            default:
-			            	oControlSignal = ZERO;
-                    endcase
-                end
-            endcase
-        end
-        2'b11:
-        	oControlSignal = ZERO; 
-    endcase
+	case (iALUOp)
+		2'b00:
+		oControlSignal = OPADD;
+		2'b01:
+		oControlSignal = OPSUB;
+		2'b10:
+			begin
+				case (iFunct3)
+					FUN3MUL,
+					FUN3SUB,
+					FUN3ADD:
+						begin
+							case (iFunct7)
+								FUN7MUL:              
+									oControlSignal = OPMUL;
+								FUN7SUB:
+									oControlSignal = OPSUB;             
+								FUN7ADD:
+									oControlSignal = OPADD;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					FUN3SLL,
+					FUN3MULH:
+						begin
+							case (iFunct7)
+								FUN7SLL:
+									oControlSignal = OPSLL;
+								FUN7MULH:
+									oControlSignal = OPMULH;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					SLT,
+					MULHSU:
+						begin
+							case (iFunct7)
+								FUN7SLT:
+									oControlSignal = OPSLT;
+								FUN7MULHSU:
+									oControlSignal = OPMULHSU;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					SLTU,
+					MULHU:
+						begin
+							case (iFunct7)
+								FUN7SLTU:
+									oControlSignal = OPSLTU;
+								MULHU:
+									oControlSignal = OPMULHU;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					XOR,
+					DIV:
+						begin
+							case (iFunct7)
+								FUN7XOR:
+									oControlSignal = OPXOR;
+								DIV:
+									oControlSignal = OPDIV;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					SRL,
+					DIVU,
+					SRA:
+						begin
+							case (iFunct7)
+								FUN7SRL:
+									oControlSignal = OPSRL;
+								DIVU:
+									oControlSignal = OPDIVU;
+								STA:
+									oControlSignal = OPSRA;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					OR,
+					REM:
+						begin
+							case (iFunct7)
+								FUN7OR:
+									oControlSignal = OPOR;
+								REM:
+									oControlSignal = OPREM;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					AND,
+					REMU:
+						begin
+							case (iFunct7)
+								FUN7AND:
+									oControlSignal = OPAND;
+								REMU:
+									oControlSignal = OPREMU;
+								default:
+									oControlSignal = ZERO;
+							endcase
+						end
+					default:
+						oControlSignal = ZERO;
+				endcase
+			end
+		2'b11:
+		
+			oControlSignal = ZERO; 
+	endcase
 end
 
 endmodule
