@@ -29,8 +29,7 @@ assign oOverflow = iControlSignal==OPADD ?
         : iControlSignal==OPSUB ?
             ((iA[31] == 0 && iB[31] == 1 && oALUresult[31]== 1)|| (iA[31] == 1 && iB[31] == 0 && oALUresult[31] == 0))
             : 1'b0;
-
-assign TMP = iA * iB;				
+			
 always @(*)
 begin
 	case (iControlSignal)
@@ -71,7 +70,10 @@ begin
 		OPSRLV:
 			oALUresult  = iB >> iA[4:0];
 		OPMUL:
-			oALUresult  = TMP[31:0];
+			begin
+				TMP = iA * iB;	
+				oALUresult  = TMP[31:0];
+			end
 		OPDIV:
 			oALUresult  = iA / iB;
 		OPDIVU:
@@ -81,66 +83,23 @@ begin
 		OPREMU:
 			oALUresult  = $unsigned(iA) % $unsigned(iB);
 		OPMULH:
-			oALUresult  = TMP[63:32];
+			begin
+				TMP = iA * iB;	
+				oALUresult  = TMP[63:32];
+			end
 		OPMULHSU:
-			oALUresult  = ZERO;
+			begin
+				TMP = iA * $unsigned(iB);	
+				oALUresult  = TMP[63:32];
+			end
 		OPMULHU:
-			oALUresult  = ZERO;
+			begin
+				TMP = $unsigned(iA) * $unsigned(iB);	
+				oALUresult  = TMP[63:32];
+			end
 		default:
 			oALUresult  = ZERO;
 	endcase
-end
-
-always @(posedge iCLK or posedge iRST)
-begin
-    if (iRST)
-    begin
-        {HI,LO}    <= 64'b0;
-    end
-    else
-        case (iControlSignal)
-            OPMULH:
-                {HI,LO} <= iA * iB;
-
-            OPDIV:
-                begin
-                    LO    <= iA / iB;
-                    HI    <= iA % iB;
-                end
-					
-            OPMULTU:
-                {HI,LO}   <= $unsigned(iA) * $unsigned(iB);
-
-            OPDIVU:
-                begin
-                    LO    <= $unsigned(iA) / $unsigned(iB);
-                    HI    <= $unsigned(iA) % $unsigned(iB);
-                end
-
-            // 2015/1
-            OPMTHI:
-                HI <= iA;
-
-            // 2015/1
-            OPMTLO:
-                LO <= iA;
-					 
-				// Relatorio questao B.9) - Grupo 2 - (2/2016)
-				OPMADD:
-					{HI, LO} <= $signed({HI, LO}) + $signed($signed(iA) * $signed(iB));
-				
-				// Relatorio questao B.9) - Grupo 2 - (2/2016)
-				OPMADDU:
-					{HI, LO} <= {HI, LO} + ($unsigned(iA) * $unsigned(iB));
-				
-				// Relatorio questao B.9) - Grupo 2 - (2/2016)
-				OPMSUB:
-					{HI, LO} <= $signed({HI, LO}) - $signed($signed(iA) * $signed(iB));
-				
-				// Relatorio questao B.9) - Grupo 2 - (2/2016)
-				OPMSUBU:
-					{HI, LO} <= {HI, LO} - ($unsigned(iA) * $unsigned(iB));
-        endcase
 end
 
 endmodule

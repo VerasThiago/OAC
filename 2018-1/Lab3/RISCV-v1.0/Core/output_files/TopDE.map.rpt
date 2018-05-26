@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TopDE
-Sat May 26 14:12:49 2018
+Sat May 26 14:36:12 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -49,7 +49,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat May 26 14:12:49 2018       ;
+; Analysis & Synthesis Status     ; Successful - Sat May 26 14:36:12 2018       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; TopDE                                       ;
 ; Top-level Entity Name           ; ALU                                         ;
@@ -453,7 +453,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sat May 26 14:12:03 2018
+    Info: Processing started: Sat May 26 14:35:31 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV -c TopDE
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file topde.v
@@ -480,7 +480,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file memoria
 Info (12021): Found 1 design units, including 1 entities, in source file memoria/memory_interface.v
     Info (12023): Found entity 1: Memory_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/Memory_Interface.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file memoria/memload.v
-    Info (12023): Found entity 1: MemLoad File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/MemLoad.v Line: 4
+    Info (12023): Found entity 1: MemLoad File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/MemLoad.v Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file memoria/datamemory_interface.v
     Info (12023): Found entity 1: DataMemory_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/DataMemory_Interface.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file memoria/codememory_interface.v
@@ -611,16 +611,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file ps2/tec
 Info (12021): Found 1 design units, including 1 entities, in source file ps2/keyboard.v
     Info (12023): Found entity 1: keyboard File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/keyboard.v Line: 1
 Info (12127): Elaborating entity "ALU" for the top level hierarchy
-Warning (10764): Verilog HDL warning at ALU.v(46): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 46
-Warning (10764): Verilog HDL warning at ALU.v(56): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 56
-Warning (10764): Verilog HDL warning at ALU.v(58): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 58
+Warning (10036): Verilog HDL or VHDL warning at ALU.v(17): object "HI" assigned a value but never read File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 17
+Warning (10036): Verilog HDL or VHDL warning at ALU.v(17): object "LO" assigned a value but never read File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 17
+Warning (10764): Verilog HDL warning at ALU.v(45): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 45
+Warning (10764): Verilog HDL warning at ALU.v(55): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 55
+Warning (10764): Verilog HDL warning at ALU.v(57): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 57
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(35): inferring latch(es) for variable "TMP", which holds its previous value in one or more paths through the always construct File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 35
 Info (278001): Inferred 4 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 76
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
-Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 84
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 84
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 84
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "32"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -631,8 +634,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_9nh File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/sign_div_unsign_9nh.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_o2f.tdf
     Info (12023): Found entity 1: alt_u_div_o2f File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/alt_u_div_o2f.tdf Line: 22
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 76
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 76
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "32"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
@@ -644,16 +647,16 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/abs_
     Info (12023): Found entity 1: abs_divider_4dg File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/abs_divider_4dg.tdf Line: 26
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_4p9.tdf
     Info (12023): Found entity 1: lpm_abs_4p9 File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_abs_4p9.tdf Line: 22
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
-Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "32"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_3dm.tdf
     Info (12023): Found entity 1: lpm_divide_3dm File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_3dm.tdf Line: 24
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
-Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "32"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
@@ -688,11 +691,11 @@ Info (21057): Implemented 5764 device resources after synthesis - the final reso
     Info (21059): Implemented 34 output pins
     Info (21061): Implemented 5650 logic cells
     Info (21062): Implemented 3 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 787 megabytes
-    Info: Processing ended: Sat May 26 14:12:49 2018
-    Info: Elapsed time: 00:00:46
-    Info: Total CPU time (on all processors): 00:01:01
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
+    Info: Peak virtual memory: 790 megabytes
+    Info: Processing ended: Sat May 26 14:36:12 2018
+    Info: Elapsed time: 00:00:41
+    Info: Total CPU time (on all processors): 00:01:00
 
 
 +------------------------------------------+
