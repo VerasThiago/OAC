@@ -27,7 +27,7 @@ begin
 		oControlSignal = OPADD;
 		2'b01:
 		oControlSignal = OPSUB;
-		2'b10:
+		2'b10:   // Todas as instruções do tipo R
 			begin
 				case (iFunct3)
 					FUN3MUL,
@@ -136,10 +136,58 @@ begin
 						oControlSignal = ZERO;
 				endcase
 			end
-		2'b11:
-		
-			oControlSignal = ZERO; 
+		2'b11: // Todas instruções do tipo I e SB
+			begin
+				case(iOpcode)
+					OPCSTORE,
+					OPCLOAD:         
+						oControlSignal = OPADD;
+					OPCIMM:
+						begin
+							case(iFunct3)
+								FUN3ADDI:
+									oControlSignal = OPADD;
+								FUN3SLLI:
+									oControlSignal = OPSLL;
+								FUN3SLTI:
+									oControlSignal = OPSLT;
+								FUN3SLTIU:
+									oControlSignal = OPSLTU;
+								FUN3XORI:
+									oControlSignal = OPXOR;
+								FUN3SRLI:
+									oControlSignal = OPSRL;
+								FUN3SRAI:
+									oControlSignal = OPSRA;
+								FUN3ORI:
+									oControlSignal = OPOR;
+								FUN3ANDI:	
+									oControlSignal = OPAND;
+								default:
+									oControlSignal = ZERO;		
+							endcase
+						end
+					OPCLUI:
+						oControlSignal = OPLUI;
+					OPCBRANCH:
+						begin
+							case(iFunct3)
+								FUN3BEQ:
+									oControlSignal = OPSUB;
+								FUN3BNE:
+									oControlSignal = OPBNE;		
+								FUN3BLT:
+									oControlSignal = OPBLT;		
+								FUN3BGE:
+									oControlSignal = OPBGE;
+								FUN3BLTU:
+									oControlSignal = OPBLTU;		
+								FUN3BGEU:
+									oControlSignal = OPBLTU;		
+							endcase
+						end
+				endcase
+			end
 	endcase
 end
-
 endmodule

@@ -25,7 +25,7 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Sat May 26 14:22:20 2018
+    Info: Processing started: Sat May 26 15:57:17 2018
 Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off RISCV -c TopDE --vector_source=C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Waveform.vwf --testbench_file=C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim/Waveform.vwf.vt
 Warning (20013): Ignored 16 assignments for entity "PLL_Main" -- entity does not exist in design
     Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_NAME altera_pll -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
@@ -64,7 +64,7 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Sat May 26 14:22:24 2018
+    Info: Processing started: Sat May 26 15:57:22 2018
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim/ RISCV -c TopDE
 Warning (20013): Ignored 16 assignments for entity "PLL_Main" -- entity does not exist in design
     Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_NAME altera_pll -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
@@ -78,10 +78,10 @@ Warning (20013): Ignored 16 assignments for entity "VgaPll" -- entity does not e
 Warning (20013): Ignored 317 assignments for entity "VgaPll_0002" -- entity does not exist in design
 Info (204019): Generated file TopDE.vo in folder "C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 694 megabytes
-    Info: Processing ended: Sat May 26 14:22:30 2018
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 692 megabytes
+    Info: Processing ended: Sat May 26 15:57:29 2018
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:06
 
 Completed successfully. 
 
@@ -97,86 +97,126 @@ c:/intelfpga_lite/18.0/modelsim_ase/win32aloem//vsim -c -do RISCV.do
 
 Reading C:/intelFPGA_lite/18.0/modelsim_ase/tcl/vsim/pref.tcl
 
-
 # 10.5b
 
 
 # do RISCV.do
+# ** Warning: (vlib-34) Library already exists at "work".
 
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 14:22:36 on May 26,2018
+# Start time: 15:57:30 on May 26,2018
 # vlog -work work TopDE.vo 
-
 # -- Compiling module ALU
 
 # 
 # Top level modules:
 # 	ALU
-# End time: 14:22:38 on May 26,2018, Elapsed time: 0:00:02
+# End time: 15:57:32 on May 26,2018, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0
-
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 14:22:38 on May 26,2018
+# Start time: 15:57:32 on May 26,2018
 # vlog -work work Waveform.vwf.vt 
 
 # -- Compiling module ALU_vlg_vec_tst
+
 # 
 # Top level modules:
 # 	ALU_vlg_vec_tst
-# End time: 14:22:39 on May 26,2018, Elapsed time: 0:00:01
+# End time: 15:57:32 on May 26,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.ALU_vlg_vec_tst 
-# Start time: 14:22:40 on May 26,2018
+# Start time: 15:57:33 on May 26,2018
 # Loading work.ALU_vlg_vec_tst
 # Loading work.ALU
 # Loading cyclonev_ver.cyclonev_io_obuf
 # Loading cyclonev_ver.cyclonev_io_ibuf
 # Loading cyclonev_ver.cyclonev_lcell_comb
 # Loading cyclonev_ver.cyclonev_mac
-# ** Warning: (vsim-3015) TopDE.vo(72913): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(72913): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(72913): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(72913): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(72913): [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(72913): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(10847): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~477  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(10847): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~477  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(10847): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~477  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(10847): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~477  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(10847): [PCDPC] - Port size (14) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~477  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(10847): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~477  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
 # ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
-#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac /inst/ File: nofile
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult1~477 /inst/ File: nofile
 # ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
-#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~mult_llmac /inst/ File: nofile
-# ** Warning: (vsim-3015) TopDE.vo(104969): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~856  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(104969): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~856  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(104969): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~856  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(104969): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~856  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(104969): [PCDPC] - Port size (19) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~856  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(104969): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~856  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult1~477 /inst/ File: nofile
+# ** Warning: (vsim-3015) TopDE.vo(11057): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~136  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11057): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~136  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11057): [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~136  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11057): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~136  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11139): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~818  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11139): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~818  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11139): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~818  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11139): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~818  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11139): [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~818  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(11139): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult1~818  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
 # ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
-#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~856 /inst/ File: nofile
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult1~818 /inst/ File: nofile
 # ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
-#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~856 /inst/ File: nofile
-# ** Warning: (vsim-3015) TopDE.vo(105049): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~515  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(105049): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~515  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(105049): [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~515  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: (vsim-3015) TopDE.vo(105049): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
-#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~515  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
-# ** Warning: Design size of 41435 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult1~818 /inst/ File: nofile
+# ** Warning: (vsim-3015) TopDE.vo(82226): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~874  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82226): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~874  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82226): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~874  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82226): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~874  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82226): [PCDPC] - Port size (19) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~874  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82226): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~874  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~874 /inst/ File: nofile
+
+# ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~874 /inst/ File: nofile
+# ** Warning: (vsim-3015) TopDE.vo(82306): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~533  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82306): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~533  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82306): [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~533  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82306): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~533  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82390): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~12  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82390): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~12  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82390): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~12  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82390): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~12  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82390): [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~12  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) TopDE.vo(82390): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst/i1/\Mult0~12  File: /build/swbuild/SJ/nightly/18.0std/614/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~12 /inst/ File: nofile
+# ** Warning: (vsim-3015) (): [PCDPC] - Port size () does not match connection size () for .
+#    Time: 0 ps  Iteration: 0  Protected: /ALU_vlg_vec_tst/i1/\Mult0~12 /inst/ File: nofile
+# ** Warning: Design size of 42531 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
 # Expect performance to be adversely affected.
-# after#23
+# after#27
 
 # Simulation time: 0 ps
 
@@ -184,8 +224,8 @@ Reading C:/intelFPGA_lite/18.0/modelsim_ase/tcl/vsim/pref.tcl
 
 # ** Note: $finish    : Waveform.vwf.vt(58)
 #    Time: 1 us  Iteration: 0  Instance: /ALU_vlg_vec_tst
-# End time: 14:22:49 on May 26,2018, Elapsed time: 0:00:09
-# Errors: 0, Warnings: 21
+# End time: 15:57:42 on May 26,2018, Elapsed time: 0:00:09
+# Errors: 0, Warnings: 41
 
 Completed successfully. 
 
@@ -197,7 +237,7 @@ Reading C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qs
 
 Processing channel transitions... 
 
-Writing the resulting VWF to C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim/RISCV_20180526142249.sim.vwf
+Writing the resulting VWF to C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim/RISCV_20180526155742.sim.vwf
 
 Finished VCD to VWF conversion.
 

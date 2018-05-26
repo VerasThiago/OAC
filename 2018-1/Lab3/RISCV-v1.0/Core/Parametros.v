@@ -26,18 +26,23 @@ parameter
 	OPSRLV      = 6'b010010,            //18
 	OPMULTU     = 6'b010011,            //19
 	OPDIVU      = 6'b010100,            //20
-	OPMTHI      = 6'b010101,            //21        2015/1
-	OPMTLO      = 6'b010110,            //22        2015/1
-	OPSGT       = 6'b010111,            //23        2016/1
-	OPMADD		= 6'b011000,			 	//24 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-	OPMADDU		= 6'b011001,			 	//25 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-	OPMSUB		= 6'b011010,			 	//26 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-	OPMSUBU		= 6'b011011,			 	//27 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
+	OPMTHI      = 6'b010101,            //21        
+	OPMTLO      = 6'b010110,            //22        
+	OPBGE       = 6'b010111,            //23       
+	OPMADD		= 6'b011000,			 	//24 		 
+	OPMADDU		= 6'b011001,			 	//25 		 
+	OPMSUB		= 6'b011010,			 	//26 		 
+	OPMSUBU		= 6'b011011,			 	//27 		 
 	OPMULH 		= 6'b011100, 			 	//28
 	OPMULHSU    = 6'b011101,            //29
 	OPREM       = 6'b011110,         	//30
 	OPREMU      = 6'b011111,            //31
 	OPMULHU     = 6'b100000,				//32
+	OPBNE       = 6'b100001,				//33
+	OPBLT       = 6'b100010,            //34
+	OPBLTU      = 6'b100011,            //35
+	OPBGEU      = 6'b100100,            //36
+	
 	
 /* Operacoes da ULA FP */
     OPADDS      = 4'b0001,
@@ -147,14 +152,14 @@ parameter
 //	 OPCSLLI 	 = 7'h13, //17
 //	 OPCSRLI 	 = 7'h13, //18
 //	 OPCSRAI 	 = 7'h13, //19
-	 OPCAUIPC  	 = 7'h17, //20
+//	 OPCAUIPC  	 = 7'h17, //20
     OPCLUI      = 7'h37, //21
 //	 OPCBEQ      = 7'h63, //22
 //  OPCBNE      = 7'h63, //23
-//	 OPCBGE		 = 7'h63, //24
-//	 OPCBGEU 	 = 7'h63, //25
-//	 OPCBLT 	 	 = 7'h63, //26
-//	 OPCBLTU 	 = 7'h63, //27
+//	 OPCBLT 	 	 = 7'h63, //24
+//	 OPCBGE		 = 7'h63, //25
+//	 OPCBLTU 	 = 7'h63, //26
+//	 OPCBGEU 	 = 7'h63, //27
     OPCJAL      = 7'h6F, //28
     OPCJALR     = 7'h67, //29
 //  OPCLB       = 7'h03, //30
@@ -162,9 +167,9 @@ parameter
 //  OPCLH       = 7'h03, //32
 //  OPCLHU      = 7'h03, //33
 //	 OPCLW       = 7'h03, //34	 
-    OPCSB       = 7'h23, //35
-    OPCSH       = 7'h23, //36
-	 OPCSW       = 7'h23, //37
+//  OPCSB       = 7'h23, //35
+//  OPCSH       = 7'h23, //36
+//	 OPCSW       = 7'h23, //37
 //	 OPCMUL 	  	 = 7'h33, //38
 //	 OPCMULH 	 = 7'h33, //39
 //	 OPCMULHU 	 = 7'h33, //40
@@ -174,10 +179,11 @@ parameter
 //	 OPCREM 	 	 = 7'h33, //44
 //	 OPCREMU 	 = 7'h33, //45	
 	 OPCRTYPE 	 = 7'h33, //R-type funct 1-10 <-> 38-45
-	 OPCSHIFTIMM = 7'h13, //Imm-type funct 15-19
+	 OPCIMM      = 7'h13, //Imm-type funct 11-19
 	 OPCLOAD 	 = 7'h03, //Load-type funct 30-34
 	 OPCLOGICIMM = 7'h13, //LogicImm-type funct 11-14
 	 OPCBRANCH 	 = 7'h63, //Branch-type funct 22-27
+	 OPCSTORE    = 7'h23, //Store-type funct 35-37
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
     OPCCOP0     = 6'h10,                // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)

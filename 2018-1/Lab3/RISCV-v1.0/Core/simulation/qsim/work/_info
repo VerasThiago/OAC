@@ -9,46 +9,46 @@ z2
 cModel Technology
 Z0 dC:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/simulation/qsim
 vALU
-!s110 1527355358
+Z1 !s110 1527361052
 !i10b 1
-!s100 Um7GKoF]Kkc4=8VSl=S?j2
-Ie7zkzHW_bj3<G53Nk>[B:3
-Z1 VDg1SIo80bB@j0V0VzS_@n1
+!s100 J:^J_g<3QWMMmoc8aI3BD1
+I;CZXc85HURCH_>h`YKMKV3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1527355350
+w1527361048
 8TopDE.vo
 FTopDE.vo
 L0 31
-Z2 OV;L;10.5b;63
+Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1527355356.000000
+!s108 1527361050.000000
 !s107 TopDE.vo|
 !s90 -work|work|TopDE.vo|
 !i113 1
-Z3 o-work work
-Z4 tCvgOpt 0
+Z4 o-work work
+Z5 tCvgOpt 0
 n@a@l@u
 vALU_vlg_vec_tst
-!s110 1527355359
-!i10b 1
-!s100 =1jj<QgGWnA>G:c>KiOFl3
-IMh]FaEW9aI38i89b<h02z1
 R1
+!i10b 1
+!s100 L>F9^QM;RI>ZAG[HK;Lm`1
+IbbX07P=YAQUF9H4`AAT:30
+R2
 R0
-w1527355344
+w1527361042
 8Waveform.vwf.vt
 FWaveform.vwf.vt
 L0 29
-R2
+R3
 r1
 !s85 0
 31
-!s108 1527355358.000000
+!s108 1527361052.000000
 !s107 Waveform.vwf.vt|
 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
-R3
 R4
+R5
 n@a@l@u_vlg_vec_tst
