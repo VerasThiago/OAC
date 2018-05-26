@@ -73,7 +73,7 @@ begin
             oBranch = 1'b1;
             oMemRead = 1'b0;
             oMemtoReg = 1'b0; //0 ou 1
-            oALUop = 2'b10;
+            oALUop = 2'b01;
             oMemWrite = 1'b0;
             oALUsrc = 1'b0;
             oRegWrite = 1'b0;		  
@@ -98,7 +98,28 @@ begin
             oALUsrc = 1'b1;
             oRegWrite = 1'b1;				
 	end
-		  
+ 	begin
+	OPCSW,
+	OPCSH,
+	OPCSB:
+            oBranch = 1'b0;
+            oMemRead = 1'b0;
+            oMemtoReg = 1'b1; //0 ou 1
+            oALUop = 2'b00;
+            oMemWrite = 1'b1;
+            oALUsrc = 1'b1;
+            oRegWrite = 1'b0;				  
+	end
+	begin
+        OPCLUI:
+            oBranch = 1'b0;
+            oMemRead = 1'b0;
+            oMemtoReg = 1'b1;
+            oALUop = 2'b00;
+            oMemWrite = 1'b0;
+            oALUsrc = 1'b1;
+            oRegWrite = 1'b0;		  	  
+	end		  
     endcase
 end
 
