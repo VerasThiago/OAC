@@ -70,7 +70,7 @@ begin
             oALUresult  = iB >> iA[4:0];
 
 // para testes e simulacao
-        OPMULT:
+        OPMUL:
             oALUresult  = LO;
         OPDIV:
             oALUresult  = LO;
@@ -89,7 +89,7 @@ begin
     end
     else
         case (iControlSignal)
-            OPMULT:
+            OPMULH:
                 {HI,LO} <= iA * iB;
 
             OPDIV:
