@@ -5,36 +5,39 @@ parameter
     ZERO        = 32'h0,
 
 /* Operacoes da ULA */
-    OPAND       = 5'b00000,             //0
-    OPOR        = 5'b00001,             //1
-    OPADD       = 5'b00010,             //2
-    OPMFHI      = 5'b00011,             //3
-    OPSLL       = 5'b00100,             //4
-    OPMFLO      = 5'b00101,             //5
-    OPSUB       = 5'b00110,             //6
-    OPSLT       = 5'b00111,             //7
-    OPSRL       = 5'b01000,             //8
-    OPSRA       = 5'b01001,             //9
-    OPXOR       = 5'b01010,             //10
-    OPSLTU      = 5'b01011,             //11
-    OPNOR       = 5'b01100,             //12
-    OPMUL       = 5'b01101,             //13
-    OPDIV       = 5'b01110,             //14
-    OPLUI       = 5'b01111,             //15
-    OPSLLV      = 5'b10000,             //16
-    OPSRAV      = 5'b10001,             //17
-    OPSRLV      = 5'b10010,             //18
-    OPMULTU     = 5'b10011,             //19
-    OPDIVU      = 5'b10100,             //20
-    OPMTHI      = 5'b10101,             //21        2015/1
-    OPMTLO      = 5'b10110,             //22        2015/1
-    OPSGT       = 5'b10111,             //23        2016/1
-	 OPMADD		 = 5'b11000,				 //24 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-	 OPMADDU		 = 5'b11001,				 //25 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-	 OPMSUB		 = 5'b11010,				 //26 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-	 OPMSUBU		 = 5'b11011,				 //27 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
-	 OPMULH 		 = 5'b11100, 				 //28
-	 OPMULHSU    = 5'b11101,             //29
+	OPAND       = 6'b000000,            //0
+	OPOR        = 6'b000001,            //1
+	OPADD       = 6'b000010,            //2
+	OPMFHI      = 6'b000011,            //3
+	OPSLL       = 6'b000100,            //4
+	OPMFLO      = 6'b000101,            //5
+	OPSUB       = 6'b000110,            //6
+	OPSLT       = 6'b000111,            //7
+	OPSRL       = 6'b001000,            //8
+	OPSRA       = 6'b001001,            //9
+	OPXOR       = 6'b001010,            //10
+	OPSLTU      = 6'b001011,            //11
+	OPNOR       = 6'b001100,            //12
+	OPMUL       = 6'b001101,            //13
+	OPDIV       = 6'b001110,            //14
+	OPLUI       = 6'b001111,            //15
+	OPSLLV      = 6'b010000,            //16
+	OPSRAV      = 6'b010001,            //17
+	OPSRLV      = 6'b010010,            //18
+	OPMULTU     = 6'b010011,            //19
+	OPDIVU      = 6'b010100,            //20
+	OPMTHI      = 6'b010101,            //21        2015/1
+	OPMTLO      = 6'b010110,            //22        2015/1
+	OPSGT       = 6'b010111,            //23        2016/1
+	OPMADD		= 6'b011000,			 	//24 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
+	OPMADDU		= 6'b011001,			 	//25 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
+	OPMSUB		= 6'b011010,			 	//26 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
+	OPMSUBU		= 6'b011011,			 	//27 		 Relatorio questao B.9) - Grupo 2 - (2/2016)
+	OPMULH 		= 6'b011100, 			 	//28
+	OPMULHSU    = 6'b011101,            //29
+	OPREM       = 6'b011110,         	//30
+	OPREMU      = 6'b011111,            //31
+	OPMULHU     = 6'b100000,				//32
 	
 /* Operacoes da ULA FP */
     OPADDS      = 4'b0001,
@@ -116,6 +119,13 @@ parameter
 	 FUN7SRAI 	 	 = 7'h20,
 	 FUN7MUL 		 = 7'h01,
 	 FUN7MULH       = 7'h01,
+	 FUN7MULHSU 	 = 7'h01,
+	 FUN7MULHU		 = 7'h01,
+	 FUN7DIV			 = 7'h01,
+	 FUN7DIVU		 = 7'h01,
+	 FUN7REM        = 7'h01,
+	 FUN7REMU       = 7'h01,
+	 
 	
 /* Campo OPCODE */
 //	 OPCADD 		 = 7'h33, //1

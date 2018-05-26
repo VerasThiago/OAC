@@ -8,14 +8,13 @@
 module ALU (
 	input iCLK, iRST,
 	input signed [31:0] iA, iB,
-	input [5:0] iControlSignal,
+	input [4:0] iControlSignal,
 	input [4:0] iShamt,
 	output oZero, oOverflow,
 	output [31:0] oALUresult
 	);
 
 reg [31:0] HI, LO;
-reg [63:0] TMP;
 
 assign oZero = (oALUresult == 32'b0);
 
@@ -30,65 +29,56 @@ assign oOverflow = iControlSignal==OPADD ?
             ((iA[31] == 0 && iB[31] == 1 && oALUresult[31]== 1)|| (iA[31] == 1 && iB[31] == 0 && oALUresult[31] == 0))
             : 1'b0;
 
-assign TMP = iA * iB;				
 always @(*)
 begin
-	case (iControlSignal)
-		OPAND:
-			oALUresult  = iA & iB;
-		OPOR:
-			oALUresult  = iA | iB;
-		OPADD:
-			oALUresult  = iA + iB;
-	//	OPMFHI:
-	//		oALUresult  = HI;
-		OPSLL:
-			oALUresult  = iA << iB;
-	//	OPMFLO:
-	//		oALUresult  = LO;
-		OPSUB:
-			oALUresult  = iA - iB;
-		OPSLT:
-			oALUresult  = iA < iB;
-	//	OPSGT:                          //2016/1 - implementada para as operacoes bgtz e blez
-	//		oALUresult  = iA > iB;
-		OPSRL:
-			oALUresult  = iA >> iB;
-		OPSRA:
-			oALUresult  = iA >>> iB;
-		OPXOR:
-			oALUresult  = iA ^ iB;
-		OPSLTU:
-			oALUresult  = $unsigned(iA) < $unsigned(iB);
-		OPNOR:
-			oALUresult  = ~(iA | iB);
-		OPLUI:
-			oALUresult  = {iB[15:0],16'b0};
-		OPSLLV:
-			oALUresult  = iB << iA[4:0];
-		OPSRAV:
-			oALUresult  = iB >>> iA[4:0];
-		OPSRLV:
-			oALUresult  = iB >> iA[4:0];
-		OPMUL:
-			oALUresult  = TMP[31:0];
-		OPDIV:
-			oALUresult  = iA / iB;
-		OPDIVU:
-			oALUresult  = $unsigned(iA) / $unsigned(iB);
-		OPREM:
-			oALUresult  = iA % iB;
-		OPREMU:
-			oALUresult  = $unsigned(iA) % $unsigned(iB);
-		OPMULH:
-			oALUresult  = TMP[63:32];
-		OPMULHSU:
-			oALUresult  = ZERO;
-		OPMULHU:
-			oALUresult  = ZERO;
-		default:
-			oALUresult  = ZERO;
-	endcase
+    case (iControlSignal)
+        OPAND:
+            oALUresult  = iA & iB;
+        OPOR:
+            oALUresult  = iA | iB;
+        OPADD:
+            oALUresult  = iA + iB;
+        OPMFHI:
+            oALUresult  = HI;
+        OPSLL:
+            oALUresult  = iB << iShamt;
+        OPMFLO:
+            oALUresult  = LO;
+        OPSUB:
+            oALUresult  = iA - iB;
+        OPSLT:
+            oALUresult  = iA < iB;
+        OPSGT:                          //2016/1 - implementada para as operacoes bgtz e blez
+				oALUresult  = iA > iB;
+        OPSRL:
+            oALUresult  = iB >> iShamt;
+        OPSRA:
+            oALUresult  = iB >>> iShamt;
+        OPXOR:
+            oALUresult  = iA ^ iB;
+        OPSLTU:
+            oALUresult  = $unsigned(iA) < $unsigned(iB);
+        OPNOR:
+            oALUresult  = ~(iA | iB);
+        OPLUI:
+            oALUresult  = {iB[15:0],16'b0};
+        OPSLLV:
+            oALUresult  = iB << iA[4:0];
+        OPSRAV:
+            oALUresult  = iB >>> iA[4:0];
+        OPSRLV:
+            oALUresult  = iB >> iA[4:0];
+
+// para testes e simulacao
+        OPMUL:
+            oALUresult  = LO;
+        OPDIV:
+            oALUresult  = LO;
+//
+
+        default:
+            oALUresult  = 32'b0;
+    endcase
 end
 
 always @(posedge iCLK or posedge iRST)

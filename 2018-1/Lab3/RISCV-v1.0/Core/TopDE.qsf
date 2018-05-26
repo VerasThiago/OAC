@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY TopDE
+set_global_assignment -name TOP_LEVEL_ENTITY ALU
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:41:41  APRIL 01, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Lite Edition"
@@ -297,39 +297,17 @@ set_global_assignment -name EDA_OUTPUT_DATA_FORMAT NONE -section_id eda_simulati
 set_global_assignment -name BOARD "DE1-SoC Board"
 set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
 set_global_assignment -name SMART_RECOMPILE ON
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_global_assignment -name VERILOG_FILE TopDE.v
 set_global_assignment -name VERILOG_FILE Parametros.v
 set_global_assignment -name VERILOG_FILE CPU/CPU.v
 set_global_assignment -name VERILOG_FILE CPU/Datapath_UNI.v
-set_global_assignment -name VERILOG_FILE CPU/Datapath_MULTI.v
-set_global_assignment -name VERILOG_FILE CPU/Datapath_PIPEM.v
 set_global_assignment -name VERILOG_FILE CPU/Control_UNI.v
-set_global_assignment -name VERILOG_FILE CPU/Control_MULTI.v
-set_global_assignment -name VERILOG_FILE CPU/Control_PIPEM.v
 set_global_assignment -name VERILOG_FILE CPU/ALU.v
 set_global_assignment -name VERILOG_FILE CPU/ALUControl.v
 set_global_assignment -name VERILOG_FILE CPU/Registers.v
 set_global_assignment -name VERILOG_FILE CPU/HazardUnitM.v
 set_global_assignment -name VERILOG_FILE CPU/ForwardUnitM.v
-set_global_assignment -name VERILOG_FILE CPU/Branch_PIPEM.v
-set_global_assignment -name VERILOG_FILE Cop1/FPURegisters.v
-set_global_assignment -name VERILOG_FILE Cop1/FPALUControl.v
-set_global_assignment -name VERILOG_FILE Cop1/ula_fp.v
-set_global_assignment -name VERILOG_FILE Cop1/sqrt_s.v
-set_global_assignment -name VERILOG_FILE Cop1/mul_s.v
-set_global_assignment -name VERILOG_FILE Cop1/div_s.v
-set_global_assignment -name VERILOG_FILE Cop1/cvt_w_s.v
-set_global_assignment -name VERILOG_FILE Cop1/cvt_s_w.v
-set_global_assignment -name VERILOG_FILE Cop1/c_comp.v
-set_global_assignment -name VERILOG_FILE Cop1/add_sub.v
-set_global_assignment -name VERILOG_FILE Cop1/abs_s.v
-set_global_assignment -name VERILOG_FILE Cop1/FlagBank.v
-set_global_assignment -name VERILOG_FILE Cop0/COP0RegistersUNI.v
-set_global_assignment -name VERILOG_FILE Cop0/COP0RegistersMULTI.v
 set_global_assignment -name VERILOG_FILE Memoria/MemStore.v
 set_global_assignment -name VERILOG_FILE Memoria/Memory_Interface.v
 set_global_assignment -name VERILOG_FILE Memoria/MemLoad.v
@@ -397,4 +375,7 @@ set_global_assignment -name VERILOG_FILE Tempo/CLOCK_Interface.v
 set_global_assignment -name VERILOG_FILE Tempo/mono.v
 set_global_assignment -name VERILOG_FILE PS2/TecladoPS2_Interface.v
 set_global_assignment -name VERILOG_FILE PS2/keyboard.v
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

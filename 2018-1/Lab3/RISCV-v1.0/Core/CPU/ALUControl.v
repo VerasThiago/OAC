@@ -17,7 +17,7 @@ module ALUControl (
 	input wire [2:0] iFunct3,
 	input wire [6:0] iFunct7, iOpcode, iRt,   // 1/2016. Adicionado iRt.
 	input wire [1:0] iALUOp,
-	output reg [4:0] oControlSignal
+	output reg [5:0] oControlSignal
 	);
 	
 always @(*)
@@ -57,8 +57,8 @@ begin
 									oControlSignal = ZERO;
 							endcase
 						end
-					SLT,
-					MULHSU:
+					FUN3SLT,
+					FUN3MULHSU:
 						begin
 							case (iFunct7)
 								FUN7SLT:
@@ -69,64 +69,64 @@ begin
 									oControlSignal = ZERO;
 							endcase
 						end
-					SLTU,
-					MULHU:
+					FUN3SLTU,
+					FUN3MULHU:
 						begin
 							case (iFunct7)
 								FUN7SLTU:
 									oControlSignal = OPSLTU;
-								MULHU:
+								FUN7MULHU:
 									oControlSignal = OPMULHU;
 								default:
 									oControlSignal = ZERO;
 							endcase
 						end
-					XOR,
-					DIV:
+					FUN3XOR,
+					FUN3DIV:
 						begin
 							case (iFunct7)
 								FUN7XOR:
 									oControlSignal = OPXOR;
-								DIV:
+								FUN7DIV:
 									oControlSignal = OPDIV;
 								default:
 									oControlSignal = ZERO;
 							endcase
 						end
-					SRL,
-					DIVU,
-					SRA:
+					FUN3SRL,
+					FUN3DIVU,
+					FUN3SRA:
 						begin
 							case (iFunct7)
 								FUN7SRL:
 									oControlSignal = OPSRL;
-								DIVU:
+								FUN7DIVU:
 									oControlSignal = OPDIVU;
-								STA:
+								FUN7SRA:
 									oControlSignal = OPSRA;
 								default:
 									oControlSignal = ZERO;
 							endcase
 						end
-					OR,
-					REM:
+					FUN3OR,
+					FUN3REM:
 						begin
 							case (iFunct7)
 								FUN7OR:
 									oControlSignal = OPOR;
-								REM:
+								FUN7REM:
 									oControlSignal = OPREM;
 								default:
 									oControlSignal = ZERO;
 							endcase
 						end
-					AND,
-					REMU:
+					FUN3AND,
+					FUN3REMU:
 						begin
 							case (iFunct7)
 								FUN7AND:
 									oControlSignal = OPAND;
-								REMU:
+								FUN7REMU:
 									oControlSignal = OPREMU;
 								default:
 									oControlSignal = ZERO;

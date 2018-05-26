@@ -1,0 +1,703 @@
+Analysis & Synthesis report for TopDE
+Sat May 26 14:12:49 2018
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 12. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
+ 14. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+ 18. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat May 26 14:12:49 2018       ;
+; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
+; Revision Name                   ; TopDE                                       ;
+; Top-level Entity Name           ; ALU                                         ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 111                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 3                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; ALU                ; TopDE              ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; On                 ; Off                ;
+; Maximum processors allowed for parallel compilation                             ; All                ;                    ;
+; Verilog Show LMF Mapping Messages                                               ; Off                ;                    ;
+; Verilog Version                                                                 ; SystemVerilog_2005 ; Verilog_2001       ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                              ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                          ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
+; Parametros.v                     ; yes             ; User Verilog HDL File        ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Parametros.v               ;         ;
+; CPU/ALU.v                        ; yes             ; User Verilog HDL File        ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v                  ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/lpm_divide.tdf                 ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/abs_divider.inc                ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/sign_div_unsign.inc            ;         ;
+; aglobal180.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.0/quartus/libraries/megafunctions/aglobal180.inc                 ;         ;
+; db/lpm_divide_65m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_65m.tdf      ;         ;
+; db/sign_div_unsign_9nh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/sign_div_unsign_9nh.tdf ;         ;
+; db/alt_u_div_o2f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/alt_u_div_o2f.tdf       ;         ;
+; db/lpm_divide_rqo.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_rqo.tdf      ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/abs_divider_4dg.tdf     ;         ;
+; db/lpm_abs_4p9.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_abs_4p9.tdf         ;         ;
+; db/lpm_divide_3dm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_3dm.tdf      ;         ;
+; db/lpm_divide_uio.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_uio.tdf      ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimate of Logic utilization (ALMs needed) ; 3010         ;
+;                                             ;              ;
+; Combinational ALUT usage for logic          ; 5650         ;
+;     -- 7 input functions                    ; 56           ;
+;     -- 6 input functions                    ; 313          ;
+;     -- 5 input functions                    ; 2263         ;
+;     -- 4 input functions                    ; 1964         ;
+;     -- <=3 input functions                  ; 1054         ;
+;                                             ;              ;
+; Dedicated logic registers                   ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 111          ;
+;                                             ;              ;
+; Total DSP Blocks                            ; 3            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; iB[31]~input ;
+; Maximum fan-out                             ; 181          ;
+; Total fan-out                               ; 26135        ;
+; Average fan-out                             ; 4.45         ;
++---------------------------------------------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                         ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                  ; Entity Name         ; Library Name ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |ALU                                   ; 5650 (981)          ; 0 (0)                     ; 0                 ; 3          ; 111  ; 0            ; |ALU                                                                                                 ; ALU                 ; work         ;
+;    |lpm_divide:Div0|                   ; 1218 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_rqo:auto_generated|  ; 1218 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div0|lpm_divide_rqo:auto_generated                                                   ; lpm_divide_rqo      ; work         ;
+;          |abs_divider_4dg:divider|     ; 1218 (39)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div0|lpm_divide_rqo:auto_generated|abs_divider_4dg:divider                           ; abs_divider_4dg     ; work         ;
+;             |alt_u_div_o2f:divider|    ; 1115 (1115)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div0|lpm_divide_rqo:auto_generated|abs_divider_4dg:divider|alt_u_div_o2f:divider     ; alt_u_div_o2f       ; work         ;
+;             |lpm_abs_4p9:my_abs_den|   ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div0|lpm_divide_rqo:auto_generated|abs_divider_4dg:divider|lpm_abs_4p9:my_abs_den    ; lpm_abs_4p9         ; work         ;
+;             |lpm_abs_4p9:my_abs_num|   ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div0|lpm_divide_rqo:auto_generated|abs_divider_4dg:divider|lpm_abs_4p9:my_abs_num    ; lpm_abs_4p9         ; work         ;
+;    |lpm_divide:Div1|                   ; 1086 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_3dm:auto_generated|  ; 1086 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div1|lpm_divide_3dm:auto_generated                                                   ; lpm_divide_3dm      ; work         ;
+;          |sign_div_unsign_9nh:divider| ; 1086 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div1|lpm_divide_3dm:auto_generated|sign_div_unsign_9nh:divider                       ; sign_div_unsign_9nh ; work         ;
+;             |alt_u_div_o2f:divider|    ; 1086 (1086)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Div1|lpm_divide_3dm:auto_generated|sign_div_unsign_9nh:divider|alt_u_div_o2f:divider ; alt_u_div_o2f       ; work         ;
+;    |lpm_divide:Mod0|                   ; 1267 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_uio:auto_generated|  ; 1267 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod0|lpm_divide_uio:auto_generated                                                   ; lpm_divide_uio      ; work         ;
+;          |abs_divider_4dg:divider|     ; 1267 (41)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod0|lpm_divide_uio:auto_generated|abs_divider_4dg:divider                           ; abs_divider_4dg     ; work         ;
+;             |alt_u_div_o2f:divider|    ; 1162 (1162)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod0|lpm_divide_uio:auto_generated|abs_divider_4dg:divider|alt_u_div_o2f:divider     ; alt_u_div_o2f       ; work         ;
+;             |lpm_abs_4p9:my_abs_den|   ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod0|lpm_divide_uio:auto_generated|abs_divider_4dg:divider|lpm_abs_4p9:my_abs_den    ; lpm_abs_4p9         ; work         ;
+;             |lpm_abs_4p9:my_abs_num|   ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod0|lpm_divide_uio:auto_generated|abs_divider_4dg:divider|lpm_abs_4p9:my_abs_num    ; lpm_abs_4p9         ; work         ;
+;    |lpm_divide:Mod1|                   ; 1098 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_65m:auto_generated|  ; 1098 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod1|lpm_divide_65m:auto_generated                                                   ; lpm_divide_65m      ; work         ;
+;          |sign_div_unsign_9nh:divider| ; 1098 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod1|lpm_divide_65m:auto_generated|sign_div_unsign_9nh:divider                       ; sign_div_unsign_9nh ; work         ;
+;             |alt_u_div_o2f:divider|    ; 1098 (1098)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|lpm_divide:Mod1|lpm_divide_65m:auto_generated|sign_div_unsign_9nh:divider|alt_u_div_o2f:divider ; alt_u_div_o2f       ; work         ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary    ;
++-----------------------------------+-------------+
+; Statistic                         ; Number Used ;
++-----------------------------------+-------------+
+; Two Independent 18x18             ; 2           ;
+; Sum of two 18x18                  ; 1           ;
+; Total number of DSP blocks        ; 3           ;
+;                                   ;             ;
+; Fixed Point Signed Multiplier     ; 1           ;
+; Fixed Point Unsigned Multiplier   ; 1           ;
+; Fixed Point Mixed Sign Multiplier ; 2           ;
++-----------------------------------+-------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft0            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft0            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft0            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftRight0           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftRight1           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft0            ;
+; 4:1                ; 49 bits   ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; |ALU|ShiftRight1           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft1            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft1            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft1            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftRight3           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftRight2           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |ALU|ShiftLeft1            ;
+; 4:1                ; 49 bits   ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; |ALU|ShiftLeft1            ;
+; 77:1               ; 5 bits    ; 255 LEs       ; 130 LEs              ; 125 LEs                ; No         ; |ALU|Mux27                 ;
+; 79:1               ; 8 bits    ; 416 LEs       ; 224 LEs              ; 192 LEs                ; No         ; |ALU|Mux14                 ;
+; 81:1               ; 2 bits    ; 108 LEs       ; 54 LEs               ; 54 LEs                 ; No         ; |ALU|Mux21                 ;
+; 77:1               ; 3 bits    ; 153 LEs       ; 78 LEs               ; 75 LEs                 ; No         ; |ALU|Mux17                 ;
+; 83:1               ; 3 bits    ; 165 LEs       ; 90 LEs               ; 75 LEs                 ; No         ; |ALU|Mux30                 ;
+; 83:1               ; 2 bits    ; 110 LEs       ; 60 LEs               ; 50 LEs                 ; No         ; |ALU|Mux6                  ;
+; 85:1               ; 3 bits    ; 168 LEs       ; 96 LEs               ; 72 LEs                 ; No         ; |ALU|Mux2                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_65m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_rqo ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_3dm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_uio ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 5650                        ;
+;     arith             ; 2590                        ;
+;         0 data inputs ; 236                         ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 319                         ;
+;         3 data inputs ; 44                          ;
+;         4 data inputs ; 18                          ;
+;         5 data inputs ; 1972                        ;
+;     extend            ; 56                          ;
+;         7 data inputs ; 56                          ;
+;     normal            ; 2936                        ;
+;         2 data inputs ; 153                         ;
+;         3 data inputs ; 245                         ;
+;         4 data inputs ; 1934                        ;
+;         5 data inputs ; 291                         ;
+;         6 data inputs ; 313                         ;
+;     shared            ; 68                          ;
+;         0 data inputs ; 12                          ;
+;         2 data inputs ; 44                          ;
+;         4 data inputs ; 12                          ;
+; arriav_mac            ; 3                           ;
+; boundary_port         ; 111                         ;
+;                       ;                             ;
+; Max LUT depth         ; 102.30                      ;
+; Average LUT depth     ; 85.97                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:18     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+    Info: Processing started: Sat May 26 14:12:03 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISCV -c TopDE
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file topde.v
+    Info (12023): Found entity 1: TopDE File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/TopDE.v Line: 193
+Info (12021): Found 0 design units, including 0 entities, in source file parametros.v
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/cpu.v
+    Info (12023): Found entity 1: CPU File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/CPU.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/datapath_uni.v
+    Info (12023): Found entity 1: Datapath_UNI File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Datapath_UNI.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/control_uni.v
+    Info (12023): Found entity 1: Control_UNI File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Control_UNI.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/alu.v
+    Info (12023): Found entity 1: ALU File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/alucontrol.v
+    Info (12023): Found entity 1: ALUControl File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALUControl.v Line: 16
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/registers.v
+    Info (12023): Found entity 1: Registers File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Registers.v Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/hazardunitm.v
+    Info (12023): Found entity 1: HazardUnitM File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/HazardUnitM.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file cpu/forwardunitm.v
+    Info (12023): Found entity 1: ForwardUnitM File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ForwardUnitM.v Line: 21
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/memstore.v
+    Info (12023): Found entity 1: MemStore File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/MemStore.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/memory_interface.v
+    Info (12023): Found entity 1: Memory_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/Memory_Interface.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/memload.v
+    Info (12023): Found entity 1: MemLoad File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/MemLoad.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/datamemory_interface.v
+    Info (12023): Found entity 1: DataMemory_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/DataMemory_Interface.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/codememory_interface.v
+    Info (12023): Found entity 1: CodeMemory_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/CodeMemory_Interface.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/bootblock.v
+    Info (12023): Found entity 1: BootBlock File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/BootBlock.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/syscodeblock.v
+    Info (12023): Found entity 1: SysCodeBlock File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/SysCodeBlock.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/sysdatablock.v
+    Info (12023): Found entity 1: SysDataBlock File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/SysDataBlock.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/usercodeblock.v
+    Info (12023): Found entity 1: UserCodeBlock File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/UserCodeBlock.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file memoria/userdatablock.v
+    Info (12023): Found entity 1: UserDataBlock File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Memoria/UserDataBlock.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file vga/vgaadapter.v
+    Info (12023): Found entity 1: VgaAdapter File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/VGA/VgaAdapter.v Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file vga/vga_interface.v
+    Info (12023): Found entity 1: VGA_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/VGA/VGA_Interface.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file vga/regdisplay.v
+    Info (12023): Found entity 1: RegDisplay File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/VGA/RegDisplay.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file vga/hexfont.v
+    Info (12023): Found entity 1: HexFont File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/VGA/HexFont.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file vga/memoryvga.v
+    Info (12023): Found entity 1: MemoryVGA File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/VGA/MemoryVGA.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file vga/vgapll.v
+    Info (12023): Found entity 1: VgaPll File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/VGA/VgaPll.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file vga/vgapll/vgapll_0002.v
+    Info (12023): Found entity 1: VgaPll_0002 File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/VGA/VgaPll/VgaPll_0002.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file tempo/reset_delay.v
+    Info (12023): Found entity 1: Reset_Delay File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/reset_delay.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file tempo/oneshot.v
+    Info (12023): Found entity 1: oneshot File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/oneshot.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file tempo/break_interface.v
+    Info (12023): Found entity 1: Break_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/Break_Interface.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file tempo/pll_main.v
+    Info (12023): Found entity 1: PLL_Main File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/PLL_Main.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file tempo/pll_main/pll_main_0002.v
+    Info (12023): Found entity 1: PLL_Main_0002 File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/PLL_Main/PLL_Main_0002.v Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file tempo/break.v
+    Info (12023): Found entity 1: break_lpm_constant_kva File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/break.v Line: 46
+    Info (12023): Found entity 2: break File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/break.v Line: 74
+Info (12021): Found 1 design units, including 1 entities, in source file stopwatch/stopwatch_interface.v
+    Info (12023): Found entity 1: STOPWATCH_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/stopwatch/STOPWATCH_Interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file stopwatch/stopwatch_divider_clk.v
+    Info (12023): Found entity 1: Stopwatch_divider_clk File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/stopwatch/Stopwatch_divider_clk.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/syscallsynthcontrol.sv
+    Info (12023): Found entity 1: SyscallSynthControl File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/SyscallSynthControl.sv Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file sintetizador/synthesizer.sv
+    Info (12023): Found entity 1: SampleSynthesizer File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Synthesizer.sv Line: 3
+    Info (12023): Found entity 2: PolyphonicSynthesizer File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Synthesizer.sv Line: 75
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/synthcontrol.v
+    Info (12023): Found entity 1: SynthControl File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/SynthControl.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/sintetizador_interface.v
+    Info (12023): Found entity 1: Sintetizador_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Sintetizador_Interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/sintetizador.v
+    Info (12023): Found entity 1: Sintetizador File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Sintetizador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/sinetable.v
+    Info (12023): Found entity 1: SineTable File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/SineTable.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/sinecalculator.sv
+    Info (12023): Found entity 1: SineCalculator File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/SineCalculator.sv Line: 3
+Info (12021): Found 2 design units, including 1 entities, in source file sintetizador/oscillator.sv
+    Info (12022): Found design unit 1: OscillatorSine (SystemVerilog) File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Oscillator.sv Line: 40
+    Info (12023): Found entity 1: Oscillator File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Oscillator.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/notetable.v
+    Info (12023): Found entity 1: NoteTable File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/NoteTable.v Line: 39
+Info (12021): Found 2 design units, including 2 entities, in source file sintetizador/note.sv
+    Info (12023): Found entity 1: NoteController File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Note.sv Line: 3
+    Info (12023): Found entity 2: NoteInfoDatabase File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Note.sv Line: 35
+Info (12021): Found 2 design units, including 1 entities, in source file sintetizador/filter.sv
+    Info (12022): Found design unit 1: DigitalFilterSine (SystemVerilog) File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Filter.sv Line: 59
+    Info (12023): Found entity 1: DigitalFilter File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Filter.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file sintetizador/envelope.sv
+    Info (12023): Found entity 1: Envelope File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Envelope.sv Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file sintetizador/channel.sv
+    Info (12023): Found entity 1: ChannelBank File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Channel.sv Line: 3
+    Info (12023): Found entity 2: Mixer File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Sintetizador/Channel.sv Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/tecladops2.v
+    Info (12023): Found entity 1: tecladoPS2 File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/tecladoPS2.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/scan2ascii.v
+    Info (12023): Found entity 1: scan2ascii File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/scan2ascii.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/ps2_controller.v
+    Info (12023): Found entity 1: PS2_Controller File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/PS2_Controller.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/mouseps2_interface.v
+    Info (12023): Found entity 1: MousePS2_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/MousePS2_Interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/mouse_hugo.v
+    Info (12023): Found entity 1: mouse_hugo File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/mouse_hugo.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/keyscan.v
+    Info (12023): Found entity 1: keyscan File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/keyscan.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/altera_up_ps2_data_in.v
+    Info (12023): Found entity 1: Altera_UP_PS2_Data_In File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/Altera_UP_PS2_Data_In.v Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/altera_up_ps2_command_out.v
+    Info (12023): Found entity 1: Altera_UP_PS2_Command_Out File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/Altera_UP_PS2_Command_Out.v Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file lfsr/lfsr_interface.v
+    Info (12023): Found entity 1: lfsr_interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/lfsr/lfsr_interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lfsr/ifsr_word.v
+    Info (12023): Found entity 1: lfsr_word File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/lfsr/ifsr_word.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file irda/irda_transmitter.v
+    Info (12023): Found entity 1: IrDA_transmitter File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/IrDA/IrDA_transmitter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file irda/irda_receiver.v
+    Info (12023): Found entity 1: IrDA_receiver File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/IrDA/IrDA_receiver.v Line: 1
+Info (12021): Found 0 design units, including 0 entities, in source file irda/irda_parameters.v
+Info (12021): Found 1 design units, including 1 entities, in source file irda/irda_interface.v
+    Info (12023): Found entity 1: IrDA_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/IrDA/IrDA_Interface.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file irda/irda_decoder.v
+    Info (12023): Found entity 1: IrDA_decoder File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/IrDA/IrDA_decoder.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file irda/irda_clk.v
+    Info (12023): Found entity 1: IrDA_clk File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/IrDA/IrDA_clk.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file display7/display7_interface.v
+    Info (12023): Found entity 1: Display7_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Display7/Display7_Interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file display7/decoder7.v
+    Info (12023): Found entity 1: Decoder7 File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Display7/decoder7.v Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file audiocodec/i2c_controller.v
+    Info (12023): Found entity 1: I2C_Controller File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/AudioCODEC/I2C_Controller.v Line: 42
+Info (12021): Found 1 design units, including 1 entities, in source file audiocodec/i2c_av_config.v
+    Info (12023): Found entity 1: I2C_AV_Config File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/AudioCODEC/I2C_AV_Config.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file audiocodec/audiocodec_interface.v
+    Info (12023): Found entity 1: AudioCODEC_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/AudioCODEC/AudioCODEC_Interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file audiocodec/audio_converter.v
+    Info (12023): Found entity 1: audio_converter File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/AudioCODEC/audio_converter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file audiocodec/audio_clock.v
+    Info (12023): Found entity 1: audio_clock File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/AudioCODEC/audio_clock.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file tempo/clock_interface.v
+    Info (12023): Found entity 1: CLOCK_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/CLOCK_Interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file tempo/mono.v
+    Info (12023): Found entity 1: mono File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/mono.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/tecladops2_interface.v
+    Info (12023): Found entity 1: TecladoPS2_Interface File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/TecladoPS2_Interface.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ps2/keyboard.v
+    Info (12023): Found entity 1: keyboard File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/PS2/keyboard.v Line: 1
+Info (12127): Elaborating entity "ALU" for the top level hierarchy
+Warning (10764): Verilog HDL warning at ALU.v(46): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 46
+Warning (10764): Verilog HDL warning at ALU.v(56): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 56
+Warning (10764): Verilog HDL warning at ALU.v(58): converting signed shift amount to unsigned File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 58
+Info (278001): Inferred 4 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 76
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 82
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_65m.tdf
+    Info (12023): Found entity 1: lpm_divide_65m File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_65m.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_9nh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_9nh File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/sign_div_unsign_9nh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_o2f.tdf
+    Info (12023): Found entity 1: alt_u_div_o2f File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/alt_u_div_o2f.tdf Line: 22
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 76
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 76
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_rqo.tdf
+    Info (12023): Found entity 1: lpm_divide_rqo File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_rqo.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/abs_divider_4dg.tdf Line: 26
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_4p9.tdf
+    Info (12023): Found entity 1: lpm_abs_4p9 File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_abs_4p9.tdf Line: 22
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 78
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_3dm.tdf
+    Info (12023): Found entity 1: lpm_divide_3dm File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_3dm.tdf Line: 24
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 80
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_uio.tdf
+    Info (12023): Found entity 1: lpm_divide_uio File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/db/lpm_divide_uio.tdf Line: 24
+Info (286030): Timing-Driven Synthesis is running
+Warning (20013): Ignored 16 assignments for entity "PLL_Main" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_NAME altera_pll -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_VERSION 17.1 -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_ENV mwpim -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
+Warning (20013): Ignored 317 assignments for entity "PLL_Main_0002" -- entity does not exist in design
+Warning (20013): Ignored 16 assignments for entity "VgaPll" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_NAME altera_pll -entity VgaPll -sip VGA/VgaPll.sip -library lib_VgaPll was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_VERSION 17.1 -entity VgaPll -sip VGA/VgaPll.sip -library lib_VgaPll was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_ENV mwpim -entity VgaPll -sip VGA/VgaPll.sip -library lib_VgaPll was ignored
+Warning (20013): Ignored 317 assignments for entity "VgaPll_0002" -- entity does not exist in design
+Info (144001): Generated suppressed messages file C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/output_files/TopDE.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 7 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "iCLK" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 9
+    Warning (15610): No output dependent on input pin "iRST" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 9
+    Warning (15610): No output dependent on input pin "iShamt[0]" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 12
+    Warning (15610): No output dependent on input pin "iShamt[1]" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 12
+    Warning (15610): No output dependent on input pin "iShamt[2]" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 12
+    Warning (15610): No output dependent on input pin "iShamt[3]" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 12
+    Warning (15610): No output dependent on input pin "iShamt[4]" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/ALU.v Line: 12
+Info (21057): Implemented 5764 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 77 input pins
+    Info (21059): Implemented 34 output pins
+    Info (21061): Implemented 5650 logic cells
+    Info (21062): Implemented 3 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 787 megabytes
+    Info: Processing ended: Sat May 26 14:12:49 2018
+    Info: Elapsed time: 00:00:46
+    Info: Total CPU time (on all processors): 00:01:01
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/output_files/TopDE.map.smsg.
+
+
