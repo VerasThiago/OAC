@@ -38,8 +38,8 @@ begin
             oALUsrc = 1'b0;
             oRegWrite = 1'b1;
         end
-		  OPCSHIFTIMM:
-		  begin
+	OPCSHIFTIMM:
+	begin
             oBranch = 1'b0;
             oMemRead = 1'b0;
             oMemtoReg = 1'b0;
@@ -47,9 +47,9 @@ begin
             oMemWrite = 1'b0;
             oALUsrc = 1'b1;
             oRegWrite = 1'b1;
-		  end
-		  OPCLOAD:
-		  begin
+	end
+	OPCLOAD:
+  	begin
             oBranch = 1'b0;
             oMemRead = 1'b1;
             oMemtoReg = 1'b1;
@@ -57,9 +57,9 @@ begin
             oMemWrite = 1'b0;
             oALUsrc = 1'b1;
             oRegWrite = 1'b1;
-		  end
-		  begin
-		  OPCLOGICIMM:
+	end
+	begin
+	OPCLOGICIMM:
             oBranch = 1'b0;
             oMemRead = 1'b0;
             oMemtoReg = 1'b1;
@@ -67,9 +67,9 @@ begin
             oMemWrite = 1'b1;
             oALUsrc = 1'b1;
             oRegWrite = 1'b1;
-		  end
-		  begin
-		  OPCBRANCH:
+	end
+	begin
+	OPCBRANCH:
             oBranch = 1'b1;
             oMemRead = 1'b0;
             oMemtoReg = 1'b0; //0 ou 1
@@ -77,9 +77,9 @@ begin
             oMemWrite = 1'b0;
             oALUsrc = 1'b0;
             oRegWrite = 1'b0;		  
-		  end
-		  begin
-		  OPCJAL:
+	end
+	begin
+	OPCJAL:
             oBranch = 1'b1;
             oMemRead = 1'b0;
             oMemtoReg = 1'b0;
@@ -87,9 +87,9 @@ begin
             oMemWrite = 1'b0;
             oALUsrc = 1'b1;
             oRegWrite = 1'b0;
-		  end
-		  begin
-		  OPCJALR:
+	end
+	begin
+	OPCJALR:
             oBranch = 1'b1;
             oMemRead = 1'b0;
             oMemtoReg = 1'b0;
@@ -97,7 +97,7 @@ begin
             oMemWrite = 1'b0;
             oALUsrc = 1'b1;
             oRegWrite = 1'b1;				
-		  end
+	end
 		  
     endcase
 end
