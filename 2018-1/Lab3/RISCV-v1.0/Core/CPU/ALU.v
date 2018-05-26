@@ -71,15 +71,15 @@ begin
 		OPMULHSU:
 			oALUresult  = mulsu[63:32];	
 		OPBNE:
-			oALUresult = ~(iA != iB);
+			oALUresult = iA == iB;// Se iA != iB entao a igualdade é falsa e o oALUresult = 0, com isso o pino do oZero = 1 e assim o pc vai pra branch
 		OPBLT:
-			oALUresult = ~(iA < iB);
+			oALUresult = iA >= iB;// Se iA < iB então essa condição é falsa e o oALUresult = 0, com isso o pino do oZero = 1 e assim o pc vai pra branch
 		OPBGE:			
-			oALUresult = ~(iA >= iB);
+			oALUresult = iA < iB;// Se iA >= iB então essa condição é falsa e o oALUresult = 0, com isso o pino do oZero = 1 e assim o pc vai pra branch
 		OPBLTU:
-			oALUresult = ~($unsigned(iA) < $unsigned(iB));
+			oALUresult = $unsigned(iA) >= $unsigned(iB);  // Mesmo que o OPBLT
 		OPBGEU:
-			oALUresult = ~($unsigned(iA) >= $unsigned(iB));
+			oALUresult = $unsigned(iA) < $unsigned(iB);   // Mesmo que o OPBGEU
 		default:
 			oALUresult  = ZERO;
 	endcase

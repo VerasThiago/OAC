@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "05/26/2018 15:57:21"
+// Generated on "05/26/2018 17:41:27"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          ALU
 // 
@@ -34,10 +34,8 @@ reg [31:0] iB;
 reg iCLK;
 reg [5:0] iControlSignal;
 reg iRST;
-reg [4:0] iShamt;
 // wires                                               
 wire [31:0] oALUresult;
-wire oOverflow;
 wire oZero;
 
 // assign statements (if any)                          
@@ -48,9 +46,7 @@ ALU i1 (
 	.iCLK(iCLK),
 	.iControlSignal(iControlSignal),
 	.iRST(iRST),
-	.iShamt(iShamt),
 	.oALUresult(oALUresult),
-	.oOverflow(oOverflow),
 	.oZero(oZero)
 );
 initial 
@@ -195,12 +191,12 @@ end
 // iA[ 4 ]
 initial
 begin
-	iA[4] = 1'b0;
+	iA[4] = 1'b1;
 end 
 // iA[ 3 ]
 initial
 begin
-	iA[3] = 1'b0;
+	iA[3] = 1'b1;
 end 
 // iA[ 2 ]
 initial
@@ -355,17 +351,17 @@ end
 // iB[ 4 ]
 initial
 begin
-	iB[4] = 1'b0;
+	iB[4] = 1'b1;
 end 
 // iB[ 3 ]
 initial
 begin
-	iB[3] = 1'b0;
+	iB[3] = 1'b1;
 end 
 // iB[ 2 ]
 initial
 begin
-	iB[2] = 1'b0;
+	iB[2] = 1'b1;
 end 
 // iB[ 1 ]
 initial
@@ -375,7 +371,7 @@ end
 // iB[ 0 ]
 initial
 begin
-	iB[0] = 1'b0;
+	iB[0] = 1'b1;
 end 
 
 // iCLK
@@ -418,31 +414,6 @@ end
 initial
 begin
 	iRST = 1'b0;
-end 
-// iShamt[ 4 ]
-initial
-begin
-	iShamt[4] = 1'b0;
-end 
-// iShamt[ 3 ]
-initial
-begin
-	iShamt[3] = 1'b0;
-end 
-// iShamt[ 2 ]
-initial
-begin
-	iShamt[2] = 1'b0;
-end 
-// iShamt[ 1 ]
-initial
-begin
-	iShamt[1] = 1'b0;
-end 
-// iShamt[ 0 ]
-initial
-begin
-	iShamt[0] = 1'b0;
 end 
 endmodule
 
