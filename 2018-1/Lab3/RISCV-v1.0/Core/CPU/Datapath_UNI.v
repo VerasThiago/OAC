@@ -81,7 +81,7 @@ begin
 end
 
 assign wPC4         = wPC + 32'h4;                          /* Calculo PC+4 */
-//assign wBranchPC    = wPC4 + {wExtImm[29:0],{2'b00}};       /* Endereco do Branch */
+//assign wBranchPC    = wPC4 + {wExtImm[29:0],{2'b00}};       /* Endereco do Branch */ //A verificar
 assign wPC          = PC;
 assign wOpcode      = wInstr[6:0]; 
 assign wAddrRs1     = wInstr[19:15];
@@ -98,8 +98,6 @@ assign wDebug   = 32'h00BEBAD0;//005AD1C0//00F1A5C0//0ACEF0DA;
 
 /* Barramento da Memoria de Instrucoes */
 assign    IwReadEnable      = ON;
-assign    IwWriteEnable     = wCodeMemoryWrite;
-assign    IwByteEnable      = wMemEnable;
 assign    IwAddress         = wPC;
 assign    IwWriteData       = ZERO;
 assign    wInstr            = IwReadData;
@@ -140,7 +138,7 @@ ALU ALUunit(
 MemStore MemStore0 (
     .iAlignment(wALUresult[1:0]),
     .iWriteTypeF(STORE_TYPE_DUMMY),
-    .iOpcode(wOpcode),
+//    .iOpcode(wOpcode), //Comentado pois n tem essa funcao no arq memStore.v, mas pode ser util dps
     .iData(wRead2),
     .oData(wMemStore),
     .oException()
@@ -149,7 +147,6 @@ MemStore MemStore0 (
 /* Barramento da memoria de dados */
 assign DwReadEnable     = wCMemRead;
 assign DwWriteEnable    = wCMemWrite;
-assign DwByteEnable     = wMemEnable;
 assign DwWriteData      = wMemDataWrite;
 assign wReadData        = DwReadData;
 assign DwAddress        = wALUresult;
@@ -157,7 +154,7 @@ assign DwAddress        = wALUresult;
 MemLoad MemLoad0 (
     .iAlignment(wALUresult[1:0]),
     .iLoadTypeF(LOAD_TYPE_DUMMY),
-    .iOpcode(wOpcode),
+//    .iOpcode(wOpcode), //Comentado pois n tem essa funcao no arq memLoad.v, mas pode ser util dps
     .iData(wReadData),
     .oData(wMemAccess),
     .oException()
@@ -172,7 +169,7 @@ Control_UNI CtrUNI (
     .oMemRead(wCMemRead),	 
     .oMemtoReg(wCMem2Reg),
     .oALUop(wCALUOp),
-    .oMemWrite(wCMemWrite),
+    .oMemWrite(wCMemWrite) ,
 	 .oALUsrc(wCALUSrc),
     .oRegWrite(wCRegWrite),	 
 	);
