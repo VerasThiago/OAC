@@ -66,23 +66,23 @@ Datapath_UNI Processor (
     .wPC(wPC),
     .woInstr(wInstr),
     .wDebug(wDebug),
-    .wRegDispSelect(wRegDispSelect),
-    .wRegDisp(wRegDisp),
-    .wRegDispCOP0(wRegDispCOP0),
-    .wVGASelect(wVGASelect),
-    .wVGARead(wVGARead),
-`ifdef FPU
-    .wRegDispFPU(wRegDispFPU),
-    .wVGASelectFPU(wVGASelectFPU),
-    .wVGAReadFPU(wVGAReadFPU),
-	 .wFPUFlagBank(flagBank),
-`endif
+//    .wRegDispSelect(wRegDispSelect),
+//    .wRegDisp(wRegDisp),
+//    .wRegDispCOP0(wRegDispCOP0),
+//    .wVGASelect(wVGASelect),
+//    .wVGARead(wVGARead),
+//`ifdef FPU
+//    .wRegDispFPU(wRegDispFPU),
+//    .wVGASelectFPU(wVGASelectFPU),
+//    .wVGAReadFPU(wVGAReadFPU),
+//	 .wFPUFlagBank(flagBank),
+//`endif
     .wCALUOp(ALUOp),
     .wCRegWrite(RegWrite),
-    .wCRegDst(RegDst),
-    .wCOrigALU(OrigALU),
+//    .wCRegDst(RegDst),
+//    .wCOrigALU(OrigALU),
     .wCMem2Reg(Mem2Reg),
-    .wCOrigPC(OrigPC),
+//    .wCOrigPC(OrigPC),
 	 .wBRReadA(wBRReadA),
 	 .wBRReadB(wBRReadB),
 	 .wBRWrite(wBRWrite),
@@ -106,136 +106,136 @@ Datapath_UNI Processor (
 );
  `endif
 
-
-/*************  MULTICICLO **********************************/
-`ifdef MULTICICLO
-// Sinais de controle especi­ficos
-wire [1:0]  ALUOp, ALUSrcA;
-wire [2:0]  ALUSrcB, PCSource;
-wire        IRWrite, IorD, PCWrite, RegDst;
-wire        RegWrite;
-assign wControlSignals  = { DwReadEnable, DwWriteEnable, RegWrite, RegDst, 
-									ALUOp[1:0], ALUSrcA[1:0], ALUSrcB[2:0], IorD, IRWrite, PCWrite, PCSource[2:0]};
-assign IwReadEnable     = 1'b0;
-assign IwWriteEnable    = 1'b0;
-assign IwByteEnable     = 4'b0000;
-assign IwWriteData      = 32'h00000000;
-assign IwAddress        = 32'h00000000;
-
-Datapath_MULTI Processor (
-    .iCLK(iCLK),
-    .iCLK50(iCLK50),
-    .iRST(iRST),
-    .iInitialPC(iInitialPC),
-
-	 // Sinais de monitoramento
-    .oPC(wPC),
-    .oInstr(wInstr),
-    .oDebug(wDebug),
-    .iRegDispSelect(wRegDispSelect),
-    .oRegDisp(wRegDisp),
-    .oRegDispCOP0(wRegDispCOP0),
-    .wVGASelect(wVGASelect),
-    .wVGARead(wVGARead),
-`ifdef FPU
-    .wVGASelectFPU(wVGASelectFPU),
-    .wVGAReadFPU(wVGAReadFPU),
-	 .oFPRegDisp(wRegDispFPU),
-	 .oFPUFlagBank(flagBank),
-`endif
-    .owControlState(wControlState),
-    .oALUOp(ALUOp),
-    .oPCSource(PCSource),
-    .oALUSrcB(ALUSrcB),
-    .oIRWrite(IRWrite),
-    .oIorD(IorD),
-    .oPCWrite(PCWrite),
-    .oALUSrcA(ALUSrcA),
-    .oRegWrite(RegWrite),
-    .oRegDst(RegDst),
-	 .wBRReadA(wBRReadA),
-	 .wBRReadB(wBRReadB),
-	 .wBRWrite(wBRWrite),
-	 .wULA(wULA),
-	 
-    // Barramento
-    .DwWriteEnable(DwWriteEnable), .DwReadEnable(DwReadEnable),
-    .DwByteEnable(DwByteEnable),
-    .DwWriteData(DwWriteData),
-    .DwAddress(DwAddress),
-    .DwReadData(DwReadData),
-
-    .iPendingInterrupt(iPendingInterrupt) // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
-);
-`endif
-
-
-
-
-
-/*************  PIPELINE **********************************/
-`ifdef PIPELINE
-// Sinais de controle especi­ficos
-wire [2:0]  OrigPC;
-wire [1:0]  ALUOp, OrigALU,RegDst;
-wire        RegWrite;
-assign wControlSignals  = {DwReadEnable, DwWriteEnable, RegWrite, ALUOp[1:0], OrigALU[1:0], 
-									RegDst[1:0], OrigPC[2:0]};
-assign wControlState    = 6'b111111;
-assign wRegDispCOP0     = 32'hCACACACA;
-wire        SavePC;
-//wire wLock;
-//assign wLock=1'b0;
-
-Datapath_PIPEM Processor (
-    .iCLK(iCLK),
-    .iCLK50(iCLK50),
-    .iRST(iRST),
-    .iInitialPC(iInitialPC),
-
-	  // Sinais de monitoramento
-    .oPC(wPC),
-    .oInstr(wInstr),
-    .iRegDispSelect(wRegDispSelect),
-    .oRegDisp(wRegDisp),
-    .oDebug(wDebug),
-    .iVGASelect(wVGASelect),
-    .oVGARead(wVGARead),
-`ifdef FPU    // So esperando alguem implementar a FPU no Pipeline
-    .iVGASelectFPU(wVGASelectFPU),
-    .oVGAReadFPU(wVGAReadFPU),
-	 .oFPRegDisp(wRegDispFPU),
-	 .oFPUFlagBank(flagBank),
-`endif
-    .oCALUOp(ALUOp),
-    .oCRegWrite(RegWrite),
-    .oCRegDst(RegDst),
-    .oCOrigALU(OrigALU),
-    .oCSavePC(SavePC),
-    .oCOrigPC(OrigPC),
-	 .wBRReadA(wBRReadA),
-	 .wBRReadB(wBRReadB),
-	 .wBRWrite(wBRWrite),
-	 .wULA(wULA),
-	 
-    // Barramento de dados
-    .DwMemRead(DwReadEnable), .DwMemWrite(DwWriteEnable),
-    .DwByteEnable(DwByteEnable),
-    .DwMemWriteData(DwWriteData),
-    .DwMemReadData(DwReadData),
-    .DwMemAddress(DwAddress),
-	 
-    // Barramento de instrucoes
-    .IwMemRead(IwReadEnable), .IwMemWrite(IwWriteEnable),
-    .IwByteEnable(IwByteEnable),
-    .IwMemWriteData(IwWriteData),
-    .IwMemReadData(IwReadData),
-    .IwMemAddress(IwAddress)
-
-    // Lock
-    //.iSwitchLock(wLock)
-);
-
-`endif
+//
+///*************  MULTICICLO **********************************/
+//`ifdef MULTICICLO
+//// Sinais de controle especi­ficos
+//wire [1:0]  ALUOp, ALUSrcA;
+//wire [2:0]  ALUSrcB, PCSource;
+//wire        IRWrite, IorD, PCWrite, RegDst;
+//wire        RegWrite;
+//assign wControlSignals  = { DwReadEnable, DwWriteEnable, RegWrite, RegDst, 
+//									ALUOp[1:0], ALUSrcA[1:0], ALUSrcB[2:0], IorD, IRWrite, PCWrite, PCSource[2:0]};
+//assign IwReadEnable     = 1'b0;
+//assign IwWriteEnable    = 1'b0;
+//assign IwByteEnable     = 4'b0000;
+//assign IwWriteData      = 32'h00000000;
+//assign IwAddress        = 32'h00000000;
+//
+//Datapath_MULTI Processor (
+//    .iCLK(iCLK),
+//    .iCLK50(iCLK50),
+//    .iRST(iRST),
+//    .iInitialPC(iInitialPC),
+//
+//	 // Sinais de monitoramento
+//    .oPC(wPC),
+//    .oInstr(wInstr),
+//    .oDebug(wDebug),
+//    .iRegDispSelect(wRegDispSelect),
+//    .oRegDisp(wRegDisp),
+//    .oRegDispCOP0(wRegDispCOP0),
+//    .wVGASelect(wVGASelect),
+//    .wVGARead(wVGARead),
+//`ifdef FPU
+//    .wVGASelectFPU(wVGASelectFPU),
+//    .wVGAReadFPU(wVGAReadFPU),
+//	 .oFPRegDisp(wRegDispFPU),
+//	 .oFPUFlagBank(flagBank),
+//`endif
+//    .owControlState(wControlState),
+//    .oALUOp(ALUOp),
+//    .oPCSource(PCSource),
+//    .oALUSrcB(ALUSrcB),
+//    .oIRWrite(IRWrite),
+//    .oIorD(IorD),
+//    .oPCWrite(PCWrite),
+//    .oALUSrcA(ALUSrcA),
+//    .oRegWrite(RegWrite),
+//    .oRegDst(RegDst),
+//	 .wBRReadA(wBRReadA),
+//	 .wBRReadB(wBRReadB),
+//	 .wBRWrite(wBRWrite),
+//	 .wULA(wULA),
+//	 
+//    // Barramento
+//    .DwWriteEnable(DwWriteEnable), .DwReadEnable(DwReadEnable),
+//    .DwByteEnable(DwByteEnable),
+//    .DwWriteData(DwWriteData),
+//    .DwAddress(DwAddress),
+//    .DwReadData(DwReadData),
+//
+//    .iPendingInterrupt(iPendingInterrupt) // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
+//);
+//`endif
+//
+//
+//
+//
+//
+///*************  PIPELINE **********************************/
+//`ifdef PIPELINE
+//// Sinais de controle especi­ficos
+//wire [2:0]  OrigPC;
+//wire [1:0]  ALUOp, OrigALU,RegDst;
+//wire        RegWrite;
+//assign wControlSignals  = {DwReadEnable, DwWriteEnable, RegWrite, ALUOp[1:0], OrigALU[1:0], 
+//									RegDst[1:0], OrigPC[2:0]};
+//assign wControlState    = 6'b111111;
+//assign wRegDispCOP0     = 32'hCACACACA;
+//wire        SavePC;
+////wire wLock;
+////assign wLock=1'b0;
+//
+//Datapath_PIPEM Processor (
+//    .iCLK(iCLK),
+//    .iCLK50(iCLK50),
+//    .iRST(iRST),
+//    .iInitialPC(iInitialPC),
+//
+//	  // Sinais de monitoramento
+//    .oPC(wPC),
+//    .oInstr(wInstr),
+//    .iRegDispSelect(wRegDispSelect),
+//    .oRegDisp(wRegDisp),
+//    .oDebug(wDebug),
+//    .iVGASelect(wVGASelect),
+//    .oVGARead(wVGARead),
+//`ifdef FPU    // So esperando alguem implementar a FPU no Pipeline
+//    .iVGASelectFPU(wVGASelectFPU),
+//    .oVGAReadFPU(wVGAReadFPU),
+//	 .oFPRegDisp(wRegDispFPU),
+//	 .oFPUFlagBank(flagBank),
+//`endif
+//    .oCALUOp(ALUOp),
+//    .oCRegWrite(RegWrite),
+//    .oCRegDst(RegDst),
+//    .oCOrigALU(OrigALU),
+//    .oCSavePC(SavePC),
+//    .oCOrigPC(OrigPC),
+//	 .wBRReadA(wBRReadA),
+//	 .wBRReadB(wBRReadB),
+//	 .wBRWrite(wBRWrite),
+//	 .wULA(wULA),
+//	 
+//    // Barramento de dados
+//    .DwMemRead(DwReadEnable), .DwMemWrite(DwWriteEnable),
+//    .DwByteEnable(DwByteEnable),
+//    .DwMemWriteData(DwWriteData),
+//    .DwMemReadData(DwReadData),
+//    .DwMemAddress(DwAddress),
+//	 
+//    // Barramento de instrucoes
+//    .IwMemRead(IwReadEnable), .IwMemWrite(IwWriteEnable),
+//    .IwByteEnable(IwByteEnable),
+//    .IwMemWriteData(IwWriteData),
+//    .IwMemReadData(IwReadData),
+//    .IwMemAddress(IwAddress)
+//
+//    // Lock
+//    //.iSwitchLock(wLock)
+//);
+//
+//`endif
 
 endmodule
