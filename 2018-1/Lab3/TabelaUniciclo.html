@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Tabela Controle do Uniciclo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="tabelafiles/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tabelafiles/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tabelafiles/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tabelafiles/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tabelafiles/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tabelafiles/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="tabelafiles/css/util.css">
+	<link rel="stylesheet" type="text/css" href="tabelafiles/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver2 m-b-110">
+					<table data-vertable="ver1">
+							<thead>
+							<tr class="row100 head">
+								<th class="column100 column1" data-column="column1"></center></th>
+								<th class="column100 column7" data-column="column7"><center>ALUsrc</center></th>
+								<th class="column100 column4" data-column="column4"><center>MemtoReg</center></th>
+								<th class="column100 column8" data-column="column8"><center>RegWrite</center></th>
+								<th class="column100 column3" data-column="column3"><center>MemRead</center></th>
+								<th class="column100 column6" data-column="column6"><center>MemWrite</center></th>
+								<th class="column100 column2" data-column="column2"><center>Branch</center></th>
+								<th class="column100 column5" data-column="column5"><center>ALUop</center></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">Tipo R</td>
+								<td class="column100 column2" data-column="column2"><center>0</center></td>
+								<td class="column100 column3" data-column="column3"><center>0</center></td>
+								<td class="column100 column4" data-column="column4"><center>1</center></td>
+								<td class="column100 column5" data-column="column5"><center>0</center></td>
+								<td class="column100 column6" data-column="column6"><center>0</center></td>
+								<td class="column100 column7" data-column="column7"><center>0</center></td>
+								<td class="column100 column8" data-column="column8"><center>10</center></td>
+							</tr>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">(LOGIC + ARITIMETIC) IMM</td>
+								<td class="column100 column2" data-column="column2"><center>1</center></td>
+								<td class="column100 column3" data-column="column3"><center>0</center></td>
+								<td class="column100 column4" data-column="column4"><center>1</center></td>
+								<td class="column100 column5" data-column="column5"><center>0</center></td>
+								<td class="column100 column6" data-column="column6"><center>0</center></td>
+								<td class="column100 column7" data-column="column7"><center>0</center></td>
+								<td class="column100 column8" data-column="column8"><center>11</center></td>
+							</tr>
+							
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">OPCLOAD</td>
+								<td class="column100 column2" data-column="column2"><center>1</center></td>
+								<td class="column100 column3" data-column="column3"><center>1</center></td>
+								<td class="column100 column4" data-column="column4"><center>1</center></td>
+								<td class="column100 column5" data-column="column5"><center>1</center></td>
+								<td class="column100 column6" data-column="column6"><center>0</center></td>
+								<td class="column100 column7" data-column="column7"><center>0</center></td>
+								<td class="column100 column8" data-column="column8"><center>00</center></td>
+							</tr>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">OPCBRANCH</td>
+								<td class="column100 column2" data-column="column2"><center>0</center></td>
+								<td class="column100 column3" data-column="column3"><center>X</center></td>
+								<td class="column100 column4" data-column="column4"><center>0</center></td>
+								<td class="column100 column5" data-column="column5"><center>0</center></td>
+								<td class="column100 column6" data-column="column6"><center>0</center></td>
+								<td class="column100 column7" data-column="column7"><center>1</center></td>
+								<td class="column100 column8" data-column="column8"><center>11</center></td>
+							</tr>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">OPCSTORE</td>
+								<td class="column100 column2" data-column="column2"><center>1</center></td>
+								<td class="column100 column3" data-column="column3"><center>X</center></td>
+								<td class="column100 column4" data-column="column4"><center>0</center></td>
+								<td class="column100 column5" data-column="column5"><center>0</center></td>
+								<td class="column100 column6" data-column="column6"><center>1</center></td>
+								<td class="column100 column7" data-column="column7"><center>0</center></td>
+								<td class="column100 column8" data-column="column8"><center>00</center></td>
+							</tr>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">LUI + AUIPC</td>
+								<td class="column100 column2" data-column="column2"><center>1</center></td>
+								<td class="column100 column3" data-column="column3"><center>0</center></td>
+								<td class="column100 column4" data-column="column4"><center>1</center></td>
+								<td class="column100 column5" data-column="column5"><center>0</center></td>
+								<td class="column100 column6" data-column="column6"><center>0</center></td>
+								<td class="column100 column7" data-column="column7"><center>0</center></td>
+								<td class="column100 column8" data-column="column8"><center>11</center></td>
+							</tr>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">JAL</td>
+								<td class="column100 column2" data-column="column2"><center>?</center></td>
+								<td class="column100 column3" data-column="column3"><center>?</center></td>
+								<td class="column100 column4" data-column="column4"><center>?</center></td>
+								<td class="column100 column5" data-column="column5"><center>?</center></td>
+								<td class="column100 column6" data-column="column6"><center>?</center></td>
+								<td class="column100 column7" data-column="column7"><center>?</center></td>
+								<td class="column100 column8" data-column="column8"><center>?</center></td>
+							</tr>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1">JALR</td>
+								<td class="column100 column2" data-column="column2"><center>?</center></td>
+								<td class="column100 column3" data-column="column3"><center>?</center></td>
+								<td class="column100 column4" data-column="column4"><center>?</center></td>
+								<td class="column100 column5" data-column="column5"><center>?</center></td>
+								<td class="column100 column6" data-column="column6"><center>?</center></td>
+								<td class="column100 column7" data-column="column7"><center>?</center></td>
+								<td class="column100 column8" data-column="column8"><center>?</center></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
