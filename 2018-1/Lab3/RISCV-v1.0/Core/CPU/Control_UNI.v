@@ -13,13 +13,13 @@
 
 initial
 begin
-	oBranch = 1'b0;
-	oMemRead = 1'b0;
-	oMemtoReg = 1'b0;
-	oALUop = 2'b0;
-	oMemWrite = 1'b0;
 	oALUsrc = 1'b0;
+	oMemtoReg = 1'b0;
 	oRegWrite = 1'b0;
+	oMemRead = 1'b0;
+	oMemWrite = 1'b0;
+	oBranch = 1'b0;
+	oALUop = 2'b0;
 end
 
 
@@ -28,13 +28,13 @@ begin
 	case(iOp)
         OPCRTYPE:
 	        begin
-	            oBranch = 1'b0;
-	            oMemRead = 1'b0;
-	            oMemtoReg = 1'b0;
-	            oALUop = 2'b10;
-	            oMemWrite = 1'b0;
-	            oALUsrc = 1'b0;
-	            oRegWrite = 1'b1;
+		    	oALUsrc = 1'b0;
+				oMemtoReg = 1'b0;
+				oRegWrite = 1'b1;
+				oMemRead = 1'b0;
+				oMemWrite = 1'b0;
+				oBranch = 1'b0;
+				oALUop = 2'b10;
 	        end
     endcase
 end
