@@ -27,70 +27,24 @@ module Datapath_UNI (
 );
 
 
-/* =============== esquema instrucoes =========*/
-/*
-TIPO R
-wInst[6:0] - opcode
-wInst[11:7] - rd
-wInst[14:12] funct3
-wInst[19:15] - rs1
-wInst[24:20] - rs2
-wInst[31:25] funct7
-
-TIPO I
-wInst[6:0] - opcode
-wInst[11:7] - rd
-wInst[14:12] funct3
-wInst[19:15] - rs1
-wInst[31:20] - imm[11:0]
-
-TIPO S
-wInst[6:0] - opcode
-wInst[11:7] - imm[4:0]
-wInst[14:12] funct3
-wInst[19:15] - rs1
-wInst[24:20] - rs2
-wInst[31:25] - imm[11:5]
-
-TIPO SB
-wInst[6:0] - opcode
-wInst[11:7] - imm[4:1|11]
-wInst[14:12] funct3
-wInst[19:15] - rs1
-wInst[24:20] - rs2
-wInst[31:25] - imm[12|10:5]
-
-TIPO U
-wInst[6:0] - opcode
-wInst[11:7] - rd
-wInst[31:12] imm[31:12]
-
-TIPO UJ
-wInst[6:0] - opcode
-wInst[11:7] - rd
-wInst[31:12] - imm[12|10:1|11|19:12]
-*/
-
-
 /*========== assignments da intrução para os fios ==========*/
 
 wire [6:0] iOpcode;
-wire [9:0] Funct10;
+//wire [9:0] Funct10;
+wire [6:0] iFunct7;
+wire [2:0] iFunct3;
 wire [11:0] iImmTipoI;
 wire [11:0] iImmTipoS;
 wire [11:0] iImmTipoSB;
 wire [19:0] iImmTipoU;
-wire [31:0] oUla;
 
 
 /* =========== fios dos modulos aritmeticos  ================ */
 
-wire [4:0] ctrl_to_ula;		// saída do ALUControl / entrada iControl da ULA
+wire [5:0] ctrl_to_ula;		// saída do ALUControl / entrada iControl da ULA
 wire [31:0] ula_to_mux;		// saída da ULA / entrada do multiplexador de saída
-wire [31:0] iB_to_mux;		// saída do registrador iB/ entrada dado0 do multiplexador da ULA
 wire [31:0] mux_to_ula;		// saida do multiplexador da ULA/ entrada do iB da ULA
 wire [31:0] imm_gen;			// saída do gerador de imediato/ entrada dado1 do multiplexador da ULA
-//wire [31:0] pc;				// program counter
 reg [31:0] mem_out = 32'd0;
 
 
@@ -103,13 +57,13 @@ wire oMemToReg;
 wire oRegWrite;
 wire oMemRead;
 wire oMemWrite;
-wire oBranch;
+wire oBranch; 
+wire oOrigWrite; 		// origem do dado de escrita (saída da ula ou memória / pc + imediato (para auipc))
 wire [1:0] oALUOp;
 
 /* ===== fios da ula/pc/muxes ====== */
 
-
-
+wire [31:0] mux_to_orig; // fio que sai do mux da ula para o mux de seleção da origem do dado de escrita
 
 
 /* ======== entradas do banco de registradores ======= */
@@ -129,16 +83,15 @@ wire [31:0] wiPC;
 wire [31:0] wBranch;
 reg [31:0] PC;
 wire [31:0] wInst;
+wire [31:0] pcImm;
 
 assign wPC4 = PC + 32'h4;
 assign wPC = PC;
 assign wBranch = PC + imm_gen;		// endereco de branch
 
-
-
 assign iOpcode = iInst[6:0];
-assign Funct10[9:3] = iInst[31:25];
-assign Funct10[2:0] = iInst[14:12];
+assign iFunct7 = iInst[31:25];
+assign iFunct3 = iInst[14:12];
 assign iImmTipoI = iInst[31:20];
 assign iImmTipoS[11:5] = iInst[31:25];
 assign iImmTipoS[4:0] = iInst[11:7];
@@ -153,19 +106,21 @@ assign iImmTipoU = iInst[31:12];
 assign iReadRegister1 = iInst[19:15];
 assign iReadRegister2 = iInst[24:20];
 assign iWriteRegister = iInst[11:7];
-
+assign pcImm = PC + {iImmTipoU,12'b0};
 
 // Controle Uniciclo
 
 Control_UNI iControl (
 		.iOp(iOpcode),
+		.oALUop(oALUOp),
 		.oALUsrc(oALUSrc),
 		.oMemtoReg(oMemToReg),
 		.oRegWrite(oRegWrite),
 		.oMemRead(oMemRead),
 		.oMemWrite(oMemWrite),
 		.oBranch(oBranch),
-		.oALUop(oALUOp)
+		.oOrigWrite(oOrigWrite),
+		
 );
 
 
@@ -196,8 +151,9 @@ Registers regs (
 ALUControl aluControlUnit (
 		.iFunct3(iFunct3),
 		.iFunct7(iFunct7),
-		.iALUOp(iALUOp),
-		.ALUCtrl(ctrl_to_ula)
+		.iOpcode(iOpcode),
+		.iALUOp(oALUOp),
+		.oControlSignal(ctrl_to_ula)
 );
 
 
@@ -221,14 +177,23 @@ ALU alu0 (
 	.oALUresult(ula_to_mux)
 );
 
-// Mux2x1(32 bits) - saída da ULA e entrada do BREG (1-saída da ULA/ 2-saída da memória de dados)
+// Mux2x1(32 bits) - saída da ULA e entrada do mux seletor da origem do dado de escrita (0-saída da ULA / 1-saída da memória de dados)
 mux32_2 muxUla (
 	.sel(oMemToReg),
 	.dado0(mem_out),
 	.dado1(ula_to_mux),
-	.saida(mux_to_reg)
+	.saida(mux_to_orig)
 );
 
+
+//Mux2x1(32 bits) - saida do mux da ULA/Mem e entrada nO BREG (0-dado da ULA ou Mem /1-pc + imm (para auipc))
+mux32_2 muxPcOrUla(
+	.sel(oOrigWrite),
+	.dado0(mux_to_orig),
+	.dado1(pcImm),
+	.saida(mux_to_reg)
+
+);
 /* somador do endereco de branch*/
 
 

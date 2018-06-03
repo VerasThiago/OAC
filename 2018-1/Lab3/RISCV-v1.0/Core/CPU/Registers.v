@@ -7,8 +7,13 @@
  * Also allows for two simultaneous data reads, has a write enable signal
  * input, is clocked and has an asynchronous reset signal input.
  */
+ 
+`ifndef PARAM
+	`include "Parametros.v"
+`endif
+ 
 module Registers (
-    input wire iCLK, iCLR, iRegWrite,
+    input iCLK, iCLR, iRegWrite,
     input wire [4:0] iReadRegister1, iReadRegister2, iWriteRegister, iRegDispSelect,
     input wire [31:0] iWriteData,
     output wire [31:0] oReadData1, oReadData2, oRegDisp,
@@ -52,7 +57,7 @@ begin
     end
     else
 	 begin
-		i<=6'bx; // para não dar warning
+		i <= 6'bx; // para não dar warning
 		if(iRegWrite)
 			if (iWriteRegister != 5'b0)
 					registers[iWriteRegister] <= iWriteData;
