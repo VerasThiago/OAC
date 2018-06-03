@@ -4,415 +4,59 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "oZero",
+					"name" : "oALUop[0]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[0]",
+					"name" : "oALUop[1]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[1]",
+					"name" : "oBranch",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[2]",
+					"name" : "oMemRead",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[3]",
+					"name" : "oMemtoReg",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[4]",
+					"name" : "oALUsrc",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[5]",
+					"name" : "oRegWrite",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[6]",
+					"name" : "iOp[0]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[7]",
+					"name" : "iOp[4]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[8]",
+					"name" : "iOp[2]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[9]",
+					"name" : "iOp[5]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[10]",
+					"name" : "iOp[6]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[11]",
+					"name" : "iOp[1]",
 					"strict" : false
 				},
 				{
-					"name" : "oALUresult[12]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[13]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[14]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[15]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[16]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[17]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[18]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[19]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[20]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[21]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[22]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[23]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[24]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[25]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[26]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[27]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[28]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[29]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[30]",
-					"strict" : false
-				},
-				{
-					"name" : "oALUresult[31]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[31]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[31]",
-					"strict" : false
-				},
-				{
-					"name" : "iControlSignal[1]",
-					"strict" : false
-				},
-				{
-					"name" : "iControlSignal[3]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[1]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[0]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[3]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[2]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[5]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[4]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[10]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[9]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[8]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[7]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[6]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[15]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[14]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[13]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[12]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[11]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[20]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[19]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[18]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[17]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[16]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[25]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[24]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[23]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[22]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[21]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[30]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[29]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[28]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[27]",
-					"strict" : false
-				},
-				{
-					"name" : "iB[26]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[15]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[13]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[14]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[12]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[7]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[5]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[6]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[4]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[11]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[9]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[10]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[8]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[3]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[1]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[2]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[0]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[29]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[30]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[28]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[23]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[21]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[22]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[20]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[27]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[25]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[26]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[24]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[19]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[17]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[18]",
-					"strict" : false
-				},
-				{
-					"name" : "iA[16]",
-					"strict" : false
-				},
-				{
-					"name" : "iControlSignal[2]",
-					"strict" : false
-				},
-				{
-					"name" : "iControlSignal[4]",
-					"strict" : false
-				},
-				{
-					"name" : "iControlSignal[0]",
-					"strict" : false
-				},
-				{
-					"name" : "iControlSignal[5]",
+					"name" : "iOp[3]",
 					"strict" : false
 				}
 			]

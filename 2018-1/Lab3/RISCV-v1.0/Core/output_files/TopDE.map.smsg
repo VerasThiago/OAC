@@ -1,7 +1,4 @@
-Warning (10273): Verilog HDL warning at Datapath_UNI.v(369): extended using "x" or "z" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Datapath_UNI.v Line: 369
-Warning (10273): Verilog HDL warning at Datapath_UNI.v(427): extended using "x" or "z" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Datapath_UNI.v Line: 427
-Warning (10273): Verilog HDL warning at Datapath_UNI.v(462): extended using "x" or "z" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Datapath_UNI.v Line: 462
-Warning (10273): Verilog HDL warning at Registers.v(55): extended using "x" or "z" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Registers.v Line: 55
+Warning (10273): Verilog HDL warning at Registers.v(60): extended using "x" or "z" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/CPU/Registers.v Line: 60
 Warning (10273): Verilog HDL warning at Break_Interface.v(27): extended using "x" or "z" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/Break_Interface.v Line: 27
 Warning (10273): Verilog HDL warning at Break_Interface.v(29): extended using "x" or "z" File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/Break_Interface.v Line: 29
 Warning (10463): Verilog HDL Declaration warning at break.v(74): "break" is SystemVerilog-2005 keyword File: C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab3/RISCV-v1.0/Core/Tempo/break.v Line: 74
