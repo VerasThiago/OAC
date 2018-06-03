@@ -1,3 +1,5 @@
+`ifndef PARAM
+`define PARAM
 /* Parametros Gerais*/
 parameter
     ON          = 1'b1,
@@ -152,7 +154,7 @@ parameter
 //	 OPCSLLI 	 = 7'h13, //17
 //	 OPCSRLI 	 = 7'h13, //18
 //	 OPCSRAI 	 = 7'h13, //19
-//	 OPCAUIPC  	 = 7'h17, //20
+	 OPCAUIPC  	 = 7'h17, //20
     OPCLUI      = 7'h37, //21
 //	 OPCBEQ      = 7'h63, //22
 //  OPCBNE      = 7'h63, //23
@@ -184,6 +186,7 @@ parameter
 	 OPCLOGICIMM = 7'h13, //LogicImm-type funct 11-14
 	 OPCBRANCH 	 = 7'h63, //Branch-type funct 22-27
 	 OPCSTORE    = 7'h23, //Store-type funct 35-37
+	 OPCUTYPE    = 7'h17, //auipc & lui
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
     OPCCOP0     = 6'h10,                // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
@@ -396,3 +399,4 @@ parameter
 	  RM				  = 6'd61,
 
 	  ERRO            = 6'd63;  // Estado de Erro
+`endif
