@@ -15,7 +15,7 @@
 
 module ALUControl (
 	input wire [2:0] iFunct3,
-	input wire [6:0] iFunct7, iOpcode, iRt,   // 1/2016. Adicionado iRt.
+	input wire [6:0] iFunct7, iOpcode, /*iRt,*/   // 1/2016. Adicionado iRt.
 	input wire [1:0] iALUOp,
 	output reg [5:0] oControlSignal
 	);
