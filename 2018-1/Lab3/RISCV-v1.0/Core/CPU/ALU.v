@@ -9,7 +9,7 @@ module ALU (
 	input iCLK, iRST,
 	input signed [31:0] iA, iB,
 	input [5:0] iControlSignal,
-	output oZero,
+	output oChangePC,
 	output [31:0] oALUresult
 	);
 
@@ -18,7 +18,7 @@ assign mul = iA*iB;
 assign mulu = $unsigned(iA)*$unsigned(iB);
 assign mulsu= $unsigned(iA)*iB;
 
-assign oZero = (oALUresult == ZERO);
+assign oChangePC = (oALUresult == ZERO);
 
 			
 always @(*)
@@ -44,16 +44,8 @@ begin
 			oALUresult  = iA ^ iB;
 		OPSLTU:
 			oALUresult  = $unsigned(iA) < $unsigned(iB);	
-//		OPNOR:
-//			oALUresult  = ~(iA | iB);
 		OPLUI:
 			oALUresult  = {iB[19:0],12'b0};
-//		OPSLLV:
-//			oALUresult  = iB << iA[4:0];
-//		OPSRAV:
-//			oALUresult  = iB >>> iA[4:0];
-//		OPSRLV:
-//			oALUresult  = iB >> iA[4:0];
 		OPMUL:
 			oALUresult  = mul[31:0];
 		OPDIV:
