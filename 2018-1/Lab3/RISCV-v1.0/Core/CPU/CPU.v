@@ -21,6 +21,7 @@ module CPU (
 	 output wire [31:0] wBRReadB,
 	 output wire [31:0] wBRWrite,
 	 output wire [31:0] wULA,	 
+//	 output wire [31:0] wA,wB,
 	 
     //barramentos de dados
     output wire        DwReadEnable, DwWriteEnable,
@@ -36,6 +37,8 @@ module CPU (
     output wire [31:0] IwAddress,
     //interrupcoes
     input  [7:0]       iPendingInterrupt
+	 
+//	 input [31:0] iInst
 );
 
 
@@ -52,20 +55,33 @@ module CPU (
 wire [2:0]  OrigPC, Mem2Reg;
 wire [1:0]  ALUOp,OrigALU, RegDst;
 wire        RegWrite;
+
+wire [31:0] wA,wB;
+wire [31:0] iInst;
+wire [31:0] oResult;
+wire oZero;
+
 assign wControlSignals  = {DwReadEnable, DwWriteEnable, RegWrite, RegDst[1:0], 
 									ALUOp[1:0], OrigALU[1:0], Mem2Reg[2:0], OrigPC[2:0]};
 assign wControlState    = 6'b0;
 
 Datapath_UNI Processor (
-    .iCLK(iCLK),
-    .iCLK50(iCLK50),
-    .iRST(iRST),
-    .iInitialPC(iInitialPC),
+    .iClk(iCLK),
+//    .iCLK50(iCLK50),
+//    .iRST(iRST),
+//    .iInitialPC(iInitialPC),
+	 .iInst(iInst),
 
 	 // Sinais de monitoramento
-    .wPC(wPC),
-    .woInstr(wInstr),
-    .wDebug(wDebug),
+//    .wInst(wInst),
+//	 .wULA(wULA),
+	 .wA(wA),
+	 .wB(wB),
+	 .oResult(oResult),
+	 .oZero(oZero)
+	 
+	 
+//    .wDebug(wDebug),
 //    .wRegDispSelect(wRegDispSelect),
 //    .wRegDisp(wRegDisp),
 //    .wRegDispCOP0(wRegDispCOP0),
@@ -77,32 +93,31 @@ Datapath_UNI Processor (
 //    .wVGAReadFPU(wVGAReadFPU),
 //	 .wFPUFlagBank(flagBank),
 //`endif
-    .wCALUOp(ALUOp),
-    .wCRegWrite(RegWrite),
+//    .wCALUOp(ALUOp),
+//    .wCRegWrite(RegWrite),
 //    .wCRegDst(RegDst),
 //    .wCOrigALU(OrigALU),
-    .wCMem2Reg(Mem2Reg),
+//    .wCMem2Reg(Mem2Reg),
 //    .wCOrigPC(OrigPC),
-	 .wBRReadA(wBRReadA),
-	 .wBRReadB(wBRReadB),
-	 .wBRWrite(wBRWrite),
-	 .wULA(wULA),
-	 
+//	 .wBRReadA(wBRReadA),
+//	 .wBRReadB(wBRReadB),
+//	 .wBRWrite(wBRWrite),
+
     // Barramento de dados
-    .DwReadEnable(DwReadEnable), .DwWriteEnable(DwWriteEnable),
-    .DwByteEnable(DwByteEnable),
-    .DwWriteData(DwWriteData),
-    .DwReadData(DwReadData),
-    .DwAddress(DwAddress),
+//    .DwReadEnable(DwReadEnable), .DwWriteEnable(DwWriteEnable),
+//    .DwByteEnable(DwByteEnable),
+//    .DwWriteData(DwWriteData),
+//    .DwReadData(DwReadData),
+//    .DwAddress(DwAddress),
 	 
     // Barramento de instrucoes
-    .IwReadEnable(IwReadEnable), .IwWriteEnable(IwWriteEnable),
-    .IwByteEnable(IwByteEnable),
-    .IwWriteData(IwWriteData),
-    .IwReadData(IwReadData),
-    .IwAddress(IwAddress),
+//    .IwReadEnable(IwReadEnable), .IwWriteEnable(IwWriteEnable),
+//    .IwByteEnable(IwByteEnable),
+//    .IwWriteData(IwWriteData),
+//    .IwReadData(IwReadData),
+//    .IwAddress(IwAddress),
 
-    .iPendingInterrupt(iPendingInterrupt)    // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
+//    .iPendingInterrupt(iPendingInterrupt)    // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
 );
  `endif
 

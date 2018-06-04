@@ -7,7 +7,7 @@
     input  wire [6:0]  iOp, iFunct7,
     input  wire [2:0]  iFunct3,
     output wire [1:0]  oALUop,
-    output wire oBranch, oMemRead, oMemtoReg, oMemWrite, oALUsrc, oRegWrite
+    output wire oBranch, oMemRead, oMemtoReg, oMemWrite, oALUsrc, oRegWrite, oOrigWrite
 );
 
 
@@ -20,6 +20,7 @@ begin
 	oMemWrite = 1'b0;
 	oBranch   = 1'b0;
 	oALUop    = 2'b0;
+	oOrigWrite	 = 1'b0;
 end
 
 
@@ -35,6 +36,7 @@ begin
 				oMemWrite = 1'b0;
 				oBranch   = 1'b0;
 				oALUop    = 2'b10;
+				oOrigWrite	 = 1'b0;
 	        end
 	    OPCIMM,
 	    OPCLOGICIMM:
@@ -46,6 +48,8 @@ begin
 				oMemWrite = 1'b0;
 				oBranch   = 1'b0;
 				oALUop    = 2'b11;
+				oOrigWrite	 = 1'b0;
+				
 	    	end
 	    OPCLOAD:
 	    	begin
@@ -56,6 +60,7 @@ begin
 				oMemWrite = 1'b0;
 				oBranch   = 1'b0;
 				oALUop    = 2'b00;
+				oOrigWrite	 = 1'b0;
 	    	end
 	    OPCBRANCH:
 	    	begin
@@ -65,7 +70,8 @@ begin
 				oMemRead  = 1'b0;
 				oMemWrite = 1'b0;
 				oBranch   = 1'b1;
-				oALUop    = 2'b11;	    		
+				oALUop    = 2'b11;	   
+				oOrigWrite	 = 1'b0;			
 	    	end
 	    OPCSTORE:
 	    	begin
@@ -75,7 +81,8 @@ begin
 				oMemRead  = 1'b0;
 				oMemWrite = 1'b0;
 				oBranch   = 1'b1;
-				oALUop    = 2'b11;	    	
+				oALUop    = 2'b11;
+				oOrigWrite	 = 1'b0;
 	    	end
 	    OPCLUI,
 	    OPCAUIPC:
@@ -86,7 +93,8 @@ begin
 				oMemRead  = 1'b0;
 				oMemWrite = 1'b0;
 				oBranch   = 1'b0;
-				oALUop    = 2'b00;	    	
+				oALUop    = 2'b00;	
+				oOrigWrite	 = 1'b1;				
 			end 
     endcase
 end

@@ -6,23 +6,15 @@
 
 module Datapath_UNI (
 	input iClk,
-	input iClr,
+//	input iClr,
 	input [31:0] iInst,
 	output wire [31:0] wA, wB,
 	output reg oZero,
-	output reg [31:0] oResult,
-	output wire [31:0] wPC,
-	output wire [31:0] wReg,
-	output wire [31:0] wUla
-	
-/*	
-//	output reg [6:0] iOpcode,  
-//	output reg [9:0] Funct10,
-//	output reg [11:0] iImmTipoI,
-//	output reg [11:0] iImmTipoS,
-//	output reg [11:0] iImmTipoSB,
-//	output reg [19:0] iImmTipoU,
-*Ja foram declarados nas linhas seguintes como wire, pelo menos foi o que vi.
+	output reg [31:0] oResult
+//	output wire [31:0] wPC,
+//	output wire [31:0] wReg,
+//	output wire [31:0] wUla
+/*Ja foram declarados nas linhas seguintes como wire, pelo menos foi o que vi.
 */
 );
 
