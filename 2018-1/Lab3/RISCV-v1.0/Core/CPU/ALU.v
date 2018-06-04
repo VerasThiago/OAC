@@ -44,16 +44,16 @@ begin
 			oALUresult  = iA ^ iB;
 		OPSLTU:
 			oALUresult  = $unsigned(iA) < $unsigned(iB);	
-		OPNOR:
-			oALUresult  = ~(iA | iB);
+//		OPNOR:
+//			oALUresult  = ~(iA | iB);
 		OPLUI:
 			oALUresult  = {iB[19:0],12'b0};
-		OPSLLV:
-			oALUresult  = iB << iA[4:0];
-		OPSRAV:
-			oALUresult  = iB >>> iA[4:0];
-		OPSRLV:
-			oALUresult  = iB >> iA[4:0];
+//		OPSLLV:
+//			oALUresult  = iB << iA[4:0];
+//		OPSRAV:
+//			oALUresult  = iB >>> iA[4:0];
+//		OPSRLV:
+//			oALUresult  = iB >> iA[4:0];
 		OPMUL:
 			oALUresult  = mul[31:0];
 		OPDIV:
