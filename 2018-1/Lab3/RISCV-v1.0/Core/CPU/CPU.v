@@ -70,7 +70,7 @@ Datapath_UNI Processor (
 //    .iCLK50(iCLK50),
 //    .iRST(iRST),
 //    .iInitialPC(iInitialPC),
-	 .iInst(iInst),
+	 .iInst(wInst),
 
 	 // Sinais de monitoramento
 //    .wInst(wInst),

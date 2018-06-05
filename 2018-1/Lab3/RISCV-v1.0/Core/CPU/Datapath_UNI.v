@@ -34,18 +34,25 @@ wire [19:0] iImmTipoU;
 /* =========== fios dos modulos aritmeticos  ================ */
 
 wire [5:0] ctrl_to_ula;		// saída do ALUControl / entrada iControl da ULA
-wire [31:0] ula_to_mux;		// saída da ULA / entrada do multiplexador de saída
+wire [31:0] oALUresult;		// saída da ULA / entrada do multiplexador de saída
 wire [31:0] mux_to_ula;		// saida do multiplexador da ULA/ entrada do iB da ULA
 wire [31:0] imm_gen;			// saída do gerador de imediato/ entrada dado1 do multiplexador da ULA
 reg [31:0] mem_out = 32'd0;
 
 
+/* =================== fios da memoria ======================*/
+
+wire [31:0] wReadData;
+wire wCMemRead, wCMemWrite;
+wire [31:0] wRead1, wRead2, wMemAccess;
+wire [31:0] wMemStore;
+wire wMemEnableStore;
 
 /*================== fios do controle ================= */
 
 
 wire oALUSrc;
-wire oMemToReg;
+wire [1:0] oMemToReg;
 wire oRegWrite;
 wire oMemRead;
 wire oMemWrite;
@@ -76,7 +83,9 @@ wire [31:0] wBranch;
 reg [31:0] PC;
 wire [31:0] wInst;
 wire [31:0] pcImm;
+wire [31:0] ground;
 
+assign ground = 32'b0;
 assign wPC4 = PC + 32'h4;
 assign wPC = PC;
 assign wBranch = PC + imm_gen;		// endereco de branch
@@ -111,7 +120,6 @@ Control_UNI iControl (
 		.oMemRead(oMemRead),
 		.oMemWrite(oMemWrite),
 		.oBranch(oBranch),
-		.oOrigWrite(oOrigWrite),
 		
 );
 
@@ -133,6 +141,36 @@ Registers regs (
 	.iVGASelect(iVGASelect),
 	.oVGARead(oVGARead)
 );
+
+/* ================ Memoria ====================*/
+
+MemStore MemStore0 (
+    .iAlignment(oALUresult[1:0]),
+    .iWriteTypeF(STORE_TYPE_DUMMY),
+	 .iFunct3(iFunct3),
+    .iData(wRead2),
+    .oData(wMemStore),
+    .oByteEnable(wMemEnableStore),
+    .oException()
+	);
+
+/* Barramento da memoria de dados */
+//assign DwReadEnable     = wCMemRead;
+//assign DwWriteEnable    = wCMemWrite;
+//assign DwByteEnable     = wMemEnable;
+//assign DwWriteData      = wMemDataWrite;
+//assign wReadData        = DwReadData;
+//assign DwAddress        = wALUresult;
+
+MemLoad MemLoad0 (
+    .iAlignment(oALUresult[1:0]),
+    .iLoadTypeF(LOAD_TYPE_DUMMY),
+	 .iFunct3(iFunct3),
+    .iData(wReadData),
+    .oData(wMemAccess),
+    .oException()
+	);
+
 
 
 /*  =============== modulos aritmeticos ======================*/
@@ -166,26 +204,28 @@ ALU alu0 (
 	.iA(iA),
 	.iB(mux_to_ula),
 	.oZero(oZero),
-	.oALUresult(ula_to_mux)
+	.oALUresult(oALUresult)
 );
 
 // Mux2x1(32 bits) - saída da ULA e entrada do mux seletor da origem do dado de escrita (0-saída da ULA / 1-saída da memória de dados)
-mux32_2 muxUla (
+mux32_4 muxWrite (
 	.sel(oMemToReg),
-	.dado0(mem_out),
-	.dado1(ula_to_mux),
+	.dado0(ground),
+	.dado1(pcImm),
+	.dado2(mem_out),
+	.dado3(oALUresult),
 	.saida(mux_to_orig)
 );
 
 
 //Mux2x1(32 bits) - saida do mux da ULA/Mem e entrada nO BREG (0-dado da ULA ou Mem /1-pc + imm (para auipc))
-mux32_2 muxPcOrUla(
-	.sel(oOrigWrite),
-	.dado0(mux_to_orig),
-	.dado1(pcImm),
-	.saida(mux_to_reg)
-
-);
+//mux32_4 muxPcOrUla(
+//	.sel(oOrigWrite),
+//	.dado0(mux_to_orig),
+//	.dado1(pcImm),
+//	.saida(mux_to_reg)
+//
+//);
 /* somador do endereco de branch*/
 
 
