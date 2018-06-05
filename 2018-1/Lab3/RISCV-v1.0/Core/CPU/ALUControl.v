@@ -186,6 +186,8 @@ begin
 									oControlSignal = OPBLTU;		
 							endcase
 						end
+					OPCJAL:
+						oControlSignal = OPJAL;
 				endcase
 			end
 	endcase
