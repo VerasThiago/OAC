@@ -9,7 +9,7 @@ module Datapath_UNI (
 //	input iClr,
 	input [31:0] iInst,
 	output wire [31:0] wA, wB,
-	output reg oZero,
+//	output reg oZero,
 	output reg [31:0] oResult
 //	output wire [31:0] wPC,
 //	output wire [31:0] wReg,
@@ -38,6 +38,10 @@ wire [31:0] oALUresult;		// saída da ULA / entrada do multiplexador de saída
 wire [31:0] mux_to_ula;		// saida do multiplexador da ULA/ entrada do iB da ULA
 wire [31:0] imm_gen;			// saída do gerador de imediato/ entrada dado1 do multiplexador da ULA
 reg [31:0] mem_out = 32'd0;
+wire [31:0] adderPc;
+wire [31:0] wImmGen;			// fios do gerador de imediato
+wire [31:0] wImmPc;
+wire [31:0] wShiftImmPc;
 
 
 /* =================== fios da memoria ======================*/
@@ -57,13 +61,14 @@ wire oRegWrite;
 wire oMemRead;
 wire oMemWrite;
 wire oBranch; 
-wire oOrigWrite; 		// origem do dado de escrita (saída da ula ou memória / pc + imediato (para auipc))
+wire oImmPc; 		// origem do dado de escrita (saída da ula ou memória / pc + imediato (para auipc))
 wire [1:0] oALUOp;
 
 /* ===== fios da ula/pc/muxes ====== */
 
 wire [31:0] mux_to_orig; // fio que sai do mux da ula para o mux de seleção da origem do dado de escrita
-
+wire oChangePc;
+wire iMuxPc;
 
 /* ======== entradas do banco de registradores ======= */
 
@@ -88,7 +93,6 @@ wire [31:0] ground;
 assign ground = 32'b0;
 assign wPC4 = PC + 32'h4;
 assign wPC = PC;
-assign wBranch = PC + imm_gen;		// endereco de branch
 
 assign iOpcode = iInst[6:0];
 assign iFunct7 = iInst[31:25];
@@ -96,26 +100,26 @@ assign iFunct3 = iInst[14:12];
 assign iImmTipoI = iInst[31:20];
 assign iImmTipoS[11:5] = iInst[31:25];
 assign iImmTipoS[4:0] = iInst[11:7];
-//assign iImmTipoSB[12] = iInst[31];
-//assign iImmTipoSB[10:5] = iInst[30:25];
-//assign iImmTipoSB[4:1] = iInst[11:8];
-//assign iImmTipoSB[11] = iInst[7];
 assign iImmTipoU = iInst[31:12];
 
-//assign iA = wA;
-//assign iB = wB;
 assign iReadRegister1 = iInst[19:15];
 assign iReadRegister2 = iInst[24:20];
 assign iWriteRegister = iInst[11:7];
 assign pcImm = PC + {iImmTipoU,12'b0};
+
+assign iMuxPc = oBranch & oChangePc;
+assign wShiftImmPc = wImmPc << 1;
+assign adderPc = wPC + wShiftImmPc; //saida do somador / entrada do mux
 
 // Controle Uniciclo
 
 Control_UNI iControl (
 		.iOp(iOpcode),
 		.oALUop(oALUOp),
+		.iFunct7(iFunct7),
+		.iFunct3(iFunct3),
 		.oALUsrc(oALUSrc),
-		.oMemtoReg(oMemToReg),
+		.oOrigWrite(oMemToReg),
 		.oRegWrite(oRegWrite),
 		.oMemRead(oMemRead),
 		.oMemWrite(oMemWrite),
@@ -175,6 +179,12 @@ MemLoad MemLoad0 (
 
 /*  =============== modulos aritmeticos ======================*/
 
+ImmGen immgen (
+	.Instruction(iInst),
+	.oImm(wImmGen)
+);
+
+
 
 // ALU Control
 
@@ -192,7 +202,7 @@ ALUControl aluControlUnit (
 mux32_2 muxReg(	
 	.sel(oALUSrc),
 	.dado0(iB),
-	.dado1(iImmTipoI),
+	.dado1(wImmGen),
 	.saida(mux_to_ula)
 );
 
@@ -203,7 +213,7 @@ ALU alu0 (
 	.iControlSignal(ctrl_to_ula),
 	.iA(iA),
 	.iB(mux_to_ula),
-	.oZero(oZero),
+	.oChangePC(oChangePc),
 	.oALUresult(oALUresult)
 );
 
@@ -229,20 +239,24 @@ mux32_4 muxWrite (
 /* somador do endereco de branch*/
 
 
-//mux32_2 muxPc (
-//	.sel(oBranch),
-//	.dado0(wPC4),
-//	.dado1(wBranch),
-//	.saida(wPC)
-//);
+mux32_2 muxBranch (
+	.sel(iMuxPc),
+	.dado0(wPC4),
+	.dado1(wImmPc),
+	.saida(wPc)
+);
+
+mux32_2 muxPcAdder(
+	.sel(oImmPc),
+	.dado0(mux_to_orig),
+	.dado1(wImmGen),
+	.saida(wImmPc)
+);
+
+
 always @(posedge iClk)
 	begin
-		PC <= wPC4;
+		PC <= wPc;		// saida do mux é carregada no pc a cada subida de clock
 	end
-	
-//always @(*)
-//	begin
-//		wUla <= mux_to_out;
-//	end
-		
+
 endmodule
