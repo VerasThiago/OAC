@@ -1,0 +1,65 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oALUop[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oALUop[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oBranch",
+					"strict" : false
+				},
+				{
+					"name" : "oMemRead",
+					"strict" : false
+				},
+				{
+					"name" : "oMemtoReg",
+					"strict" : false
+				},
+				{
+					"name" : "oALUsrc",
+					"strict" : false
+				},
+				{
+					"name" : "oRegWrite",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[0]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[4]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[5]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[6]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[3]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,28 @@
+|Control_UNI
+iOp[0] => Decoder0.IN6
+iOp[1] => Decoder0.IN5
+iOp[2] => Decoder0.IN4
+iOp[3] => Decoder0.IN3
+iOp[4] => Decoder0.IN2
+iOp[5] => Decoder0.IN1
+iOp[6] => Decoder0.IN0
+iFunct7[0] => ~NO_FANOUT~
+iFunct7[1] => ~NO_FANOUT~
+iFunct7[2] => ~NO_FANOUT~
+iFunct7[3] => ~NO_FANOUT~
+iFunct7[4] => ~NO_FANOUT~
+iFunct7[5] => ~NO_FANOUT~
+iFunct7[6] => ~NO_FANOUT~
+iFunct3[0] => ~NO_FANOUT~
+iFunct3[1] => ~NO_FANOUT~
+iFunct3[2] => ~NO_FANOUT~
+oALUop[0] <= oALUop[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+oALUop[1] <= oALUop[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+oBranch <= oBranch$latch.DB_MAX_OUTPUT_PORT_TYPE
+oMemRead <= oMemRead$latch.DB_MAX_OUTPUT_PORT_TYPE
+oMemtoReg <= oMemtoReg$latch.DB_MAX_OUTPUT_PORT_TYPE
+oMemWrite <= <GND>
+oALUsrc <= oALUsrc$latch.DB_MAX_OUTPUT_PORT_TYPE
+oRegWrite <= oRegWrite$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+

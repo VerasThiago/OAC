@@ -2,6 +2,11 @@
 
 OVER: .string "Deu Overflow!\n"
 endl: .string "\n"
+um: .float 1
+dois: .float 2
+tres: .float 6
+quatro: .float 12
+cinco: .float 60
 
 .text
 
@@ -15,60 +20,46 @@ ecall
 .end_macro 
 
 MAIN: 
-
-	li a7, 5
-	ecall
-	add a1, a0, zero
-	
-	li a7, 5
-	ecall
-	add a2, a0, zero
-
-	jal addo
-	j fim
-
-
-addo:
-	addi sp, sp, -12
-	sw a1, 0(sp)
-	sw a2, 4(sp)
-	sw a3, 8(sp)
-
-	add a3, a1, a2
-	xor a1, a1, a2
-	srli a1, a1, 31
-	bne a1, zero, ok
-	srli a1, a3, 31
-	srli a2, a2, 31
-	bne a1,a2, OVERFLOW
-	
-ok :
-	
-	addi t0, a3, 0
-	addi a0, t0, 0
-	
-	lw a1, 0(sp)
-	lw a2, 4(sp)
-	lw a3, 8(sp)
-	addi sp, sp, 12
-	
-	li a7,1
-	ecall
-	jalr zero, ra, 0
-
-fim:
-	li a7,10
+	li a7, 6
 	ecall
 	
-	
-OVERFLOW: 
-	la a0, OVER
-	li a7, 4
+	fcvt.s.w ft0, zero
+	fadd.s f12, ft0, fa0 # P	
+
 	ecall
-	j ok
-
+	fadd.s f13, ft0, fa0 # Teta
 	
+	jal CONVERSAO
 
+		
+				
+						
+FIM:
+	li a7, 10
+	ecall
+									
+CONVERSAO:
+																				
+	# FT1 = seno(o)
+	# FT2 = cons(o)
+	addi sp, sp, -4 
+	sw ra, 0(sp)
+	jal SENO
+	jal COS
+	lw ra, 0(sp)
+	addi sp, sp, 4
+																								
+														
+SENO:
+	
+																
+																																																
+																		
+																				
+																						
+																								
+																												
+	
  # Testar com :
  # 2147483647 + 0
  # 2147483647 + 1
