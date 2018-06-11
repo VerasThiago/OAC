@@ -350,60 +350,9 @@ parameter
 /* STATES ************************************************************************************************************/
     FETCH           = 6'd0,
     DECODE          = 6'd1,
-    LWSW            = 6'd2,
-    LW              = 6'd3,
-    LW2             = 6'd4,
-    SW              = 6'd5,
-    RFMT            = 6'd6,
-    RFMT2           = 6'd7,
-    SHIFT           = 6'd8,
-    IFMTL           = 6'd9,
-    IFMTA           = 6'd10,
-    IFMT2           = 6'd11,
-    BEQ             = 6'd12,
-    BNE             = 6'd13,
-    JUMP            = 6'd14,
-    JAL             = 6'd15,
-    JR              = 6'd16,
+    EXE             = 6'd2,
+    ACCESSorCONC    = 6'd3,
+    CONC-LOAD       = 6'd4,
 
-    // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
-    COP0MTC0        = 6'd17,
-    COP0MFC0        = 6'd18,
-    COP0ERET        = 6'd19,
-    COP0EXC         = 6'd20,
-    // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
-
-    /*Estados da FPU*/
-    FPUFRSTART      = 6'd38,
-    FPUFR2          = 6'd39,
-    FPUMOV          = 6'd40,
-    FPUMFC1         = 6'd41,
-    FPUMTC1         = 6'd42,
-    FPUBC1T         = 6'd43,
-    FPUBC1F         = 6'd44,
-    FPULWC1         = 6'd45,
-    FPUSWC1         = 6'd46,
-    FPUCOMP         = 6'd47,    //tava assim, vou manter em homenagem aos semestres anteriores
-    FPUFRWAIT       = 6'd48,
-
-    //Adicionados em 1/2014
-    STATE_LB        = 6'd49,
-    STATE_LBU       = 6'd50,
-    STATE_LH        = 6'd51,
-    STATE_LHU       = 6'd52,
-    STATE_SB        = 6'd53,
-    STATE_SH        = 6'd54,
-
-     //Adicionados em 1/2016
-     BGEZ           = 6'd55,
-     BGEZAL         = 6'd56,
-     BLTZ           = 6'd57,
-     BLTZAL         = 6'd58,
-     BGTZ           = 6'd59,
-     BLEZ           = 6'd60,
-	  
-	  //Adicionados em 2/2016 (Grupo 2)
-	  RM				  = 6'd61,
-
-	  ERRO            = 6'd63;  // Estado de Erro
+    
 `endif

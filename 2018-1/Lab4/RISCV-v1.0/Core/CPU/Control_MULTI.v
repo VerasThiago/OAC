@@ -77,34 +77,66 @@ begin
 	
 		FETCH:
 		begin
-			word	<= 15'b000000001010110;
+			word		<= 15'b000000001010110;
 			nx_state	<= DECODE;
 		end
 		
 		DECODE:
 		begin
-			word	<=  15'b000000000001100;
+			word		<= 15'b000000000001100;
+			nx_state  	<= EXE
+		endcase
 
+		EXE:
+		begin
+			case (iOp)
+				OPCLOAD,
+				OPCSTORE:
+					word	<= 15'b000000000001001;
+				OPCRTYPE:
+					word	<= 15'b000001000000001;
+				OPCBRANCH:
+					word	<= 15'b000011100100001;
+				OPCJAL:
+					word	<= 15'b011000001100000;
+			endcase
+			nx_state	<= ACESSorCONC
+		end
+
+		ACCESSorCONC:
+		begin
 			case(iOp)
-				
 				OPCLOAD:
-					nx_state <= 
+				begin
+					word		<= 15'b000000010010000;
+					nx_state	<= CONC-LOAD;
+				end
+
+				OPCSTORE:
+				begin
+					word		<= 15'b000100010000000;
+					nx_state	<= FETCH;
+				end
 
 				OPCRTYPE:
-					nx_state <=
+				begin
+					word		<= 15'b001000000000000;
+					nx_state	<= FETCH;
+				end
 
-				OPCBEQ:
-					nx_state <=
-
-				OPCJAL:				
-					nx_state <=
-				
+				default:
+				begin
+					word		<= 15'b000000000000000;					
+					nx_state	<= FETCH;
+				end
 			endcase
-
-		end			
-	
+		end
 		
+		CONC-LOAD:
+			begin
+				word		<= 15'b10100XXX0X0XX0X;
+				nx_state	<= FETCH;
+			end	
 	endcase
 end
-
 endmodule
