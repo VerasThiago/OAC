@@ -6,7 +6,10 @@ module Control_MULTI (
 	/* I/O type definition */
 	input wire iCLK, iRST,
 	input wire [5:0] iOp,
-	output wire  
+	output wire oIRWrite, oMem2Reg, oMemWrite, oMemRead, oIorD, 
+					oPCWrite, oRegWrite,oPCcondWrite,oALUop,oPCwrite
+					oOriPC,oOriAALU,
+
 	output wire [1:0] oALUOp, oOriBALU, oMem2Reg,
 );
 
