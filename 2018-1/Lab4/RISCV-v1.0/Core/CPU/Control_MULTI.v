@@ -6,11 +6,11 @@ module Control_MULTI (
 	/* I/O type definition */
 	input wire iCLK, iRST,
 	input wire [5:0] iOp,
-	output wire oIRWrite, oMem2Reg, oMemWrite, oMemRead, oIorD, 
+	output wire oIRWrite, oMemWrite, oMemRead, oIorD, 
 					oPCWrite, oRegWrite,oPCcondWrite,oALUop,oPCwrite
 					oOriPC,oOriAALU,
 
-	output wire [1:0] oALUOp, oOriBALU, oMem2Reg,
+	output wire [1:0] oALUOp, oOriBALU, oMem2Reg
 );
 
 
@@ -134,14 +134,19 @@ begin
 		ACCESSorCONC:
 		begin
 			case(iOp)
-				nx_state	<= FETCH;
 
 				OPCSTORE:
+				begin
 					word		<= 15'b000100010000000;
+					nx_state	<= FETCH;
+				end
 
 				OPCIMM,
 				OPCRTYPE:
+				begin
 					word		<= 15'b001000000000000;
+					nx_state	<= FETCH;
+				end
 
 				OPCLOAD:
 				begin
@@ -150,11 +155,16 @@ begin
 				end
 
 				OPCJALR:
+				begin
 					word		<= 15'b000000001100000;
+					nx_state	<= FETCH;
+				end
 
 				default:
+				begin
 					word		<= 15'b000000000000000;					
-			
+					nx_state	<= FETCH;
+				end
 			endcase
 		end
 		
