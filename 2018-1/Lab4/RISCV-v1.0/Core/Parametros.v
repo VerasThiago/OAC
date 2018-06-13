@@ -352,7 +352,7 @@ parameter
     DECODE          = 6'd1,
     EXE             = 6'd2,
     ACCESSorCONC    = 6'd3,
-    CONC-LOAD       = 6'd4,
+    CONC_LOAD       = 6'd4;
 
     
 `endif
