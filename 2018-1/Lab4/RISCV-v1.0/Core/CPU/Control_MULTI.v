@@ -66,6 +66,9 @@ begin
 				OPCAUIPC:
 					word		<= 15'b000000000001000;
 
+				OPCLUI:
+					word		<= 15'b000001100001000;
+
 				default:
 					word		<= 15'b000000000001100;
 			endcase
@@ -79,7 +82,7 @@ begin
 
 				OPCLOAD,
 				OPCSTORE:
-				begin
+				begin	
 					word		<= 15'b000000000001001;
 					nx_state	<= ACESSorCONC;
 				end
@@ -89,6 +92,13 @@ begin
 					word		<= 15'b000001000000001;
 					nx_state	<= ACESSorCONC;
 				end
+
+				OPCIMM:
+				begin
+					word		<= 15'b000001100000001;
+					nx_state	<= ACESSorCONC;
+				end
+
 
 				OPCBRANCH:
 				begin
@@ -102,6 +112,7 @@ begin
 					nx_state    <= FETCH;
 				end
 
+				OPCLUI,					
 				OPCAUIPC:
 				begin
 					word		<= 15'b001000000000000;
@@ -125,6 +136,7 @@ begin
 				OPCSTORE:
 					word		<= 15'b000100010000000;
 
+				OPCIMM,
 				OPCRTYPE:
 					word		<= 15'b001000000000000;
 
