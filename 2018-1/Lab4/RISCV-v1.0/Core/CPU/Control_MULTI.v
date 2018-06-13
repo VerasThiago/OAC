@@ -7,7 +7,7 @@ module Control_MULTI (
 	input wire iCLK, iRST,
 	input wire [5:0] iOp,
 	output wire oIRWrite, oMemWrite, oMemRead, oIorD, 
-					oPCWrite, oRegWrite,oPCcondWrite,oALUop,oPCwrite
+					oPCWrite, oRegWrite,oPCcondWrite,oALUop,oPCwrite,
 					oOriPC,oOriAALU,
 
 	output wire [1:0] oALUOp, oOriBALU, oMem2Reg
@@ -75,8 +75,9 @@ begin
 				default:
 					word		<= 15'b000000000001100;
 			endcase
+		end
 
-		endcase
+		
 
 		EXE:
 		begin
@@ -87,19 +88,19 @@ begin
 				OPCSTORE:
 				begin	
 					word		<= 15'b000000000001001;
-					nx_state	<= ACESSorCONC;
+					nx_state	<= ACCESSorCONC;
 				end
 
 				OPCRTYPE:
 				begin
 					word		<= 15'b000001000000001;
-					nx_state	<= ACESSorCONC;
+					nx_state	<= ACCESSorCONC;
 				end
 
 				OPCIMM:
 				begin
 					word		<= 15'b000001100000001;
-					nx_state	<= ACESSorCONC;
+					nx_state	<= ACCESSorCONC;
 				end
 
 
@@ -151,7 +152,7 @@ begin
 				OPCLOAD:
 				begin
 					word		<= 15'b000000010010000;
-					nx_state	<= CONC-LOAD;
+					nx_state	<= CONC_LOAD;
 				end
 
 				OPCJALR:
@@ -168,7 +169,7 @@ begin
 			endcase
 		end
 		
-		CONC-LOAD:
+		CONC_LOAD:
 			begin
 				word		<= 15'b101000000000000;
 				nx_state	<= FETCH;
