@@ -105,6 +105,38 @@ wire [31:0] wALUMuxA, wALUMuxB, wALUResult, wImmediate, wuImmediate, wLabelAddre
 				wMemReadData, wMemAddress, wPCMux;
 wire [63:0] wTimerOut, wEndTime;
 
+
+/* Wires RISCV */
+
+wire [2:0] Funct3;
+wire [6:0] Funct7;
+
+wire [6:0] iOpcode;
+//wire [9:0] Funct10;
+wire [6:0] iFunct7;
+wire [2:0] iFunct3;
+wire [11:0] iImmTipoI;
+wire [11:0] iImmTipoS;
+wire [11:0] iImmTipoSB;
+wire [19:0] iImmTipoU;
+
+wire PCcondWrite;
+
+//assign iOpcode = iInst[6:0];
+//assign iFunct7 = iInst[31:25];
+//assign iFunct3 = iInst[14:12];
+//assign iImmTipoI = iInst[31:20];
+//assign iImmTipoS[11:5] = iInst[31:25];
+//assign iImmTipoS[4:0] = iInst[11:7];
+//assign iImmTipoU = iInst[31:12];
+//
+//assign iReadRegister1 = iInst[19:15];
+//assign iReadRegister2 = iInst[24:20];
+//assign iWriteRegister = iInst[11:7];
+assign pcImm = PC + {iImmTipoU,12'b0};
+
+
+
 /*
  * Local FP wires
  */
@@ -138,12 +170,28 @@ wire [4:0] 	COP0ExcCode;
  *
  * 2 to 1 multiplexers are also handled here.
  */
-assign wOpcode			= IR[31:26];
-assign wRS				= IR[25:21];
-assign wRT				= IR[20:16];
-assign wRD				= IR[15:11];
-assign wShamt			= IR[10:6];
-assign wFunct			= IR[5:0];
+//assign wOpcode			= IR[31:26];
+//assign wRS				= IR[25:21];
+//assign wRT				= IR[20:16];
+//assign wRD				= IR[15:11];
+//assign wShamt			= IR[10:6];
+//assign wFunct			= IR[5:0];
+
+assign iOpcode = IR[6:0];
+assign iFunct7 = IR[31:25];
+assign iFunct3 = IR[14:12];
+assign iImmTipoI = IR[31:20];
+assign iImmTipoS[11:5] = IR[31:25];
+assign iImmTipoS[4:0] = IR[11:7];
+assign iImmTipoU = IR[31:12];
+
+assign iReadRegister1 = IR[19:15];
+assign iReadRegister2 = IR[24:20];
+assign iWriteRegister = IR[11:7];
+
+
+
+
 assign wImmediate		= {{16{IR[15]}}, IR[15: 0]};
 assign wuImmediate	= {16'b0, IR[15: 0]};
 assign wLabelAddress	= {{14{IR[15]}}, IR[15: 0], 2'b0};
@@ -283,61 +331,79 @@ end
  */
 
 /* Control module - State Machine*/
+//Control_MULTI CrlMULTI (
+//	.iCLK(iCLK),
+//	.iRST(iRST),
+//	.iOp(wOpcode),
+//	.iFmt(wFmt),
+//	.iFt(wBranchTouF),
+//	.iFunct(wFunct),
+//	.oIRWrite(IRWrite),
+//	.oMemtoReg(MemtoReg),
+//	.oMemWrite(MemWrite),
+//	.oMemRead(MemRead),
+//	.oIorD(IorD),
+//	.oPCWrite(PCWrite),
+//	.oPCWriteBEQ(PCWriteBEQ),
+//	.oPCWriteBNE(PCWriteBNE),
+//	.oPCSource(PCSource),
+//	.oALUOp(ALUOp),
+//	.oALUSrcB(ALUSrcB),
+//	.oALUSrcA(ALUSrcA),
+//	.oRegWrite(RegWrite),
+//	.oRegDst(RegDst),
+//	.oState(owControlState),
+//	.oStore(Store),
+//	.oFPDataReg(FPDataReg),
+//	.oFPRegDst(FPRegDst),
+//	.oFPPCWriteBc1t(FPPCWriteBc1t),
+//	.oFPPCWriteBc1f(FPPCWriteBc1f),
+//	.oFPRegWrite(FPRegWrite),
+//	.oFPFlagWrite(FPFlagWrite),
+//	.oFPU2Mem(FPU2Mem),
+//	// feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
+//	.iCOP0ALUoverflow(ALUoverflow),
+//	.iCOP0FPALUoverflow(FPALUoverflow),
+//	.iCOP0FPALUunderflow(FPALUunderflow),
+//	.iCOP0FPALUnan(FPALUnan),
+//	.iCOP0UserMode(wCOP0UserMode),
+//	.iCOP0ExcLevel(wCOP0ExcLevel),
+//	.iCOP0PendingInterrupt(wCOP0InterruptMask),
+//	.oCOP0PCOriginalWrite(PCOriginalWrite),
+//	.oCOP0RegWrite(COP0RegWrite),
+//	.oCOP0Eret(COP0Eret),
+//	.oCOP0ExcOccurred(COP0ExcOccurred),
+//	.oCOP0BranchDelay(COP0BranchDelay),
+//	.oCOP0ExcCode(COP0ExcCode),
+//	.oCOP0Interrupted(COP0Interrupted),
+//	//adicionado em 1/2014
+//	.oLoadCase(wLoadCase),
+//	.oWriteCase(wWriteCase),
+//	//adicionado em 1/2016 para implementação dos branchs
+//	.iRt (wRT),
+//	.iFPBusy(wFPBusy),
+//	.oFPStart(wFPStart)
+//	);
+
+
 Control_MULTI CrlMULTI (
 	.iCLK(iCLK),
 	.iRST(iRST),
-	.iOp(wOpcode),
-	.iFmt(wFmt),
-	.iFt(wBranchTouF),
-	.iFunct(wFunct),
+	.iOp(iOpcode),
 	.oIRWrite(IRWrite),
-	.oMemtoReg(MemtoReg),
 	.oMemWrite(MemWrite),
 	.oMemRead(MemRead),
 	.oIorD(IorD),
 	.oPCWrite(PCWrite),
-	.oPCWriteBEQ(PCWriteBEQ),
-	.oPCWriteBNE(PCWriteBNE),
-	.oPCSource(PCSource),
-	.oALUOp(ALUOp),
-	.oALUSrcB(ALUSrcB),
-	.oALUSrcA(ALUSrcA),
 	.oRegWrite(RegWrite),
-	.oRegDst(RegDst),
-	.oState(owControlState),
-	.oStore(Store),
+	.oPCcondWrite(PCSource),
+	.oALUOp(ALUOp),
+	.oOrigPc(),
+	.oOriAALU(ALUSrcA),
+	.oOriBALU(ALUSrcB),
+	.oMem2Reg(MemToReg)
 	
-	.oFPDataReg(FPDataReg),
-	.oFPRegDst(FPRegDst),
-	.oFPPCWriteBc1t(FPPCWriteBc1t),
-	.oFPPCWriteBc1f(FPPCWriteBc1f),
-	.oFPRegWrite(FPRegWrite),
-	.oFPFlagWrite(FPFlagWrite),
-	.oFPU2Mem(FPU2Mem),
-	// feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
-	.iCOP0ALUoverflow(ALUoverflow),
-	.iCOP0FPALUoverflow(FPALUoverflow),
-	.iCOP0FPALUunderflow(FPALUunderflow),
-	.iCOP0FPALUnan(FPALUnan),
-	.iCOP0UserMode(wCOP0UserMode),
-	.iCOP0ExcLevel(wCOP0ExcLevel),
-	.iCOP0PendingInterrupt(wCOP0InterruptMask),
-	.oCOP0PCOriginalWrite(PCOriginalWrite),
-	.oCOP0RegWrite(COP0RegWrite),
-	.oCOP0Eret(COP0Eret),
-	.oCOP0ExcOccurred(COP0ExcOccurred),
-	.oCOP0BranchDelay(COP0BranchDelay),
-	.oCOP0ExcCode(COP0ExcCode),
-	.oCOP0Interrupted(COP0Interrupted),
-	//adicionado em 1/2014
-	.oLoadCase(wLoadCase),
-	.oWriteCase(wWriteCase),
-	//adicionado em 1/2016 para implementação dos branchs
-	.iRt (wRT),
-	
-	.iFPBusy(wFPBusy),
-	.oFPStart(wFPStart)
-	);
+);
 
 /* Register bank module */
 Registers RegsMULTI (
@@ -389,26 +455,44 @@ always @(*)
 
 
 /* Arithmetic Logic Unit module */
-ALU ALU0 (
-	.iCLK(iCLK),
-	.iRST(iRST),
-	.iA(wALUMuxA),
-	.iB(wALUMuxB),
-	.iShamt(wShamt),
+//ALU ALU0 (
+//	.iCLK(iCLK),
+//	.iRST(iRST),
+//	.iA(wALUMuxA),
+//	.iB(wALUMuxB),
+//	.iShamt(wShamt),
+//	.iControlSignal(wALUControlSignal),
+//	.oZero(wALUZero),
+//	.oALUresult(wALUResult),
+//	.oOverflow(wALUOverflow)
+//	);
+
+ALU alu0 (
 	.iControlSignal(wALUControlSignal),
-	.oZero(wALUZero),
-	.oALUresult(wALUResult),
-	.oOverflow(wALUOverflow)
-	);
+	.iA(iA),
+	.iB(mux_to_ula),
+	.oChangePC(oChangePc),
+	.oALUresult(oALUresult)
+);
+
 
 /* Arithmetic Logic Unit control module */
-ALUControl ALUcont0 (
-	.iFunct(wFunct),
-	.iOpcode(wOpcode),
-	.iRt (wRT),		//1/2016
-	.iALUOp(ALUOp),
-	.oControlSignal(wALUControlSignal)
-	);
+//ALUControl ALUcont0 (
+//	.iFunct(wFunct),
+//	.iOpcode(wOpcode),
+//	.iRt (wRT),		//1/2016
+//	.iALUOp(ALUOp),
+//	.oControlSignal(wALUControlSignal)
+//	);
+
+
+ALUControl aluControlUnit (
+		.iFunct3(iFunct3),
+		.iFunct7(iFunct7),
+		.iOpcode(iOpcode),
+		.iALUOp(oALUOp),
+		.oControlSignal(ctrl_to_ula)
+);
 
 
 // Mux ALU input 'A'
@@ -450,7 +534,8 @@ always @(*)
 	MemStore MemStore0 (
 	.iAlignment(wMemAddress[1:0]),
 	.iWriteTypeF(wWriteCase),
-	.iOpcode(wOpcode),
+	.iFunct3(Funct3),
+//	.iOpcode(wOpcode),
 	.iData(wMemWriteData),
 	.oData(wTreatedToMemory),
 	.oByteEnable(wByteEnabler),
@@ -471,7 +556,8 @@ assign DwByteEnable 	= wByteEnabler;
 MemLoad MemLoad0 (
 	.iAlignment(wLigaULA_PASSADA),
 	.iLoadTypeF(wLoadCase),
-	.iOpcode(OPCDUMMY),
+	.iFunct3(Funct3),
+//	.iOpcode(OPCDUMMY),
 	.iData(wRegWriteData),
 	.oData(wTreatedToRegister),
 	.oException()
@@ -481,21 +567,21 @@ MemLoad MemLoad0 (
 
 `ifdef FPU
 /* Floating Point register bank module*/
-FPURegisters FPURegBank (
-	.iCLK(iCLK),
-	.iCLR(iRST),
-	.iReadRegister1(wFs),
-	.iReadRegister2(wFt),
-	.iWriteRegister(wFPWriteRegister),
-	.iWriteData(wFPWriteData),
-	.iRegWrite(FPRegWrite),
-	.oReadData1(wFPReadData1),
-	.oReadData2(wFPReadData2),
-	.iRegDispSelect(iRegDispSelect),
-	.oRegDisp(oFPRegDisp),
-	.iVGASelect(wVGASelectFPU),
-	.oVGARead(wVGAReadFPU)
-	);
+//FPURegisters FPURegBank (
+//	.iCLK(iCLK),
+//	.iCLR(iRST),
+//	.iReadRegister1(wFs),
+//	.iReadRegister2(wFt),
+//	.iWriteRegister(wFPWriteRegister),
+//	.iWriteData(wFPWriteData),
+//	.iRegWrite(FPRegWrite),
+//	.oReadData1(wFPReadData1),
+//	.oReadData2(wFPReadData2),
+//	.iRegDispSelect(iRegDispSelect),
+//	.oRegDisp(oFPRegDisp),
+//	.iVGASelect(wVGASelectFPU),
+//	.oVGARead(wVGAReadFPU)
+//	);
 
 
 // Mux FPRegDest
@@ -520,73 +606,73 @@ always @(*)
 
 
 /* Floating Point ALU*/
-ula_fp FPALUUnit (
-	.iclock(iCLK),
-	//.iclock(iCLK50),
-	.idataa(FP_A),
-	.idatab(FP_B),
-	.icontrol(wFPALUControlSignal),
-	.oresult(wFPALUResult),
-	.onan(wFPNan),
-	.ozero(wFPZero),
-	.ooverflow(wFPOverflow),
-	.ounderflow(wFPUnderflow),
-	.oCompResult(wCompResult),
-	
-	.iFPBusyTime(wFPBusyTime),
-	.iFPStart(wFPStart),
-	.oFPBusy(wFPBusy)
-	);
-
-/*FPU Flag Bank*/
-FlagBank FlagBankModule(
-	.iCLK(iCLK),
-	.iCLR(iRST),
-	.iFlag(wFPFlagSelector),
-	.iFlagWrite(FPFlagWrite),
-	.iData(wCompResult),
-	.oFlags(wFPUFlagBank)
-	);
-
-/* Floating Point ALU Control*/
-FPALUControl FPALUControlUnit (
-	.iFunct(wFunct),
-	.oControlSignal(wFPALUControlSignal),
-	.oFPBusyTime(wFPBusyTime)
-	);
+//ula_fp FPALUUnit (
+//	.iclock(iCLK),
+//	//.iclock(iCLK50),
+//	.idataa(FP_A),
+//	.idatab(FP_B),
+//	.icontrol(wFPALUControlSignal),
+//	.oresult(wFPALUResult),
+//	.onan(wFPNan),
+//	.ozero(wFPZero),
+//	.ooverflow(wFPOverflow),
+//	.ounderflow(wFPUnderflow),
+//	.oCompResult(wCompResult),
+//	
+//	.iFPBusyTime(wFPBusyTime),
+//	.iFPStart(wFPStart),
+//	.oFPBusy(wFPBusy)
+//	);
+//
+///*FPU Flag Bank*/
+//FlagBank FlagBankModule(
+//	.iCLK(iCLK),
+//	.iCLR(iRST),
+//	.iFlag(wFPFlagSelector),
+//	.iFlagWrite(FPFlagWrite),
+//	.iData(wCompResult),
+//	.oFlags(wFPUFlagBank)
+//	);
+//
+///* Floating Point ALU Control*/
+//FPALUControl FPALUControlUnit (
+//	.iFunct(wFunct),
+//	.oControlSignal(wFPALUControlSignal),
+//	.oFPBusyTime(wFPBusyTime)
+//	);
 `endif
 
 
 // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
 /* Banco de registradores do Coprocessador 0 */
-COP0RegistersMULTI cop0reg (
-	.iCLK(iCLK),
-	.iCLR(iRST),
-
-	// register file interface
-	.iReadRegister(wRD),
-	.iWriteRegister(wRD),
-	.iWriteData(wCOP0DataReg),
-	.iRegWrite(COP0RegWrite),
-	.oReadData(wCOP0ReadData),
-
-	// eret interface
-	.iEret(COP0Eret),
-
-	// COP0 interface
-	.iExcOccurred(COP0ExcOccurred),
-	.iBranchDelay(COP0BranchDelay),
-	.iPendingInterrupt(iPendingInterrupt),
-	.iInterrupted(COP0Interrupted),
-	.iExcCode(COP0ExcCode),
-	.oInterruptMask(wCOP0InterruptMask),
-	.oUserMode(wCOP0UserMode),
-	.oExcLevel(wCOP0ExcLevel),
-//	.oInterruptEnable(oCOP0InterruptEnable),
-	// DE2-70 interface
-	.iRegDispSelect(iRegDispSelect),
-	.oRegDisp(oRegDispCOP0)
-	);
+//COP0RegistersMULTI cop0reg (
+//	.iCLK(iCLK),
+//	.iCLR(iRST),
+//
+//	// register file interface
+//	.iReadRegister(wRD),
+//	.iWriteRegister(wRD),
+//	.iWriteData(wCOP0DataReg),
+//	.iRegWrite(COP0RegWrite),
+//	.oReadData(wCOP0ReadData),
+//
+//	// eret interface
+//	.iEret(COP0Eret),
+//
+//	// COP0 interface
+//	.iExcOccurred(COP0ExcOccurred),
+//	.iBranchDelay(COP0BranchDelay),
+//	.iPendingInterrupt(iPendingInterrupt),
+//	.iInterrupted(COP0Interrupted),
+//	.iExcCode(COP0ExcCode),
+//	.oInterruptMask(wCOP0InterruptMask),
+//	.oUserMode(wCOP0UserMode),
+//	.oExcLevel(wCOP0ExcLevel),
+////	.oInterruptEnable(oCOP0InterruptEnable),
+//	// DE2-70 interface
+//	.iRegDispSelect(iRegDispSelect),
+//	.oRegDisp(oRegDispCOP0)
+//	);
 
 
 

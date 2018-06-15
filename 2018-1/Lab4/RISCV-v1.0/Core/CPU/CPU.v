@@ -50,37 +50,37 @@ module CPU (
 
 
 /*************  UNICICLO *********************************/
-`ifdef UNICICLO
-// Visualizacao dos sinais de controle especi­ficos
-wire [2:0]  OrigPC, Mem2Reg;
-wire [1:0]  ALUOp,OrigALU, RegDst;
-wire        RegWrite;
+//`ifdef UNICICLO
+//// Visualizacao dos sinais de controle especi­ficos
+//wire [2:0]  OrigPC, Mem2Reg;
+//wire [1:0]  ALUOp,OrigALU, RegDst;
+//wire        RegWrite;
+//
+//wire [31:0] wA,wB;
+//wire [31:0] iInst;
+//wire [31:0] oResult;
+//wire oZero;
+//
+//assign wControlSignals  = {DwReadEnable, DwWriteEnable, RegWrite, RegDst[1:0], 
+//									ALUOp[1:0], OrigALU[1:0], Mem2Reg[2:0], OrigPC[2:0]};
+//assign wControlState    = 6'b0;
 
-wire [31:0] wA,wB;
-wire [31:0] iInst;
-wire [31:0] oResult;
-wire oZero;
-
-assign wControlSignals  = {DwReadEnable, DwWriteEnable, RegWrite, RegDst[1:0], 
-									ALUOp[1:0], OrigALU[1:0], Mem2Reg[2:0], OrigPC[2:0]};
-assign wControlState    = 6'b0;
-
-Datapath_UNI Processor (
-    .iClk(iCLK),
+//Datapath_UNI Processor (
+//    .iClk(iCLK),
 //    .iCLK50(iCLK50),
 //    .iRST(iRST),
 //    .iInitialPC(iInitialPC),
-	 .iInst(wInst),
-
-	 // Sinais de monitoramento
+//	 .iInst(wInst),
+//
+//	 // Sinais de monitoramento
 //    .wInst(wInst),
 //	 .wULA(wULA),
-	 .wA(wA),
-	 .wB(wB),
-	 .oResult(oResult),
-	 .oZero(oZero)
-	 
-	 
+//	 .wA(wA),
+//	 .wB(wB),
+//	 .oResult(oResult),
+//	 .oZero(oZero)
+//	 
+//	 
 //    .wDebug(wDebug),
 //    .wRegDispSelect(wRegDispSelect),
 //    .wRegDisp(wRegDisp),
@@ -102,92 +102,92 @@ Datapath_UNI Processor (
 //	 .wBRReadA(wBRReadA),
 //	 .wBRReadB(wBRReadB),
 //	 .wBRWrite(wBRWrite),
-
-    // Barramento de dados
+//
+//    // Barramento de dados
 //    .DwReadEnable(DwReadEnable), .DwWriteEnable(DwWriteEnable),
 //    .DwByteEnable(DwByteEnable),
 //    .DwWriteData(DwWriteData),
 //    .DwReadData(DwReadData),
 //    .DwAddress(DwAddress),
-	 
-    // Barramento de instrucoes
+//	 
+//    // Barramento de instrucoes
 //    .IwReadEnable(IwReadEnable), .IwWriteEnable(IwWriteEnable),
 //    .IwByteEnable(IwByteEnable),
 //    .IwWriteData(IwWriteData),
 //    .IwReadData(IwReadData),
 //    .IwAddress(IwAddress),
-
+//
 //    .iPendingInterrupt(iPendingInterrupt)    // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
-);
- `endif
+//);
+// `endif
 
 //
 ///*************  MULTICICLO **********************************/
-//`ifdef MULTICICLO
-//// Sinais de controle especi­ficos
-//wire [1:0]  ALUOp, ALUSrcA;
-//wire [2:0]  ALUSrcB, PCSource;
-//wire        IRWrite, IorD, PCWrite, RegDst;
-//wire        RegWrite;
-//assign wControlSignals  = { DwReadEnable, DwWriteEnable, RegWrite, RegDst, 
-//									ALUOp[1:0], ALUSrcA[1:0], ALUSrcB[2:0], IorD, IRWrite, PCWrite, PCSource[2:0]};
-//assign IwReadEnable     = 1'b0;
-//assign IwWriteEnable    = 1'b0;
-//assign IwByteEnable     = 4'b0000;
-//assign IwWriteData      = 32'h00000000;
-//assign IwAddress        = 32'h00000000;
-//
-//Datapath_MULTI Processor (
-//    .iCLK(iCLK),
-//    .iCLK50(iCLK50),
-//    .iRST(iRST),
-//    .iInitialPC(iInitialPC),
-//
-//	 // Sinais de monitoramento
-//    .oPC(wPC),
-//    .oInstr(wInstr),
-//    .oDebug(wDebug),
-//    .iRegDispSelect(wRegDispSelect),
-//    .oRegDisp(wRegDisp),
-//    .oRegDispCOP0(wRegDispCOP0),
-//    .wVGASelect(wVGASelect),
-//    .wVGARead(wVGARead),
-//`ifdef FPU
-//    .wVGASelectFPU(wVGASelectFPU),
-//    .wVGAReadFPU(wVGAReadFPU),
-//	 .oFPRegDisp(wRegDispFPU),
-//	 .oFPUFlagBank(flagBank),
-//`endif
-//    .owControlState(wControlState),
-//    .oALUOp(ALUOp),
-//    .oPCSource(PCSource),
-//    .oALUSrcB(ALUSrcB),
-//    .oIRWrite(IRWrite),
-//    .oIorD(IorD),
-//    .oPCWrite(PCWrite),
-//    .oALUSrcA(ALUSrcA),
-//    .oRegWrite(RegWrite),
-//    .oRegDst(RegDst),
-//	 .wBRReadA(wBRReadA),
-//	 .wBRReadB(wBRReadB),
-//	 .wBRWrite(wBRWrite),
-//	 .wULA(wULA),
-//	 
-//    // Barramento
-//    .DwWriteEnable(DwWriteEnable), .DwReadEnable(DwReadEnable),
-//    .DwByteEnable(DwByteEnable),
-//    .DwWriteData(DwWriteData),
-//    .DwAddress(DwAddress),
-//    .DwReadData(DwReadData),
-//
-//    .iPendingInterrupt(iPendingInterrupt) // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
-//);
-//`endif
-//
-//
-//
-//
-//
+`ifdef MULTICICLO
+// Sinais de controle especi­ficos
+wire [1:0]  ALUOp, ALUSrcA;
+wire [2:0]  ALUSrcB, PCSource;
+wire        IRWrite, IorD, PCWrite, RegDst;
+wire        RegWrite;
+assign wControlSignals  = { DwReadEnable, DwWriteEnable, RegWrite, RegDst, 
+									ALUOp[1:0], ALUSrcA[1:0], ALUSrcB[2:0], IorD, IRWrite, PCWrite, PCSource[2:0]};
+assign IwReadEnable     = 1'b0;
+assign IwWriteEnable    = 1'b0;
+assign IwByteEnable     = 4'b0000;
+assign IwWriteData      = 32'h00000000;
+assign IwAddress        = 32'h00000000;
+
+Datapath_MULTI Processor (
+    .iCLK(iCLK),
+    .iCLK50(iCLK50),
+    .iRST(iRST),
+    .iInitialPC(iInitialPC),
+
+	 // Sinais de monitoramento
+    .oPC(wPC),
+    .oInstr(wInstr),
+    .oDebug(wDebug),
+    .iRegDispSelect(wRegDispSelect),
+    .oRegDisp(wRegDisp),
+    .oRegDispCOP0(wRegDispCOP0),
+    .wVGASelect(wVGASelect),
+    .wVGARead(wVGARead),
+`ifdef FPU
+    .wVGASelectFPU(wVGASelectFPU),
+    .wVGAReadFPU(wVGAReadFPU),
+	 .oFPRegDisp(wRegDispFPU),
+	 .oFPUFlagBank(flagBank),
+`endif
+    .owControlState(wControlState),
+    .oALUOp(ALUOp),
+    .oPCSource(PCSource),
+    .oALUSrcB(ALUSrcB),
+    .oIRWrite(IRWrite),
+    .oIorD(IorD),
+    .oPCWrite(PCWrite),
+    .oALUSrcA(ALUSrcA),
+    .oRegWrite(RegWrite),
+    .oRegDst(RegDst),
+	 .wBRReadA(wBRReadA),
+	 .wBRReadB(wBRReadB),
+	 .wBRWrite(wBRWrite),
+	 .wULA(wULA),
+	 
+    // Barramento
+    .DwWriteEnable(DwWriteEnable), .DwReadEnable(DwReadEnable),
+    .DwByteEnable(DwByteEnable),
+    .DwWriteData(DwWriteData),
+    .DwAddress(DwAddress),
+    .DwReadData(DwReadData),
+
+    .iPendingInterrupt(iPendingInterrupt) // feito no semestre 2013/1 para implementar a deteccao de excecoes (COP0)
+);
+`endif
+
+
+
+
+
 ///*************  PIPELINE **********************************/
 //`ifdef PIPELINE
 //// Sinais de controle especi­ficos
