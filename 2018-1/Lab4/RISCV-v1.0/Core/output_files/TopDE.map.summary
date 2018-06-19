@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Sun Jun 03 20:47:18 2018
+Analysis & Synthesis Status : Successful - Mon Jun 18 22:23:57 2018
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : TopDE
-Top-level Entity Name : Control_UNI
+Top-level Entity Name : Control_MULTI
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 0
-Total pins : 25
+Total registers : 5
+Total pins : 24
 Total virtual pins : 0
 Total block memory bits : 0
 Total DSP Blocks : 0

@@ -1,4 +1,6 @@
-|Control_UNI
+|Control_MULTI
+iCLK => pr_state~1.DATAIN
+iRST => pr_state~3.DATAIN
 iOp[0] => Decoder0.IN6
 iOp[1] => Decoder0.IN5
 iOp[2] => Decoder0.IN4
@@ -6,23 +8,20 @@ iOp[3] => Decoder0.IN3
 iOp[4] => Decoder0.IN2
 iOp[5] => Decoder0.IN1
 iOp[6] => Decoder0.IN0
-iFunct7[0] => ~NO_FANOUT~
-iFunct7[1] => ~NO_FANOUT~
-iFunct7[2] => ~NO_FANOUT~
-iFunct7[3] => ~NO_FANOUT~
-iFunct7[4] => ~NO_FANOUT~
-iFunct7[5] => ~NO_FANOUT~
-iFunct7[6] => ~NO_FANOUT~
-iFunct3[0] => ~NO_FANOUT~
-iFunct3[1] => ~NO_FANOUT~
-iFunct3[2] => ~NO_FANOUT~
-oALUop[0] <= oALUop[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
-oALUop[1] <= oALUop[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
-oBranch <= oBranch$latch.DB_MAX_OUTPUT_PORT_TYPE
-oMemRead <= oMemRead$latch.DB_MAX_OUTPUT_PORT_TYPE
-oMemtoReg <= oMemtoReg$latch.DB_MAX_OUTPUT_PORT_TYPE
-oMemWrite <= <GND>
-oALUsrc <= oALUsrc$latch.DB_MAX_OUTPUT_PORT_TYPE
-oRegWrite <= oRegWrite$latch.DB_MAX_OUTPUT_PORT_TYPE
+oIRWrite <= word[1].DB_MAX_OUTPUT_PORT_TYPE
+oMemWrite <= word[11].DB_MAX_OUTPUT_PORT_TYPE
+oMemRead <= word[4].DB_MAX_OUTPUT_PORT_TYPE
+oIorD <= word[7].DB_MAX_OUTPUT_PORT_TYPE
+oPCw <= word[6].DB_MAX_OUTPUT_PORT_TYPE
+oRegWrite <= word[12].DB_MAX_OUTPUT_PORT_TYPE
+oPCcondWrite <= word[10].DB_MAX_OUTPUT_PORT_TYPE
+oOriPC <= word[5].DB_MAX_OUTPUT_PORT_TYPE
+oOriAALU <= word[0].DB_MAX_OUTPUT_PORT_TYPE
+oALUOp[0] <= <GND>
+oALUOp[1] <= <GND>
+oOriBALU[0] <= word[2].DB_MAX_OUTPUT_PORT_TYPE
+oOriBALU[1] <= word[3].DB_MAX_OUTPUT_PORT_TYPE
+oMem2Reg[0] <= word[13].DB_MAX_OUTPUT_PORT_TYPE
+oMem2Reg[1] <= word[14].DB_MAX_OUTPUT_PORT_TYPE
 
 

@@ -5,38 +5,39 @@
 module Control_MULTI (
 	/* I/O type definition */
 	input wire iCLK, iRST,
-	input wire [6:0] iOp,
-	output wire oIRWrite, oMemWrite, oMemRead, oIorD, 
-					oPCWrite, oRegWrite,oPCcondWrite,
+	input reg [6:0] iOp,
+	output reg oIRWrite, oMemWrite, oMemRead, oIorD, 
+					oPCw, oRegWrite,oPCcondWrite,
 					oOriPC,oOriAALU,
 
-	output wire [1:0] oALUOp, oOriBALU, oMem2Reg
+	output reg [1:0] oALUOp, oOriBALU, oMem2Reg
 );
 
 
-wire [14:0] word;			// sinais de controle do caminho de dados
+reg [14:0] word;			// sinais de controle do caminho de dados
 reg [5:0] pr_state;		// present state
-wire [5:0] nx_state;		// next estate
+reg [5:0] nx_state;		// next estate
 
 
 
-assign oMem2Reg      = word[1:0];
-assign oRegWrite     = word[2];
-assign oMemWrite     = word[3];
-assign oPCcondWrite  = word[4];
-assign oALUop        = word[6:5];
+assign oMem2Reg      = word[14:13];
+assign oRegWrite     = word[12];
+assign oMemWrite     = word[11];
+assign oPCcondWrite  = word[10];
+assign oALUop        = word[9:8];
 assign oIorD         = word[7];
-assign oPCwrite      = word[8];
-assign oOriPC        = word[9];
-assign oMemRead      = word[10];
-assign oOriBALU      = word[12:11];
-assign oIRWrite      = word[13];
-assign oOriAALU      = word[14];
+assign oPCw          = word[6];
+assign oOriPC        = word[5];
+assign oMemRead      = word[4];
+assign oOriBALU      = word[3:2];
+assign oIRWrite      = word[1];
+assign oOriAALU      = word[0];
 
 
 initial
 begin
 	pr_state	<= FETCH;
+	nx_state    <= FETCH;
 end
 
 

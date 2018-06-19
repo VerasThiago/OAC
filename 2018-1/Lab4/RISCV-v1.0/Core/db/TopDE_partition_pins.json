@@ -4,15 +4,11 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "oALUop[0]",
+					"name" : "oIRWrite",
 					"strict" : false
 				},
 				{
-					"name" : "oALUop[1]",
-					"strict" : false
-				},
-				{
-					"name" : "oBranch",
+					"name" : "oMemWrite",
 					"strict" : false
 				},
 				{
@@ -20,11 +16,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "oMemtoReg",
+					"name" : "oIorD",
 					"strict" : false
 				},
 				{
-					"name" : "oALUsrc",
+					"name" : "oPCw",
 					"strict" : false
 				},
 				{
@@ -32,15 +28,43 @@
 					"strict" : false
 				},
 				{
-					"name" : "iOp[0]",
+					"name" : "oPCcondWrite",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[4]",
+					"name" : "oOriPC",
+					"strict" : false
+				},
+				{
+					"name" : "oOriAALU",
+					"strict" : false
+				},
+				{
+					"name" : "oOriBALU[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oOriBALU[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oMem2Reg[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oMem2Reg[1]",
 					"strict" : false
 				},
 				{
 					"name" : "iOp[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[3]",
+					"strict" : false
+				},
+				{
+					"name" : "iOp[4]",
 					"strict" : false
 				},
 				{
@@ -52,11 +76,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "iOp[0]",
+					"strict" : false
+				},
+				{
 					"name" : "iOp[1]",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[3]",
+					"name" : "iCLK",
+					"strict" : false
+				},
+				{
+					"name" : "iRST",
 					"strict" : false
 				}
 			]

@@ -1,0 +1,8 @@
+
+State Machine - |Control_MULTI|pr_state
+Name pr_state.ACCESSorCONC pr_state.EXE pr_state.DECODE pr_state.FETCH pr_state.CONC_LOAD 
+pr_state.FETCH 0 0 0 0 0 
+pr_state.DECODE 0 0 1 1 0 
+pr_state.EXE 0 1 0 1 0 
+pr_state.ACCESSorCONC 1 0 0 1 0 
+pr_state.CONC_LOAD 0 0 0 1 1 

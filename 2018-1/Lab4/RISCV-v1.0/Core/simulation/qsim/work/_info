@@ -16,19 +16,19 @@ I6D_YYkY4A>_>mf28lGCB[3
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
 w1527367294
-8TopDE.vo
-FTopDE.vo
-L0 31
-Z3 OV;L;10.5b;63
+Z3 8TopDE.vo
+Z4 FTopDE.vo
+Z5 L0 31
+Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
 !s108 1527367296.000000
-!s107 TopDE.vo|
-!s90 -work|work|TopDE.vo|
+Z7 !s107 TopDE.vo|
+Z8 !s90 -work|work|TopDE.vo|
 !i113 1
-Z4 o-work work
-Z5 tCvgOpt 0
+Z9 o-work work
+Z10 tCvgOpt 0
 n@a@l@u
 vALU_vlg_vec_tst
 R1
@@ -38,17 +38,61 @@ ICBQ:h[]BN7lDa4mPgU94Q3
 R2
 R0
 w1527367288
-8Waveform.vwf.vt
-FWaveform.vwf.vt
-L0 29
-R3
+Z11 8Waveform.vwf.vt
+Z12 FWaveform.vwf.vt
+Z13 L0 29
+R6
 r1
 !s85 0
 31
 !s108 1527367298.000000
 !s107 Waveform.vwf.vt|
-!s90 -work|work|Waveform.vwf.vt|
+Z14 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
+R9
+R10
+n@a@l@u_vlg_vec_tst
+vControl_MULTI
+Z15 !s110 1529371482
+!i10b 1
+!s100 OA9M7J`]QnMW1BSQmV;LM3
+Ig[LMBALhbiciKiTRdaaj=0
+R2
+Z16 dC:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab4/RISCV-v1.0/Core/simulation/qsim
+w1529371480
+R3
 R4
 R5
-n@a@l@u_vlg_vec_tst
+R6
+r1
+!s85 0
+31
+!s108 1529371481.000000
+R7
+R8
+!i113 1
+R9
+R10
+n@control_@m@u@l@t@i
+vControl_MULTI_vlg_vec_tst
+R15
+!i10b 1
+!s100 cn^1ZoHRJj56emB^K@N0P3
+IUBzi]29PMbJHP:fE_iJmj3
+R2
+R16
+w1529371477
+R11
+R12
+R13
+R6
+r1
+!s85 0
+31
+!s108 1529371482.000000
+!s107 Waveform.vwf.vt|
+R14
+!i113 1
+R9
+R10
+n@control_@m@u@l@t@i_vlg_vec_tst
