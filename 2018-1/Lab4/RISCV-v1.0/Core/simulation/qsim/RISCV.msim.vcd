@@ -3,7 +3,7 @@ $comment
 		vcd file RISCV.msim.vcd -direction
 $end
 $date
-	Mon Jun 18 22:24:42 2018
+	Mon Jun 18 22:49:14 2018
 $end
 $version
 	ModelSim Version 10.5b
@@ -70,55 +70,57 @@ $var wire 1 T word~2_combout $end
 $var wire 1 U nx_state.ACCESSorCONC~0_combout $end
 $var wire 1 V pr_state.ACCESSorCONC~q $end
 $var wire 1 W Decoder0~0_combout $end
-$var wire 1 X Selector4~1_combout $end
+$var wire 1 X Selector13~1_combout $end
 $var wire 1 Y pr_state.CONC_LOAD~q $end
 $var wire 1 Z word~3_combout $end
-$var wire 1 [ Selector15~0_combout $end
+$var wire 1 [ Selector11~0_combout $end
 $var wire 1 \ pr_state.FETCH~q $end
-$var wire 1 ] WideOr8~0_combout $end
-$var wire 1 ^ Selector13~0_combout $end
-$var wire 1 _ Selector26~0_combout $end
-$var wire 1 ` Selector4~0_combout $end
+$var wire 1 ] WideOr12~0_combout $end
+$var wire 1 ^ Selector8~0_combout $end
+$var wire 1 _ Selector30~0_combout $end
+$var wire 1 ` Selector13~0_combout $end
 $var wire 1 a Selector23~0_combout $end
 $var wire 1 b Decoder0~1_combout $end
-$var wire 1 c WideOr3~0_combout $end
+$var wire 1 c WideOr7~0_combout $end
 $var wire 1 d Selector21~0_combout $end
 $var wire 1 e Selector21~1_combout $end
 $var wire 1 f Decoder0~2_combout $end
-$var wire 1 g Selector0~0_combout $end
+$var wire 1 g Selector17~0_combout $end
 $var wire 1 h WideOr0~0_combout $end
-$var wire 1 i Selector30~0_combout $end
+$var wire 1 i Selector34~0_combout $end
 $var wire 1 j Decoder0~3_combout $end
-$var wire 1 k WideOr8~1_combout $end
-$var wire 1 l Selector0~1_combout $end
-$var wire 1 m Selector0~2_combout $end
-$var wire 1 n WideOr10~0_combout $end
-$var wire 1 o Selector10~0_combout $end
-$var wire 1 p WideOr6~0_combout $end
-$var wire 1 q Selector6~0_combout $end
-$var wire 1 r WideOr0~1_combout $end
-$var wire 1 s word [14] $end
-$var wire 1 t word [13] $end
-$var wire 1 u word [12] $end
-$var wire 1 v word [11] $end
-$var wire 1 w word [10] $end
-$var wire 1 x word [9] $end
-$var wire 1 y word [8] $end
-$var wire 1 z word [7] $end
-$var wire 1 { word [6] $end
-$var wire 1 | word [5] $end
-$var wire 1 } word [4] $end
-$var wire 1 ~ word [3] $end
-$var wire 1 !! word [2] $end
-$var wire 1 "! word [1] $end
-$var wire 1 #! word [0] $end
+$var wire 1 k WideOr12~1_combout $end
+$var wire 1 l Selector17~1_combout $end
+$var wire 1 m Selector17~2_combout $end
+$var wire 1 n WideOr14~0_combout $end
+$var wire 1 o WideOr5~0_combout $end
+$var wire 1 p WideOr3~0_combout $end
+$var wire 1 q Selector5~0_combout $end
+$var wire 1 r WideOr10~0_combout $end
+$var wire 1 s Selector1~0_combout $end
+$var wire 1 t WideOr0~1_combout $end
+$var wire 1 u word [14] $end
+$var wire 1 v word [13] $end
+$var wire 1 w word [12] $end
+$var wire 1 x word [11] $end
+$var wire 1 y word [10] $end
+$var wire 1 z word [9] $end
+$var wire 1 { word [8] $end
+$var wire 1 | word [7] $end
+$var wire 1 } word [6] $end
+$var wire 1 ~ word [5] $end
+$var wire 1 !! word [4] $end
+$var wire 1 "! word [3] $end
+$var wire 1 #! word [2] $end
+$var wire 1 $! word [1] $end
+$var wire 1 %! word [0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
 0!
-b110011 "
+b11 "
 0#
 0%
 0$
@@ -161,8 +163,8 @@ x5
 0J
 0K
 0L
-1M
-1N
+0M
+0N
 0O
 1P
 1Q
@@ -171,7 +173,7 @@ x5
 1T
 0U
 0V
-0W
+1W
 0X
 0Y
 0Z
@@ -187,7 +189,7 @@ x5
 0d
 1e
 1f
-1g
+0g
 1h
 0i
 0j
@@ -195,25 +197,27 @@ x5
 0l
 0m
 1n
-1o
+0o
 0p
-0q
-0r
-0#!
-1"!
+1q
+1r
+0s
+0t
+0%!
+1$!
+1#!
+0"!
 1!!
 0~
 1}
 0|
-1{
+0{
 0z
-zy
-zx
+0y
+0x
 0w
 0v
 0u
-0t
-0s
 $end
 #20000
 1!
@@ -222,19 +226,19 @@ $end
 1K
 1d
 0`
-1q
-0"!
+1s
+0$!
 0I
 09
 0e
 0&
-1~
-0}
+1"!
+0!!
 0;
 1E
 1-
 0*
-0{
+0}
 0=
 01
 #40000
@@ -246,17 +250,14 @@ $end
 1L
 0K
 0q
-0o
-1#!
+1l
+1%!
 1U
 1A
 1,
-0!!
-0~
-0E
+0#!
 0D
 0.
-0-
 #80000
 0!
 0H
@@ -265,68 +266,80 @@ $end
 1H
 1V
 0L
-1i
-0#!
-0[
+0s
+0l
+1a
+1`
+0%!
 0U
+1X
 0A
 0,
-1u
-1>
-12
+1!!
+1|
+0"!
+0E
+1<
+1;
+1*
+1'
+0-
 #120000
 0!
 0H
 #140000
 1!
 1H
-0\
+1Y
 0V
-0i
-1`
-1o
-0d
-1[
-1"!
-1I
-19
-1e
-1&
-1!!
-1}
-0u
-0>
-1;
-1D
-1.
-1*
-02
-1{
-1=
-11
+1i
+0a
+0`
+0[
+0X
+1u
+1G
+1(
+0!!
+0|
+1w
+1>
+0<
+0;
+0*
+0'
+12
 #160000
 0!
 0H
 #180000
 1!
 1H
-1\
-1K
-1d
-0`
+0\
+0Y
+0i
 1q
-0"!
-0I
-09
-0e
-0&
-1~
-0}
-0;
-1E
-1-
-0*
-0{
-0=
-01
+0d
+1`
+0u
+1[
+1$!
+1I
+19
+0G
+1e
+0(
+1&
+1!!
+1#!
+0w
+0>
+1D
+1;
+1*
+1.
+02
+1}
+1=
+11
 #200000

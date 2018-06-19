@@ -16,7 +16,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition"
 
-// DATE "06/18/2018 22:24:40"
+// DATE "06/18/2018 22:49:12"
 
 // 
 // Device: Altera 5CSEMA5F31C6 Package FBGA896
@@ -102,32 +102,34 @@ wire \word~2_combout ;
 wire \nx_state.ACCESSorCONC~0_combout ;
 wire \pr_state.ACCESSorCONC~q ;
 wire \Decoder0~0_combout ;
-wire \Selector4~1_combout ;
+wire \Selector13~1_combout ;
 wire \pr_state.CONC_LOAD~q ;
 wire \word~3_combout ;
-wire \Selector15~0_combout ;
+wire \Selector11~0_combout ;
 wire \pr_state.FETCH~q ;
-wire \WideOr8~0_combout ;
+wire \WideOr12~0_combout ;
+wire \Selector8~0_combout ;
+wire \Selector30~0_combout ;
 wire \Selector13~0_combout ;
-wire \Selector26~0_combout ;
-wire \Selector4~0_combout ;
 wire \Selector23~0_combout ;
 wire \Decoder0~1_combout ;
-wire \WideOr3~0_combout ;
+wire \WideOr7~0_combout ;
 wire \Selector21~0_combout ;
 wire \Selector21~1_combout ;
 wire \Decoder0~2_combout ;
-wire \Selector0~0_combout ;
+wire \Selector17~0_combout ;
 wire \WideOr0~0_combout ;
-wire \Selector30~0_combout ;
+wire \Selector34~0_combout ;
 wire \Decoder0~3_combout ;
-wire \WideOr8~1_combout ;
-wire \Selector0~1_combout ;
-wire \Selector0~2_combout ;
+wire \WideOr12~1_combout ;
+wire \Selector17~1_combout ;
+wire \Selector17~2_combout ;
+wire \WideOr14~0_combout ;
+wire \WideOr5~0_combout ;
+wire \WideOr3~0_combout ;
+wire \Selector5~0_combout ;
 wire \WideOr10~0_combout ;
-wire \Selector10~0_combout ;
-wire \WideOr6~0_combout ;
-wire \Selector6~0_combout ;
+wire \Selector1~0_combout ;
 wire \WideOr0~1_combout ;
 wire [14:0] word;
 
@@ -268,7 +270,7 @@ defparam \oOriAALU~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
 cyclonev_io_obuf \oALUOp[0]~output (
-	.i(gnd),
+	.i(word[8]),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -283,7 +285,7 @@ defparam \oALUOp[0]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
 cyclonev_io_obuf \oALUOp[1]~output (
-	.i(gnd),
+	.i(word[9]),
 	.oe(vcc),
 	.dynamicterminationcontrol(gnd),
 	.seriesterminationcontrol(16'b0000000000000000),
@@ -593,9 +595,9 @@ defparam \Decoder0~0 .lut_mask = 64'h0000000000008000;
 defparam \Decoder0~0 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector4~1 (
+cyclonev_lcell_comb \Selector13~1 (
 // Equation(s):
-// \Selector4~1_combout  = (!\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout ))
+// \Selector13~1_combout  = (!\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout ))
 
 	.dataa(!\iOp[5]~input_o ),
 	.datab(!\pr_state.ACCESSorCONC~q ),
@@ -606,19 +608,19 @@ cyclonev_lcell_comb \Selector4~1 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector4~1_combout ),
+	.combout(\Selector13~1_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector4~1 .extended_lut = "off";
-defparam \Selector4~1 .lut_mask = 64'h0202020202020202;
-defparam \Selector4~1 .shared_arith = "off";
+defparam \Selector13~1 .extended_lut = "off";
+defparam \Selector13~1 .lut_mask = 64'h0202020202020202;
+defparam \Selector13~1 .shared_arith = "off";
 // synopsys translate_on
 
 dffeas \pr_state.CONC_LOAD (
 	.clk(\iCLK~input_o ),
-	.d(\Selector4~1_combout ),
+	.d(\Selector13~1_combout ),
 	.asdata(vcc),
 	.clrn(!\iRST~input_o ),
 	.aload(gnd),
@@ -657,9 +659,9 @@ defparam \word~3 .lut_mask = 64'h0002000200020002;
 defparam \word~3 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector15~0 (
+cyclonev_lcell_comb \Selector11~0 (
 // Equation(s):
-// \Selector15~0_combout  = ( \pr_state.CONC_LOAD~q  & ( \word~3_combout  & ( (!\pr_state.EXE~q  & (!\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout ))) ) ) ) # ( !\pr_state.CONC_LOAD~q  & ( \word~3_combout  & ( (!\pr_state.EXE~q  & 
+// \Selector11~0_combout  = ( \pr_state.CONC_LOAD~q  & ( \word~3_combout  & ( (!\pr_state.EXE~q  & (!\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout ))) ) ) ) # ( !\pr_state.CONC_LOAD~q  & ( \word~3_combout  & ( (!\pr_state.EXE~q  & 
 // ((!\pr_state.ACCESSorCONC~q ) # ((!\iOp[5]~input_o  & \Decoder0~0_combout )))) # (\pr_state.EXE~q  & (((\pr_state.ACCESSorCONC~q )))) ) ) ) # ( \pr_state.CONC_LOAD~q  & ( !\word~3_combout  & ( (!\pr_state.EXE~q  & (!\iOp[5]~input_o  & 
 // (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout ))) # (\pr_state.EXE~q  & (((!\pr_state.ACCESSorCONC~q )))) ) ) ) # ( !\pr_state.CONC_LOAD~q  & ( !\word~3_combout  & ( ((!\pr_state.ACCESSorCONC~q ) # ((!\iOp[5]~input_o  & \Decoder0~0_combout ))) # 
 // (\pr_state.EXE~q ) ) ) )
@@ -673,19 +675,19 @@ cyclonev_lcell_comb \Selector15~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector15~0_combout ),
+	.combout(\Selector11~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector15~0 .extended_lut = "off";
-defparam \Selector15~0 .lut_mask = 64'hF5FD5058A5AD0008;
-defparam \Selector15~0 .shared_arith = "off";
+defparam \Selector11~0 .extended_lut = "off";
+defparam \Selector11~0 .lut_mask = 64'hF5FD5058A5AD0008;
+defparam \Selector11~0 .shared_arith = "off";
 // synopsys translate_on
 
 dffeas \pr_state.FETCH (
 	.clk(\iCLK~input_o ),
-	.d(\Selector15~0_combout ),
+	.d(\Selector11~0_combout ),
 	.asdata(vcc),
 	.clrn(!\iRST~input_o ),
 	.aload(gnd),
@@ -701,9 +703,9 @@ defparam \pr_state.FETCH .is_wysiwyg = "true";
 defparam \pr_state.FETCH .power_up = "low";
 // synopsys translate_on
 
-cyclonev_lcell_comb \WideOr8~0 (
+cyclonev_lcell_comb \WideOr12~0 (
 // Equation(s):
-// \WideOr8~0_combout  = ( \iOp[6]~input_o  & ( (!\iOp[4]~input_o  & (\iOp[5]~input_o  & ((!\iOp[3]~input_o ) # (\iOp[2]~input_o )))) ) ) # ( !\iOp[6]~input_o  & ( (!\iOp[3]~input_o  & ((!\iOp[2]~input_o ) # (\iOp[4]~input_o ))) ) )
+// \WideOr12~0_combout  = ( \iOp[6]~input_o  & ( (!\iOp[4]~input_o  & (\iOp[5]~input_o  & ((!\iOp[3]~input_o ) # (\iOp[2]~input_o )))) ) ) # ( !\iOp[6]~input_o  & ( (!\iOp[3]~input_o  & ((!\iOp[2]~input_o ) # (\iOp[4]~input_o ))) ) )
 
 	.dataa(!\iOp[2]~input_o ),
 	.datab(!\iOp[3]~input_o ),
@@ -714,22 +716,22 @@ cyclonev_lcell_comb \WideOr8~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\WideOr8~0_combout ),
+	.combout(\WideOr12~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \WideOr8~0 .extended_lut = "off";
-defparam \WideOr8~0 .lut_mask = 64'h8C8C00D08C8C00D0;
-defparam \WideOr8~0 .shared_arith = "off";
+defparam \WideOr12~0 .extended_lut = "off";
+defparam \WideOr12~0 .lut_mask = 64'h8C8C00D08C8C00D0;
+defparam \WideOr12~0 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector13~0 (
+cyclonev_lcell_comb \Selector8~0 (
 // Equation(s):
-// \Selector13~0_combout  = (!\pr_state.EXE~q ) # ((\WideOr8~0_combout  & (\iOp[0]~input_o  & \iOp[1]~input_o )))
+// \Selector8~0_combout  = (!\pr_state.EXE~q ) # ((\WideOr12~0_combout  & (\iOp[0]~input_o  & \iOp[1]~input_o )))
 
 	.dataa(!\pr_state.EXE~q ),
-	.datab(!\WideOr8~0_combout ),
+	.datab(!\WideOr12~0_combout ),
 	.datac(!\iOp[0]~input_o ),
 	.datad(!\iOp[1]~input_o ),
 	.datae(gnd),
@@ -737,26 +739,26 @@ cyclonev_lcell_comb \Selector13~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector13~0_combout ),
+	.combout(\Selector8~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector13~0 .extended_lut = "off";
-defparam \Selector13~0 .lut_mask = 64'hAAABAAABAAABAAAB;
-defparam \Selector13~0 .shared_arith = "off";
+defparam \Selector8~0 .extended_lut = "off";
+defparam \Selector8~0 .lut_mask = 64'hAAABAAABAAABAAAB;
+defparam \Selector8~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[1] (
 // Equation(s):
-// word[1] = ( word[1] & ( \Selector13~0_combout  & ( !\pr_state.FETCH~q  ) ) ) # ( !word[1] & ( \Selector13~0_combout  & ( !\pr_state.FETCH~q  ) ) ) # ( word[1] & ( !\Selector13~0_combout  ) )
+// word[1] = ( word[1] & ( \Selector8~0_combout  & ( !\pr_state.FETCH~q  ) ) ) # ( !word[1] & ( \Selector8~0_combout  & ( !\pr_state.FETCH~q  ) ) ) # ( word[1] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
 	.datad(!\pr_state.FETCH~q ),
 	.datae(!word[1]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -770,9 +772,9 @@ defparam \word[1] .lut_mask = 64'h0000FFFFFF00FF00;
 defparam \word[1] .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector26~0 (
+cyclonev_lcell_comb \Selector30~0 (
 // Equation(s):
-// \Selector26~0_combout  = (\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout ))
+// \Selector30~0_combout  = (\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout ))
 
 	.dataa(!\iOp[5]~input_o ),
 	.datab(!\pr_state.ACCESSorCONC~q ),
@@ -783,26 +785,26 @@ cyclonev_lcell_comb \Selector26~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector26~0_combout ),
+	.combout(\Selector30~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector26~0 .extended_lut = "off";
-defparam \Selector26~0 .lut_mask = 64'h0101010101010101;
-defparam \Selector26~0 .shared_arith = "off";
+defparam \Selector30~0 .extended_lut = "off";
+defparam \Selector30~0 .lut_mask = 64'h0101010101010101;
+defparam \Selector30~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[11] (
 // Equation(s):
-// word[11] = ( word[11] & ( \Selector13~0_combout  & ( \Selector26~0_combout  ) ) ) # ( !word[11] & ( \Selector13~0_combout  & ( \Selector26~0_combout  ) ) ) # ( word[11] & ( !\Selector13~0_combout  ) )
+// word[11] = ( word[11] & ( \Selector8~0_combout  & ( \Selector30~0_combout  ) ) ) # ( !word[11] & ( \Selector8~0_combout  & ( \Selector30~0_combout  ) ) ) # ( word[11] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
-	.datad(!\Selector26~0_combout ),
+	.datad(!\Selector30~0_combout ),
 	.datae(!word[11]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -816,9 +818,9 @@ defparam \word[11] .lut_mask = 64'h0000FFFF00FF00FF;
 defparam \word[11] .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector4~0 (
+cyclonev_lcell_comb \Selector13~0 (
 // Equation(s):
-// \Selector4~0_combout  = (!\pr_state.FETCH~q ) # ((!\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout )))
+// \Selector13~0_combout  = (!\pr_state.FETCH~q ) # ((!\iOp[5]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~0_combout )))
 
 	.dataa(!\pr_state.FETCH~q ),
 	.datab(!\iOp[5]~input_o ),
@@ -829,26 +831,26 @@ cyclonev_lcell_comb \Selector4~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector4~0_combout ),
+	.combout(\Selector13~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector4~0 .extended_lut = "off";
-defparam \Selector4~0 .lut_mask = 64'hAAAEAAAEAAAEAAAE;
-defparam \Selector4~0 .shared_arith = "off";
+defparam \Selector13~0 .extended_lut = "off";
+defparam \Selector13~0 .lut_mask = 64'hAAAEAAAEAAAEAAAE;
+defparam \Selector13~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[4] (
 // Equation(s):
-// word[4] = ( word[4] & ( \Selector13~0_combout  & ( \Selector4~0_combout  ) ) ) # ( !word[4] & ( \Selector13~0_combout  & ( \Selector4~0_combout  ) ) ) # ( word[4] & ( !\Selector13~0_combout  ) )
+// word[4] = ( word[4] & ( \Selector8~0_combout  & ( \Selector13~0_combout  ) ) ) # ( !word[4] & ( \Selector8~0_combout  & ( \Selector13~0_combout  ) ) ) # ( word[4] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
-	.datad(!\Selector4~0_combout ),
+	.datad(!\Selector13~0_combout ),
 	.datae(!word[4]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -887,14 +889,14 @@ defparam \Selector23~0 .shared_arith = "off";
 
 cyclonev_lcell_comb \word[7] (
 // Equation(s):
-// word[7] = ( word[7] & ( \Selector13~0_combout  & ( \Selector23~0_combout  ) ) ) # ( !word[7] & ( \Selector13~0_combout  & ( \Selector23~0_combout  ) ) ) # ( word[7] & ( !\Selector13~0_combout  ) )
+// word[7] = ( word[7] & ( \Selector8~0_combout  & ( \Selector23~0_combout  ) ) ) # ( !word[7] & ( \Selector8~0_combout  & ( \Selector23~0_combout  ) ) ) # ( word[7] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
 	.datad(!\Selector23~0_combout ),
 	.datae(!word[7]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -931,9 +933,9 @@ defparam \Decoder0~1 .lut_mask = 64'h0000000000000008;
 defparam \Decoder0~1 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \WideOr3~0 (
+cyclonev_lcell_comb \WideOr7~0 (
 // Equation(s):
-// \WideOr3~0_combout  = (!\iOp[4]~input_o  & ((!\iOp[6]~input_o  & ((\iOp[2]~input_o ))) # (\iOp[6]~input_o  & (!\iOp[5]~input_o )))) # (\iOp[4]~input_o  & (((\iOp[6]~input_o ))))
+// \WideOr7~0_combout  = (!\iOp[4]~input_o  & ((!\iOp[6]~input_o  & ((\iOp[2]~input_o ))) # (\iOp[6]~input_o  & (!\iOp[5]~input_o )))) # (\iOp[4]~input_o  & (((\iOp[6]~input_o ))))
 
 	.dataa(!\iOp[4]~input_o ),
 	.datab(!\iOp[5]~input_o ),
@@ -944,14 +946,14 @@ cyclonev_lcell_comb \WideOr3~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\WideOr3~0_combout ),
+	.combout(\WideOr7~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \WideOr3~0 .extended_lut = "off";
-defparam \WideOr3~0 .lut_mask = 64'h0ADD0ADD0ADD0ADD;
-defparam \WideOr3~0 .shared_arith = "off";
+defparam \WideOr7~0 .extended_lut = "off";
+defparam \WideOr7~0 .lut_mask = 64'h0ADD0ADD0ADD0ADD;
+defparam \WideOr7~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \Selector21~0 (
@@ -979,14 +981,14 @@ defparam \Selector21~0 .shared_arith = "off";
 
 cyclonev_lcell_comb \Selector21~1 (
 // Equation(s):
-// \Selector21~1_combout  = ( \WideOr3~0_combout  & ( \Selector21~0_combout  & ( ((\iOp[2]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~1_combout ))) # (\pr_state.EXE~q ) ) ) ) # ( !\WideOr3~0_combout  & ( \Selector21~0_combout  & ( (\iOp[2]~input_o  & 
-// (\pr_state.ACCESSorCONC~q  & \Decoder0~1_combout )) ) ) ) # ( \WideOr3~0_combout  & ( !\Selector21~0_combout  ) ) # ( !\WideOr3~0_combout  & ( !\Selector21~0_combout  ) )
+// \Selector21~1_combout  = ( \WideOr7~0_combout  & ( \Selector21~0_combout  & ( ((\iOp[2]~input_o  & (\pr_state.ACCESSorCONC~q  & \Decoder0~1_combout ))) # (\pr_state.EXE~q ) ) ) ) # ( !\WideOr7~0_combout  & ( \Selector21~0_combout  & ( (\iOp[2]~input_o  & 
+// (\pr_state.ACCESSorCONC~q  & \Decoder0~1_combout )) ) ) ) # ( \WideOr7~0_combout  & ( !\Selector21~0_combout  ) ) # ( !\WideOr7~0_combout  & ( !\Selector21~0_combout  ) )
 
 	.dataa(!\pr_state.EXE~q ),
 	.datab(!\iOp[2]~input_o ),
 	.datac(!\pr_state.ACCESSorCONC~q ),
 	.datad(!\Decoder0~1_combout ),
-	.datae(!\WideOr3~0_combout ),
+	.datae(!\WideOr7~0_combout ),
 	.dataf(!\Selector21~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
@@ -1003,14 +1005,14 @@ defparam \Selector21~1 .shared_arith = "off";
 
 cyclonev_lcell_comb \word[6] (
 // Equation(s):
-// word[6] = ( word[6] & ( \Selector13~0_combout  & ( \Selector21~1_combout  ) ) ) # ( !word[6] & ( \Selector13~0_combout  & ( \Selector21~1_combout  ) ) ) # ( word[6] & ( !\Selector13~0_combout  ) )
+// word[6] = ( word[6] & ( \Selector8~0_combout  & ( \Selector21~1_combout  ) ) ) # ( !word[6] & ( \Selector8~0_combout  & ( \Selector21~1_combout  ) ) ) # ( word[6] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
 	.datad(!\Selector21~1_combout ),
 	.datae(!word[6]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -1047,9 +1049,9 @@ defparam \Decoder0~2 .lut_mask = 64'h0202020202020202;
 defparam \Decoder0~2 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector0~0 (
+cyclonev_lcell_comb \Selector17~0 (
 // Equation(s):
-// \Selector0~0_combout  = ( \iOp[1]~input_o  & ( (!\iOp[3]~input_o  & (\iOp[4]~input_o  & (!\iOp[6]~input_o  & \iOp[0]~input_o ))) ) )
+// \Selector17~0_combout  = ( \iOp[1]~input_o  & ( (!\iOp[3]~input_o  & (\iOp[4]~input_o  & (!\iOp[6]~input_o  & \iOp[0]~input_o ))) ) )
 
 	.dataa(!\iOp[3]~input_o ),
 	.datab(!\iOp[4]~input_o ),
@@ -1060,14 +1062,14 @@ cyclonev_lcell_comb \Selector0~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector0~0_combout ),
+	.combout(\Selector17~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector0~0 .extended_lut = "off";
-defparam \Selector0~0 .lut_mask = 64'h0000002000000020;
-defparam \Selector0~0 .shared_arith = "off";
+defparam \Selector17~0 .extended_lut = "off";
+defparam \Selector17~0 .lut_mask = 64'h0000002000000020;
+defparam \Selector17~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \WideOr0~0 (
@@ -1093,42 +1095,42 @@ defparam \WideOr0~0 .lut_mask = 64'hF520F520F520F520;
 defparam \WideOr0~0 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector30~0 (
+cyclonev_lcell_comb \Selector34~0 (
 // Equation(s):
-// \Selector30~0_combout  = ( \Selector0~0_combout  & ( \WideOr0~0_combout  & ( (!\pr_state.EXE~q  & (((\pr_state.CONC_LOAD~q )) # (\pr_state.ACCESSorCONC~q ))) # (\pr_state.EXE~q  & ((!\pr_state.ACCESSorCONC~q  & (!\Decoder0~2_combout )) # 
-// (\pr_state.ACCESSorCONC~q  & ((\pr_state.CONC_LOAD~q ))))) ) ) ) # ( !\Selector0~0_combout  & ( \WideOr0~0_combout  & ( (!\pr_state.EXE~q  & (!\pr_state.ACCESSorCONC~q  & ((\pr_state.CONC_LOAD~q )))) # (\pr_state.EXE~q  & ((!\pr_state.ACCESSorCONC~q  & 
-// (!\Decoder0~2_combout )) # (\pr_state.ACCESSorCONC~q  & ((\pr_state.CONC_LOAD~q ))))) ) ) ) # ( \Selector0~0_combout  & ( !\WideOr0~0_combout  & ( (!\pr_state.EXE~q  $ (!\pr_state.ACCESSorCONC~q )) # (\pr_state.CONC_LOAD~q ) ) ) ) # ( 
-// !\Selector0~0_combout  & ( !\WideOr0~0_combout  & ( (!\pr_state.EXE~q  & (!\pr_state.ACCESSorCONC~q  & \pr_state.CONC_LOAD~q )) # (\pr_state.EXE~q  & ((!\pr_state.ACCESSorCONC~q ) # (\pr_state.CONC_LOAD~q ))) ) ) )
+// \Selector34~0_combout  = ( \Selector17~0_combout  & ( \WideOr0~0_combout  & ( (!\pr_state.EXE~q  & (((\pr_state.CONC_LOAD~q )) # (\pr_state.ACCESSorCONC~q ))) # (\pr_state.EXE~q  & ((!\pr_state.ACCESSorCONC~q  & (!\Decoder0~2_combout )) # 
+// (\pr_state.ACCESSorCONC~q  & ((\pr_state.CONC_LOAD~q ))))) ) ) ) # ( !\Selector17~0_combout  & ( \WideOr0~0_combout  & ( (!\pr_state.EXE~q  & (!\pr_state.ACCESSorCONC~q  & ((\pr_state.CONC_LOAD~q )))) # (\pr_state.EXE~q  & ((!\pr_state.ACCESSorCONC~q  & 
+// (!\Decoder0~2_combout )) # (\pr_state.ACCESSorCONC~q  & ((\pr_state.CONC_LOAD~q ))))) ) ) ) # ( \Selector17~0_combout  & ( !\WideOr0~0_combout  & ( (!\pr_state.EXE~q  $ (!\pr_state.ACCESSorCONC~q )) # (\pr_state.CONC_LOAD~q ) ) ) ) # ( 
+// !\Selector17~0_combout  & ( !\WideOr0~0_combout  & ( (!\pr_state.EXE~q  & (!\pr_state.ACCESSorCONC~q  & \pr_state.CONC_LOAD~q )) # (\pr_state.EXE~q  & ((!\pr_state.ACCESSorCONC~q ) # (\pr_state.CONC_LOAD~q ))) ) ) )
 
 	.dataa(!\pr_state.EXE~q ),
 	.datab(!\pr_state.ACCESSorCONC~q ),
 	.datac(!\Decoder0~2_combout ),
 	.datad(!\pr_state.CONC_LOAD~q ),
-	.datae(!\Selector0~0_combout ),
+	.datae(!\Selector17~0_combout ),
 	.dataf(!\WideOr0~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector30~0_combout ),
+	.combout(\Selector34~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector30~0 .extended_lut = "off";
-defparam \Selector30~0 .lut_mask = 64'h44DD66FF40D962FB;
-defparam \Selector30~0 .shared_arith = "off";
+defparam \Selector34~0 .extended_lut = "off";
+defparam \Selector34~0 .lut_mask = 64'h44DD66FF40D962FB;
+defparam \Selector34~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[12] (
 // Equation(s):
-// word[12] = ( word[12] & ( \Selector13~0_combout  & ( \Selector30~0_combout  ) ) ) # ( !word[12] & ( \Selector13~0_combout  & ( \Selector30~0_combout  ) ) ) # ( word[12] & ( !\Selector13~0_combout  ) )
+// word[12] = ( word[12] & ( \Selector8~0_combout  & ( \Selector34~0_combout  ) ) ) # ( !word[12] & ( \Selector8~0_combout  & ( \Selector34~0_combout  ) ) ) # ( word[12] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
-	.datad(!\Selector30~0_combout ),
+	.datad(!\Selector34~0_combout ),
 	.datae(!word[12]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -1165,11 +1167,11 @@ defparam \Decoder0~3 .lut_mask = 64'h2222222222222222;
 defparam \Decoder0~3 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \WideOr8~1 (
+cyclonev_lcell_comb \WideOr12~1 (
 // Equation(s):
-// \WideOr8~1_combout  = (\WideOr8~0_combout  & (\iOp[0]~input_o  & \iOp[1]~input_o ))
+// \WideOr12~1_combout  = (\WideOr12~0_combout  & (\iOp[0]~input_o  & \iOp[1]~input_o ))
 
-	.dataa(!\WideOr8~0_combout ),
+	.dataa(!\WideOr12~0_combout ),
 	.datab(!\iOp[0]~input_o ),
 	.datac(!\iOp[1]~input_o ),
 	.datad(gnd),
@@ -1178,25 +1180,25 @@ cyclonev_lcell_comb \WideOr8~1 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\WideOr8~1_combout ),
+	.combout(\WideOr12~1_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \WideOr8~1 .extended_lut = "off";
-defparam \WideOr8~1 .lut_mask = 64'h0101010101010101;
-defparam \WideOr8~1 .shared_arith = "off";
+defparam \WideOr12~1 .extended_lut = "off";
+defparam \WideOr12~1 .lut_mask = 64'h0101010101010101;
+defparam \WideOr12~1 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[10] (
 // Equation(s):
-// word[10] = ( \WideOr8~1_combout  & ( \pr_state.EXE~q  & ( \Decoder0~3_combout  ) ) ) # ( !\WideOr8~1_combout  & ( \pr_state.EXE~q  & ( word[10] ) ) )
+// word[10] = ( \WideOr12~1_combout  & ( \pr_state.EXE~q  & ( \Decoder0~3_combout  ) ) ) # ( !\WideOr12~1_combout  & ( \pr_state.EXE~q  & ( word[10] ) ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(!\Decoder0~3_combout ),
 	.datad(!word[10]),
-	.datae(!\WideOr8~1_combout ),
+	.datae(!\WideOr12~1_combout ),
 	.dataf(!\pr_state.EXE~q ),
 	.datag(gnd),
 	.cin(gnd),
@@ -1211,10 +1213,10 @@ defparam \word[10] .lut_mask = 64'h0000000000FF0F0F;
 defparam \word[10] .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector0~1 (
+cyclonev_lcell_comb \Selector17~1 (
 // Equation(s):
-// \Selector0~1_combout  = ( \iOp[0]~input_o  & ( \iOp[1]~input_o  & ( (\pr_state.EXE~q  & (((!\iOp[4]~input_o ) # (\iOp[6]~input_o )) # (\iOp[3]~input_o ))) ) ) ) # ( !\iOp[0]~input_o  & ( \iOp[1]~input_o  & ( \pr_state.EXE~q  ) ) ) # ( \iOp[0]~input_o  & ( 
-// !\iOp[1]~input_o  & ( \pr_state.EXE~q  ) ) ) # ( !\iOp[0]~input_o  & ( !\iOp[1]~input_o  & ( \pr_state.EXE~q  ) ) )
+// \Selector17~1_combout  = ( \iOp[0]~input_o  & ( \iOp[1]~input_o  & ( (\pr_state.EXE~q  & (((!\iOp[4]~input_o ) # (\iOp[6]~input_o )) # (\iOp[3]~input_o ))) ) ) ) # ( !\iOp[0]~input_o  & ( \iOp[1]~input_o  & ( \pr_state.EXE~q  ) ) ) # ( \iOp[0]~input_o  & 
+// ( !\iOp[1]~input_o  & ( \pr_state.EXE~q  ) ) ) # ( !\iOp[0]~input_o  & ( !\iOp[1]~input_o  & ( \pr_state.EXE~q  ) ) )
 
 	.dataa(!\pr_state.EXE~q ),
 	.datab(!\iOp[3]~input_o ),
@@ -1225,50 +1227,50 @@ cyclonev_lcell_comb \Selector0~1 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector0~1_combout ),
+	.combout(\Selector17~1_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector0~1 .extended_lut = "off";
-defparam \Selector0~1 .lut_mask = 64'h5555555555555155;
-defparam \Selector0~1 .shared_arith = "off";
+defparam \Selector17~1 .extended_lut = "off";
+defparam \Selector17~1 .lut_mask = 64'h5555555555555155;
+defparam \Selector17~1 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector0~2 (
+cyclonev_lcell_comb \Selector17~2 (
 // Equation(s):
-// \Selector0~2_combout  = ( \Decoder0~1_combout  & ( \Selector0~1_combout  & ( (!\iOp[2]~input_o  & ((!\Decoder0~0_combout ))) # (\iOp[2]~input_o  & (\pr_state.ACCESSorCONC~q )) ) ) ) # ( !\Decoder0~1_combout  & ( \Selector0~1_combout  & ( 
-// !\Decoder0~0_combout  ) ) ) # ( \Decoder0~1_combout  & ( !\Selector0~1_combout  & ( (\iOp[2]~input_o  & \pr_state.ACCESSorCONC~q ) ) ) )
+// \Selector17~2_combout  = ( \Decoder0~1_combout  & ( \Selector17~1_combout  & ( (!\iOp[2]~input_o  & ((!\Decoder0~0_combout ))) # (\iOp[2]~input_o  & (\pr_state.ACCESSorCONC~q )) ) ) ) # ( !\Decoder0~1_combout  & ( \Selector17~1_combout  & ( 
+// !\Decoder0~0_combout  ) ) ) # ( \Decoder0~1_combout  & ( !\Selector17~1_combout  & ( (\iOp[2]~input_o  & \pr_state.ACCESSorCONC~q ) ) ) )
 
 	.dataa(!\iOp[2]~input_o ),
 	.datab(gnd),
 	.datac(!\pr_state.ACCESSorCONC~q ),
 	.datad(!\Decoder0~0_combout ),
 	.datae(!\Decoder0~1_combout ),
-	.dataf(!\Selector0~1_combout ),
+	.dataf(!\Selector17~1_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector0~2_combout ),
+	.combout(\Selector17~2_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector0~2 .extended_lut = "off";
-defparam \Selector0~2 .lut_mask = 64'h00000505FF00AF05;
-defparam \Selector0~2 .shared_arith = "off";
+defparam \Selector17~2 .extended_lut = "off";
+defparam \Selector17~2 .lut_mask = 64'h00000505FF00AF05;
+defparam \Selector17~2 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[5] (
 // Equation(s):
-// word[5] = ( word[5] & ( \Selector13~0_combout  & ( \Selector0~2_combout  ) ) ) # ( !word[5] & ( \Selector13~0_combout  & ( \Selector0~2_combout  ) ) ) # ( word[5] & ( !\Selector13~0_combout  ) )
+// word[5] = ( word[5] & ( \Selector8~0_combout  & ( \Selector17~2_combout  ) ) ) # ( !word[5] & ( \Selector8~0_combout  & ( \Selector17~2_combout  ) ) ) # ( word[5] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
-	.datad(!\Selector0~2_combout ),
+	.datad(!\Selector17~2_combout ),
 	.datae(!word[5]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -1282,9 +1284,9 @@ defparam \word[5] .lut_mask = 64'h0000FFFF00FF00FF;
 defparam \word[5] .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \WideOr10~0 (
+cyclonev_lcell_comb \WideOr14~0 (
 // Equation(s):
-// \WideOr10~0_combout  = ( \Decoder0~2_combout  & ( (!\iOp[6]~input_o  & (!\iOp[2]~input_o )) # (\iOp[6]~input_o  & (((\iOp[5]~input_o  & !\iOp[4]~input_o )))) ) )
+// \WideOr14~0_combout  = ( \Decoder0~2_combout  & ( (!\iOp[6]~input_o  & (!\iOp[2]~input_o )) # (\iOp[6]~input_o  & (((\iOp[5]~input_o  & !\iOp[4]~input_o )))) ) )
 
 	.dataa(!\iOp[6]~input_o ),
 	.datab(!\iOp[2]~input_o ),
@@ -1295,25 +1297,25 @@ cyclonev_lcell_comb \WideOr10~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\WideOr10~0_combout ),
+	.combout(\WideOr14~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \WideOr10~0 .extended_lut = "off";
-defparam \WideOr10~0 .lut_mask = 64'h00008D8800008D88;
-defparam \WideOr10~0 .shared_arith = "off";
+defparam \WideOr14~0 .extended_lut = "off";
+defparam \WideOr14~0 .lut_mask = 64'h00008D8800008D88;
+defparam \WideOr14~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[0] (
 // Equation(s):
-// word[0] = ( \WideOr8~1_combout  & ( \pr_state.EXE~q  & ( \WideOr10~0_combout  ) ) ) # ( !\WideOr8~1_combout  & ( \pr_state.EXE~q  & ( word[0] ) ) )
+// word[0] = ( \WideOr12~1_combout  & ( \pr_state.EXE~q  & ( \WideOr14~0_combout  ) ) ) # ( !\WideOr12~1_combout  & ( \pr_state.EXE~q  & ( word[0] ) ) )
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(!\WideOr10~0_combout ),
+	.datac(!\WideOr14~0_combout ),
 	.datad(!word[0]),
-	.datae(!\WideOr8~1_combout ),
+	.datae(!\WideOr12~1_combout ),
 	.dataf(!\pr_state.EXE~q ),
 	.datag(gnd),
 	.cin(gnd),
@@ -1328,9 +1330,101 @@ defparam \word[0] .lut_mask = 64'h0000000000FF0F0F;
 defparam \word[0] .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector10~0 (
+cyclonev_lcell_comb \WideOr5~0 (
 // Equation(s):
-// \Selector10~0_combout  = ( \pr_state.DECODE~q  ) # ( !\pr_state.DECODE~q  & ( (!\pr_state.FETCH~q ) # ((\pr_state.EXE~q  & (\iOp[2]~input_o  & \Decoder0~1_combout ))) ) )
+// \WideOr5~0_combout  = ( \Decoder0~2_combout  & ( (!\iOp[6]~input_o  & (\iOp[4]~input_o  & (!\iOp[2]~input_o  $ (\iOp[5]~input_o )))) # (\iOp[6]~input_o  & (!\iOp[2]~input_o  & (\iOp[5]~input_o  & !\iOp[4]~input_o ))) ) )
+
+	.dataa(!\iOp[6]~input_o ),
+	.datab(!\iOp[2]~input_o ),
+	.datac(!\iOp[5]~input_o ),
+	.datad(!\iOp[4]~input_o ),
+	.datae(!\Decoder0~2_combout ),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\WideOr5~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \WideOr5~0 .extended_lut = "off";
+defparam \WideOr5~0 .lut_mask = 64'h0000048200000482;
+defparam \WideOr5~0 .shared_arith = "off";
+// synopsys translate_on
+
+cyclonev_lcell_comb \word[8] (
+// Equation(s):
+// word[8] = ( \WideOr12~1_combout  & ( \pr_state.EXE~q  & ( \WideOr5~0_combout  ) ) ) # ( !\WideOr12~1_combout  & ( \pr_state.EXE~q  & ( word[8] ) ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\WideOr5~0_combout ),
+	.datad(!word[8]),
+	.datae(!\WideOr12~1_combout ),
+	.dataf(!\pr_state.EXE~q ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(word[8]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \word[8] .extended_lut = "off";
+defparam \word[8] .lut_mask = 64'h0000000000FF0F0F;
+defparam \word[8] .shared_arith = "off";
+// synopsys translate_on
+
+cyclonev_lcell_comb \WideOr3~0 (
+// Equation(s):
+// \WideOr3~0_combout  = ( \Decoder0~2_combout  & ( (!\iOp[6]~input_o  & (\iOp[4]~input_o  & ((!\iOp[2]~input_o ) # (\iOp[5]~input_o )))) # (\iOp[6]~input_o  & (!\iOp[2]~input_o  & (\iOp[5]~input_o  & !\iOp[4]~input_o ))) ) )
+
+	.dataa(!\iOp[6]~input_o ),
+	.datab(!\iOp[2]~input_o ),
+	.datac(!\iOp[5]~input_o ),
+	.datad(!\iOp[4]~input_o ),
+	.datae(!\Decoder0~2_combout ),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\WideOr3~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \WideOr3~0 .extended_lut = "off";
+defparam \WideOr3~0 .lut_mask = 64'h0000048A0000048A;
+defparam \WideOr3~0 .shared_arith = "off";
+// synopsys translate_on
+
+cyclonev_lcell_comb \word[9] (
+// Equation(s):
+// word[9] = ( \WideOr12~1_combout  & ( \pr_state.EXE~q  & ( \WideOr3~0_combout  ) ) ) # ( !\WideOr12~1_combout  & ( \pr_state.EXE~q  & ( word[9] ) ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\WideOr3~0_combout ),
+	.datad(!word[9]),
+	.datae(!\WideOr12~1_combout ),
+	.dataf(!\pr_state.EXE~q ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(word[9]),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \word[9] .extended_lut = "off";
+defparam \word[9] .lut_mask = 64'h0000000000FF0F0F;
+defparam \word[9] .shared_arith = "off";
+// synopsys translate_on
+
+cyclonev_lcell_comb \Selector5~0 (
+// Equation(s):
+// \Selector5~0_combout  = ( \pr_state.DECODE~q  ) # ( !\pr_state.DECODE~q  & ( (!\pr_state.FETCH~q ) # ((\pr_state.EXE~q  & (\iOp[2]~input_o  & \Decoder0~1_combout ))) ) )
 
 	.dataa(!\pr_state.FETCH~q ),
 	.datab(!\pr_state.EXE~q ),
@@ -1341,26 +1435,26 @@ cyclonev_lcell_comb \Selector10~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector10~0_combout ),
+	.combout(\Selector5~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector10~0 .extended_lut = "off";
-defparam \Selector10~0 .lut_mask = 64'hAAABFFFFAAABFFFF;
-defparam \Selector10~0 .shared_arith = "off";
+defparam \Selector5~0 .extended_lut = "off";
+defparam \Selector5~0 .lut_mask = 64'hAAABFFFFAAABFFFF;
+defparam \Selector5~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[2] (
 // Equation(s):
-// word[2] = ( word[2] & ( \Selector13~0_combout  & ( \Selector10~0_combout  ) ) ) # ( !word[2] & ( \Selector13~0_combout  & ( \Selector10~0_combout  ) ) ) # ( word[2] & ( !\Selector13~0_combout  ) )
+// word[2] = ( word[2] & ( \Selector8~0_combout  & ( \Selector5~0_combout  ) ) ) # ( !word[2] & ( \Selector8~0_combout  & ( \Selector5~0_combout  ) ) ) # ( word[2] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
-	.datad(!\Selector10~0_combout ),
+	.datad(!\Selector5~0_combout ),
 	.datae(!word[2]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -1374,9 +1468,9 @@ defparam \word[2] .lut_mask = 64'h0000FFFF00FF00FF;
 defparam \word[2] .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \WideOr6~0 (
+cyclonev_lcell_comb \WideOr10~0 (
 // Equation(s):
-// \WideOr6~0_combout  = (!\iOp[6]~input_o  & (!\iOp[4]~input_o  $ (((\iOp[2]~input_o ))))) # (\iOp[6]~input_o  & (!\iOp[4]~input_o  & (\iOp[5]~input_o  & \iOp[2]~input_o )))
+// \WideOr10~0_combout  = (!\iOp[6]~input_o  & (!\iOp[4]~input_o  $ (((\iOp[2]~input_o ))))) # (\iOp[6]~input_o  & (!\iOp[4]~input_o  & (\iOp[5]~input_o  & \iOp[2]~input_o )))
 
 	.dataa(!\iOp[4]~input_o ),
 	.datab(!\iOp[5]~input_o ),
@@ -1387,49 +1481,49 @@ cyclonev_lcell_comb \WideOr6~0 (
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\WideOr6~0_combout ),
+	.combout(\WideOr10~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \WideOr6~0 .extended_lut = "off";
-defparam \WideOr6~0 .lut_mask = 64'hA502A502A502A502;
-defparam \WideOr6~0 .shared_arith = "off";
+defparam \WideOr10~0 .extended_lut = "off";
+defparam \WideOr10~0 .lut_mask = 64'hA502A502A502A502;
+defparam \WideOr10~0 .shared_arith = "off";
 // synopsys translate_on
 
-cyclonev_lcell_comb \Selector6~0 (
+cyclonev_lcell_comb \Selector1~0 (
 // Equation(s):
-// \Selector6~0_combout  = ((\pr_state.EXE~q  & (\Decoder0~2_combout  & \WideOr6~0_combout ))) # (\pr_state.DECODE~q )
+// \Selector1~0_combout  = ((\pr_state.EXE~q  & (\Decoder0~2_combout  & \WideOr10~0_combout ))) # (\pr_state.DECODE~q )
 
 	.dataa(!\pr_state.EXE~q ),
 	.datab(!\Decoder0~2_combout ),
 	.datac(!\pr_state.DECODE~q ),
-	.datad(!\WideOr6~0_combout ),
+	.datad(!\WideOr10~0_combout ),
 	.datae(gnd),
 	.dataf(gnd),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
-	.combout(\Selector6~0_combout ),
+	.combout(\Selector1~0_combout ),
 	.sumout(),
 	.cout(),
 	.shareout());
 // synopsys translate_off
-defparam \Selector6~0 .extended_lut = "off";
-defparam \Selector6~0 .lut_mask = 64'h0F1F0F1F0F1F0F1F;
-defparam \Selector6~0 .shared_arith = "off";
+defparam \Selector1~0 .extended_lut = "off";
+defparam \Selector1~0 .lut_mask = 64'h0F1F0F1F0F1F0F1F;
+defparam \Selector1~0 .shared_arith = "off";
 // synopsys translate_on
 
 cyclonev_lcell_comb \word[3] (
 // Equation(s):
-// word[3] = ( word[3] & ( \Selector13~0_combout  & ( \Selector6~0_combout  ) ) ) # ( !word[3] & ( \Selector13~0_combout  & ( \Selector6~0_combout  ) ) ) # ( word[3] & ( !\Selector13~0_combout  ) )
+// word[3] = ( word[3] & ( \Selector8~0_combout  & ( \Selector1~0_combout  ) ) ) # ( !word[3] & ( \Selector8~0_combout  & ( \Selector1~0_combout  ) ) ) # ( word[3] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
-	.datad(!\Selector6~0_combout ),
+	.datad(!\Selector1~0_combout ),
 	.datae(!word[3]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),
@@ -1468,13 +1562,13 @@ defparam \WideOr0~1 .shared_arith = "off";
 
 cyclonev_lcell_comb \word[13] (
 // Equation(s):
-// word[13] = ( \WideOr8~1_combout  & ( \pr_state.EXE~q  & ( \WideOr0~1_combout  ) ) ) # ( !\WideOr8~1_combout  & ( \pr_state.EXE~q  & ( word[13] ) ) )
+// word[13] = ( \WideOr12~1_combout  & ( \pr_state.EXE~q  & ( \WideOr0~1_combout  ) ) ) # ( !\WideOr12~1_combout  & ( \pr_state.EXE~q  & ( word[13] ) ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(!\WideOr0~1_combout ),
 	.datad(!word[13]),
-	.datae(!\WideOr8~1_combout ),
+	.datae(!\WideOr12~1_combout ),
 	.dataf(!\pr_state.EXE~q ),
 	.datag(gnd),
 	.cin(gnd),
@@ -1491,14 +1585,14 @@ defparam \word[13] .shared_arith = "off";
 
 cyclonev_lcell_comb \word[14] (
 // Equation(s):
-// word[14] = ( word[14] & ( \Selector13~0_combout  & ( \pr_state.CONC_LOAD~q  ) ) ) # ( !word[14] & ( \Selector13~0_combout  & ( \pr_state.CONC_LOAD~q  ) ) ) # ( word[14] & ( !\Selector13~0_combout  ) )
+// word[14] = ( word[14] & ( \Selector8~0_combout  & ( \pr_state.CONC_LOAD~q  ) ) ) # ( !word[14] & ( \Selector8~0_combout  & ( \pr_state.CONC_LOAD~q  ) ) ) # ( word[14] & ( !\Selector8~0_combout  ) )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
 	.datad(!\pr_state.CONC_LOAD~q ),
 	.datae(!word[14]),
-	.dataf(!\Selector13~0_combout ),
+	.dataf(!\Selector8~0_combout ),
 	.datag(gnd),
 	.cin(gnd),
 	.sharein(gnd),

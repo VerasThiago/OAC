@@ -4,91 +4,203 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "oIRWrite",
+					"name" : "AUD_DACDAT",
 					"strict" : false
 				},
 				{
-					"name" : "oMemWrite",
+					"name" : "FPGA_I2C_SCLK",
 					"strict" : false
 				},
 				{
-					"name" : "oMemRead",
+					"name" : "LEDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "oIorD",
+					"name" : "LEDR[1]",
 					"strict" : false
 				},
 				{
-					"name" : "oPCw",
+					"name" : "LEDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "oRegWrite",
+					"name" : "VGA_B[0]",
 					"strict" : false
 				},
 				{
-					"name" : "oPCcondWrite",
+					"name" : "VGA_B[1]",
 					"strict" : false
 				},
 				{
-					"name" : "oOriPC",
+					"name" : "VGA_B[2]",
 					"strict" : false
 				},
 				{
-					"name" : "oOriAALU",
+					"name" : "VGA_B[3]",
 					"strict" : false
 				},
 				{
-					"name" : "oOriBALU[0]",
+					"name" : "VGA_B[4]",
 					"strict" : false
 				},
 				{
-					"name" : "oOriBALU[1]",
+					"name" : "VGA_B[5]",
 					"strict" : false
 				},
 				{
-					"name" : "oMem2Reg[0]",
+					"name" : "VGA_B[6]",
 					"strict" : false
 				},
 				{
-					"name" : "oMem2Reg[1]",
+					"name" : "VGA_B[7]",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[2]",
+					"name" : "VGA_BLANK_N",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[3]",
+					"name" : "VGA_G[0]",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[4]",
+					"name" : "VGA_G[1]",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[5]",
+					"name" : "VGA_G[2]",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[6]",
+					"name" : "VGA_G[3]",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[0]",
+					"name" : "VGA_G[4]",
 					"strict" : false
 				},
 				{
-					"name" : "iOp[1]",
+					"name" : "VGA_G[5]",
 					"strict" : false
 				},
 				{
-					"name" : "iCLK",
+					"name" : "VGA_G[6]",
 					"strict" : false
 				},
 				{
-					"name" : "iRST",
+					"name" : "VGA_G[7]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_HS",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[0]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[1]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[3]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[4]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[5]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[6]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_R[7]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_VS",
+					"strict" : false
+				},
+				{
+					"name" : "AUD_ADCLRCK",
+					"strict" : false
+				},
+				{
+					"name" : "AUD_BCLK",
+					"strict" : false
+				},
+				{
+					"name" : "AUD_DACLRCK",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA_I2C_SDAT",
+					"strict" : false
+				},
+				{
+					"name" : "PS2_CLK",
+					"strict" : false
+				},
+				{
+					"name" : "PS2_DAT",
+					"strict" : false
+				},
+				{
+					"name" : "SW[9]",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_50",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[0]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[1]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[2]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[5]",
 					"strict" : false
 				}
 			]

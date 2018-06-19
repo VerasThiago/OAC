@@ -1,5 +1,5 @@
 EDA Netlist Writer report for TopDE
-Mon Jun 18 22:24:40 2018
+Mon Jun 18 22:49:12 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Mon Jun 18 22:24:40 2018 ;
+; EDA Netlist Writer Status ; Successful - Mon Jun 18 22:49:12 2018 ;
 ; Revision Name             ; TopDE                                 ;
 ; Top-level Entity Name     ; Control_MULTI                         ;
 ; Family                    ; Cyclone V                             ;
@@ -93,7 +93,7 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Mon Jun 18 22:24:37 2018
+    Info: Processing started: Mon Jun 18 22:49:09 2018
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab4/RISCV-v1.0/Core/simulation/qsim/ RISCV -c TopDE
 Warning (20013): Ignored 16 assignments for entity "PLL_Main" -- entity does not exist in design
     Warning (20014): Assignment for entity set_global_assignment -name IP_TOOL_NAME altera_pll -entity PLL_Main -sip Tempo/PLL_Main.sip -library lib_PLL_Main was ignored
@@ -109,8 +109,8 @@ Info (119006): Selected device 5CSEMA5F31C6 for design "TopDE"
 Info (204019): Generated file TopDE.vo in folder "C:/Users/tvmma/Desktop/Git/OAC/2018-1/Lab4/RISCV-v1.0/Core/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 4738 megabytes
-    Info: Processing ended: Mon Jun 18 22:24:40 2018
+    Info: Processing ended: Mon Jun 18 22:49:12 2018
     Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
 
 
